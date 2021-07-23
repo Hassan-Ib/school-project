@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from "./Link";
+import { NavLink } from "./Link";
 import Image from "next/image";
 const NavData = [
   {
@@ -23,29 +23,55 @@ const NavData = [
     text: "events",
   },
 ];
+
+const linkHover = " hover:";
+
 const Navbar = () => {
   const [active, setActive] = useState(false);
   const handleOpenMenu = () => {
+    console.log(active);
     setActive((active) => !active);
   };
   return (
-    <nav className="relative grid grid-cols-3 items-center py-3 border-t-2 border-b-2 border-gray-500 px-7 tracking-wide">
+    <nav className="relative bg-gradient-to-br from-indigo-800  to-blue-800 text-white text-lg grid grid-cols-3 items-center py-3 px-7 tracking-wider">
       <div className="">Logo</div>
       <div className="col-span-2 text-right md:opacity-0 md:absolute">
         <button
           onClick={handleOpenMenu}
-          className="border-2 border-gray-500 rounded-md px-2 py-1 tracking-wide">
+          className="border-2 border-gray-100 rounded-md px-2 py-1 tracking-wide">
           Menu
         </button>
       </div>
       <ul
-        className={`absolute bg-white top-8 right-2/4 transition-opacity transform translate-y-24 ${
-          active ? " opacity-100" : "opacity-0"
-        } md:relative md:translate-y-0 md:opacity-100 md:right-0 md:top-0 md:grid md:grid-flow-col md:col-start-2 md:col-end-4 md:justify-end md:gap-10  
+        className={`absolute          
+        p-4 
+        transition-opacity 
+         inset-x-2/4
+         cur
+        border-2 
+        w-2/4 
+        text-indigo-600 
+        transform 
+        ${active ? " opacity-100 z-10" : "opacity-0 "} 
+        md:relative 
+        md:translate-y-0 
+        md:opacity-100 
+        md:right-0 
+        md:top-0 
+        md:grid 
+        md:grid-flow-col 
+        md:col-start-2 
+        md:col-end-4 
+        md:justify-end 
+        md:gap-10  
          `}>
         {NavData.map((el, index) => (
           <li key={index}>
-            <Link link={el.link} text={el.text} />
+            <NavLink
+              link={el.link}
+              text={el.text}
+              className=" hover:border-white"
+            />
           </li>
         ))}
       </ul>

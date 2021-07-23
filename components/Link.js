@@ -1,14 +1,31 @@
 import React from "react";
-import { default as NavLink } from "next/link";
+import { default as NextLink } from "next/link";
 import { useRouter } from "next/dist/client/router";
-const Link = ({ link, text, classNames }) => {
-  const routerDetails = useRouter();
-  console.log({ routerDetails });
+
+const NavLink = ({ link, text, className }) => {
+  const { asPath } = useRouter();
   return (
-    <NavLink href={link}>
-      <a className={`capitalize ${classNames}`}>{text}</a>
-    </NavLink>
+    <>
+      <NextLink href={link}>
+        <a className={`capitalize relative ${className}`}>
+          {text}
+          {asPath === link ? (
+            <span className=" absolute left-0 -bottom-2 inline-block h-2 bg-white rounded-sm"></span>
+          ) : (
+            ""
+          )}
+        </a>
+      </NextLink>
+    </>
   );
 };
 
-export default Link;
+const Link = ({ href, text, className }) => {
+  return (
+    <NextLink href={href}>
+      <a className={className}>{text}</a>
+    </NextLink>
+  );
+};
+
+export { NavLink, Link };
