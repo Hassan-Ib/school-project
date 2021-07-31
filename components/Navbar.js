@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "./Link";
+import { default as NavList } from "./NavLinkList";
 import Image from "next/image";
 const NavData = [
   {
@@ -16,66 +17,46 @@ const NavData = [
   },
   {
     link: "/news",
-    text: "news",
+    text: "news/events",
   },
-  {
-    link: "/events",
-    text: "events",
-  },
+  // {
+  //   link: "/events",
+  //   text: "events",
+  // },
 ];
 
 const linkHover = " hover:";
 
 const Navbar = () => {
-  const [active, setActive] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
   const handleOpenMenu = () => {
-    console.log(active);
-    setActive((active) => !active);
+    setIsActive((isActive) => !isActive);
   };
   return (
-    <nav className="relative bg-gradient-to-br from-indigo-800  to-blue-800 text-white text-lg grid grid-cols-3 items-center py-3 px-7 tracking-wider">
+    <nav className="relative  text-gray-700 text-lg grid grid-cols-3 items-center py-3 px-7 tracking-wider">
       <div className="">Logo</div>
-      <div className="col-span-2 text-right md:opacity-0 md:absolute">
+      <div className="col-span-2 text-right lg:hidden ">
         <button
           onClick={handleOpenMenu}
-          className="border-2 border-gray-100 rounded-md px-2 py-1 tracking-wide">
+          className="border-2 border-gray-900 rounded-md px-2 py-1 tracking-wide hover:border-gray-300">
           Menu
         </button>
       </div>
-      <ul
-        className={`absolute          
-        p-4 
-        transition-opacity 
-         inset-x-2/4
-         cur
-        border-2 
-        w-2/4 
-        text-indigo-600 
-        transform 
-        ${active ? " opacity-100 z-10" : "opacity-0 "} 
-        md:relative 
-        md:translate-y-0 
-        md:opacity-100 
-        md:right-0 
-        md:top-0 
-        md:grid 
-        md:grid-flow-col 
-        md:col-start-2 
-        md:col-end-4 
-        md:justify-end 
-        md:gap-10  
-         `}>
+      <NavList active={isActive}>
         {NavData.map((el, index) => (
-          <li key={index}>
+          <li key={index} className="w-full text-center font-medium ">
             <NavLink
               link={el.link}
               text={el.text}
-              className=" hover:border-white"
+              handleNavToggle={handleOpenMenu}
+              className="inline-block w-full py-4 "
             />
           </li>
         ))}
-      </ul>
+      </NavList>
     </nav>
   );
 };
+
 export default Navbar;
