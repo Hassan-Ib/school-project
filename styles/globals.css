@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 .cta {
-  @apply inline-block capitalize border-2 rounded-xl p-3 transform hover:-translate-y-0.5 focus:-translate-y-0.5;
+  @apply inline-block capitalize border-2 rounded-lg p-3 transform hover:bg-primary-900 focus:-translate-y-0.5;
+}
+
+.p-container {
+  @apply md:px-16;
 }
 
 /* html,

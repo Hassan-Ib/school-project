@@ -1,20 +1,11 @@
-const NavLinkList = ({ children, className, active }) => {
+const NavLinkList = ({ children, className, ref }) => {
   return (
     <ul
+      ref={ref}
       className={`
-        absolute
-        right-0
-        w-full
-        sm:w-2/4
-        bg-white
-        border-red-600
-        border-2
         grid
-        ${
-          active
-            ? " opacity-100 visible top-full transition-all ease-out duration-200 -translate-x-0 z-10"
-            : "opacity-0 invisible translate-x-full"
-        }
+        col-start-1 
+        col-end-4
         lg:border-0
         lg:relative
         lg:w-auto
@@ -27,7 +18,7 @@ const NavLinkList = ({ children, className, active }) => {
         lg:col-end-4
         lg:justify-end
         lg:gap-10
-        lg:text-gray-700
+        lg:text-white
          lg:visible
          lg:top-0
          lg:bg-transparent

@@ -2,8 +2,8 @@ import { Link } from "../components/Link";
 
 const Hero = () => {
   return (
-    <header className="relative h-96 w-full text-gray-900 grid ">
-      <section className="px-4 md:w-3/4 lg:w-2/4 self-center grid gap-4">
+    <header className="relative h-96 w-full text-gray-900 grid px-8 lg:px-16">
+      <section className="md:w-3/4 lg:w-2/4 self-center grid gap-4">
         <h4 className="text-xl opacity-80 font-medium">
           <span className="text-red-500 ">Educate!</span> smart is greate
         </h4>
@@ -16,10 +16,7 @@ const Hero = () => {
         </p>
         <div className=" text-white flex w-2/4 sm:w-1/4 min-w-max gap-6 justify-between font-medium">
           <Link href="#" className="cta bg-red-600">
-            Get started
-          </Link>
-          <Link href="#" className="cta bg-blue-800">
-            watch video
+            learn more
           </Link>
         </div>
       </section>

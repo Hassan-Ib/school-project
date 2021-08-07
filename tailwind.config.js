@@ -7,11 +7,20 @@ module.exports = {
       colors: {
         sky: colors.sky,
         cyan: colors.cyan,
+        primary: { 900: "#29293a" },
       },
+      transitionProperty: {
+        height: "height",
+      },
+      // backgroundImage : theme =>({
+      //   "hero-banner" : "./"
+      // })
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      transitionProperty: ["hover", "focus"],
+    },
   },
   plugins: [],
 };
