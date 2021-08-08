@@ -1,4 +1,15 @@
-const NavLinkList = ({ children, className, ref }) => {
+import { forwardRef } from "react";
+
+const NavLinkList = ({ children, className }, ref) => {
+  // useImperativeHandle(
+  //   ref,
+  //   () => ({
+  //     getBoundingClientRect : ()=>{
+
+  //     }
+  //   }),
+  //   [input],
+  // )
   return (
     <ul
       ref={ref}
@@ -6,6 +17,7 @@ const NavLinkList = ({ children, className, ref }) => {
         grid
         col-start-1 
         col-end-4
+        sm:col-end-3
         lg:border-0
         lg:relative
         lg:w-auto
@@ -29,4 +41,4 @@ const NavLinkList = ({ children, className, ref }) => {
   );
 };
 
-export default NavLinkList;
+export default forwardRef(NavLinkList);
