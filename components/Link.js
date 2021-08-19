@@ -12,7 +12,7 @@ const NavLink = ({ link, text, handleNavToggle, className }) => {
           className={`capitalize relative ${className}`}>
           {text}
           {asPath === link ? (
-            <span className=" absolute left-0 -bottom-2 inline-block h-2 bg-white rounded-sm"></span>
+            <span className=" absolute left-1/2 transform -translate-x-1/2 -bottom-2 inline-block md:triangle "></span>
           ) : (
             ""
           )}

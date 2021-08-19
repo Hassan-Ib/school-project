@@ -7,6 +7,7 @@ module.exports = {
       height: {
         xl: "450px",
         xxl: "600px",
+        xxxl: "700px",
       },
       backgroundImage: (theme) => ({
         "hero-banner":

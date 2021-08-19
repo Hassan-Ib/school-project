@@ -7,14 +7,7 @@ const NavData = [
     link: "/",
     text: "home",
   },
-  {
-    link: "/courses",
-    text: "courses",
-  },
-  {
-    link: "/about",
-    text: "about us",
-  },
+
   {
     link: "/news",
     text: "news",
@@ -22,6 +15,14 @@ const NavData = [
   {
     link: "/events",
     text: "events",
+  },
+  {
+    link: "/courses",
+    text: "courses",
+  },
+  {
+    link: "/about",
+    text: "about us",
   },
 ];
 const Navbar = () => {
