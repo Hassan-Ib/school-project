@@ -8,6 +8,11 @@ module.exports = {
         xl: "450px",
         xxl: "600px",
         xxxl: "700px",
+        hero: "80vh",
+        nav: "10vh",
+      },
+      weight: {
+        screenhalf: "5vw",
       },
       backgroundImage: (theme) => ({
         "hero-banner":
@@ -15,24 +20,56 @@ module.exports = {
         // "./public/img/icons8-team-FcLyt7lW5wg-unsplash-removebg-preview.png"
       }),
       colors: {
-        sky: colors.sky,
-        cyan: colors.cyan,
-        primary: {
-          100: "rgb(249,245,243)", //whitesmoke
-          900: "#29293a", // darkslategray
-          1000: "rgb(27,27,24)", //black
-          1100: "rgb(16,17,16)", //black
+        twine: {
+          50: "#FCFAF7",
+          100: "#F9F6EF",
+          200: "#EFE7D8",
+          300: "#E6D9C1",
+          400: "#D3BD92",
+          500: "#C0A063",
+          600: "#AD9059",
+          700: "#73603B",
+          800: "#56482D",
+          900: "#3A301E",
         },
-        secondary: {
-          100: "rgb(50,178,131)	", //mediumseagreen
-          200: "rgb(66,151,137)", //mediumseagreen
-          300: "rgb(250,207,136)", //khaki
-          400: "rgb(246,154,132)", //lightsalmon
-          500: "rgb(254,206,0)", //gold
-          600: "rgb(110,195,164)", //mediumaquamarine
-          700: "rgb(29,161,242)", //dodgerblue
-          800: "rgb(75,159,222)", //cornflowerblue
-          900: "rgb(70,120,161)", // steelblue
+
+        "desert-storm": {
+          50: "#FFFFFF",
+          100: "#FEFEFE",
+          200: "#FDFDFD",
+          300: "#FCFBFB",
+          400: "#FAF9F9",
+          500: "#F8F6F6",
+          600: "#DFDDDD",
+          700: "#959494",
+          800: "#706F6F",
+          900: "#4A4A4A",
+        },
+
+        monza: {
+          50: "#FDF4F4",
+          100: "#FBE9E8",
+          200: "#F6C9C7",
+          300: "#F0A8A5",
+          400: "#E46661",
+          500: "#D9251D",
+          600: "#C3211A",
+          700: "#821611",
+          800: "#62110D",
+          900: "#410B09",
+        },
+
+        birch: {
+          50: "#F5F5F4",
+          100: "#ECEBEA",
+          200: "#CFCCCA",
+          300: "#B1AEA9",
+          400: "#777169",
+          500: "#3D3429",
+          600: "#372F25",
+          700: "#251F19",
+          800: "#1B1712",
+          900: "#12100C",
         },
       },
       transitionProperty: {

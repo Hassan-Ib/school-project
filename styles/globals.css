@@ -2,43 +2,47 @@
 @tailwind components;
 @tailwind utilities; */
 
-/* html,
-body {
+:root {
+  --sm: 640px;
+  --md: 768px;
+  --lg: 1024px;
+  --scale: 0.8;
+  --primary: #fff;
+  --primary-100: "rgb(249,245,243)"; /*whitesmoke*/
+  --primary-900: "#29293a"; /* darkslategray */
+  --primary-1000: "rgb(27,27,24)"; /* black*/
+  --secondary-100: "rgb(50,178,131)	"; /*mediumseagreen*/
+  --secondary-200: "rgb(66,151,137)"; /*mediumseagreen*/
+  --secondary-300: "rgb(250,207,136)"; /*khaki*/
+  --secondary-400: "rgb(246,154,132)"; /*lightsalmon*/
+  --secondary-500: "rgb(254,206,0)"; /*gold*/
+  --secondary-600: "rgb(110,195,164)"; /*mediumaquamarine*/
+  --secondary-700: "rgb(29,161,242)"; /*dodgerblue*/
+  --secondary-800: "rgb(75,159,222)"; /*cornflowerblue*/
+  --secondary-900: "rgb(70,120,161)"; /* steelblue*/
+}
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-size: 100%;
+  line-height: 1.3;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-:root { */
-/* --white:;
-  --cyan-100:;
-  --cyan-200:;
-  --cyan-300:;
-  --cyan-400:;
-  --cyan-500:;
-  --cyan-600:;
-  --gray-100:;
-  --gray-200:;
-  --gray-300:;
-  --gray-400:;
-  --gray-500:;
-  --gray-600:;
-  --sky-blue-100:;
-  --sky-blue-200:;
-  --sky-blue-300:;
-  --sky-blue-400:;
-  --sky-blue-500:;
-  --sky-blue-600:; */
-/* --white: #fff;
-} */
-/* a {
+
+ul {
+  list-style: none;
+}
+a {
   color: inherit;
   text-decoration: none;
 }
-
-{
-  box-sizing: border-box;
-} */
 
 .triangle {
   width: 0;

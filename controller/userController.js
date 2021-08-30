@@ -1,5 +1,4 @@
 import { users } from "../utils/user";
-// console.log("main man");
 const createUsers = async (req, res) => {
   try {
     const bodyData = req.body;
@@ -11,27 +10,37 @@ const createUsers = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(404).json({});
+    res.status(404).json({
+      success: false,
+      data: null,
+    });
   }
 };
 
 const getUsers = async (req, res) => {
-  const method = req.method;
-  console.log(method);
-  console.log("userData", user);
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      users,
-    },
-  });
+  try {
+    if (!user) {
+      throw new Error("internal server error");
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        users,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      success: false,
+      data: null,
+      message: error.message,
+    });
+  }
 };
 const getUser = async (req, res) => {
   try {
     const { id } = req.query;
     const [user] = users.filter((user) => Number(id) === user.id);
-    console.log(id, user);
     if (!user) {
       throw new Error("user not found");
     }
@@ -50,4 +59,5 @@ const getUser = async (req, res) => {
     });
   }
 };
+
 export { getUsers, createUsers, getUser };

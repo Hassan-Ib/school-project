@@ -2,20 +2,16 @@ import React from "react";
 import { default as NextLink } from "next/link";
 import { useRouter } from "next/dist/client/router";
 
-const NavLink = ({ link, text, handleNavToggle, className }) => {
+const NavLink = ({ link, text, icon, handleNavToggle, className }) => {
   const { asPath } = useRouter();
   return (
     <>
       <NextLink href={link}>
         <a
           onClick={handleNavToggle}
-          className={`capitalize relative ${className}`}>
+          className={`relative flex items-center capitalize ${className}`}>
+          <span>{icon}</span>
           {text}
-          {asPath === link ? (
-            <span className=" absolute left-1/2 transform -translate-x-1/2 -bottom-2 inline-block md:triangle "></span>
-          ) : (
-            ""
-          )}
         </a>
       </NextLink>
     </>
