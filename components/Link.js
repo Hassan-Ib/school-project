@@ -10,7 +10,7 @@ const NavLink = ({ link, text, icon, handleNavToggle, className }) => {
         <a
           onClick={handleNavToggle}
           className={`relative flex items-center capitalize ${className}`}>
-          <span>{icon}</span>
+          {icon && <span>{icon}</span>}
           {text}
         </a>
       </NextLink>

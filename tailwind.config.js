@@ -15,8 +15,7 @@ module.exports = {
         screenhalf: "5vw",
       },
       backgroundImage: (theme) => ({
-        "hero-banner":
-          "url('/img/icons8-team-FcLyt7lW5wg-unsplash-removebg-preview.png')",
+        "hero-banner": "url('/img/hero-bg.jpg')",
         // "./public/img/icons8-team-FcLyt7lW5wg-unsplash-removebg-preview.png"
       }),
       colors: {
@@ -45,20 +44,6 @@ module.exports = {
           800: "#706F6F",
           900: "#4A4A4A",
         },
-
-        monza: {
-          50: "#FDF4F4",
-          100: "#FBE9E8",
-          200: "#F6C9C7",
-          300: "#F0A8A5",
-          400: "#E46661",
-          500: "#D9251D",
-          600: "#C3211A",
-          700: "#821611",
-          800: "#62110D",
-          900: "#410B09",
-        },
-
         birch: {
           50: "#F5F5F4",
           100: "#ECEBEA",
