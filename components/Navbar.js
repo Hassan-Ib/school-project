@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "./Link";
 import logo from "./../public/Faculty-Logo.png";
 import Image from "next/image";
@@ -43,20 +43,66 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="absolute z-10 -top-12">
-      <div className="-top-10 left-8">
+    <React.Fragment>
+      <nav
+        className="
+    absolute z-10 
+    w-full h-24
+    left-0 
+    flex items-center justify-between 
+    border-2 
+    overflow-hidden
+     pr-4
+    ">
+        <div className="left-8">
+          <Image
+            src={logo}
+            alt="Faculty of computing and Informatics"
+            width={220}
+            height={220}
+          />
+        </div>
+        <div>
+          <RiMenuFoldLine className="text-white text-3xl" />
+        </div>
+      </nav>
+      <div
+        className="
+      absolute z-20 top-0 left-0 
+      h-screen w-full 
+      bg-birch-500 bg-opacity-70"></div>
+      <nav
+        className="
+      absolute z-50
+      h-screen max-w-xs w-3/4
+      top-0 left-0
+      bg-birch-500
+      ">
         <Image
           src={logo}
           alt="Faculty of computing and Informatics"
-          width={220}
-          height={220}
+          width={200}
+          height={200}
         />
-      </div>
-
-      <div>
-        <RiMenuFoldLine />
-      </div>
-    </nav>
+        <ul
+          className="
+        divide-y divide-white divide-opacity-50 
+        text-white
+        px-8
+        font-medium tracking-wider 
+        ">
+          {NavData.map((link, id) => {
+            return (
+              <li key={id}>
+                <NavLink link={link.href} className={" py-4 "}>
+                  {link.text}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </React.Fragment>
   );
 };
 

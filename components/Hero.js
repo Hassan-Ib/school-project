@@ -7,7 +7,7 @@ const Hero = () => {
       className="
       relative
        pt-52
-      pb-40 
+      pb-28 
       lg:px-12 
       text-gray-900 
       ">
@@ -33,8 +33,8 @@ const Hero = () => {
           with all setups, ready to play and tuned to your movement from room to
           room.
         </p>
-        <div className=" font-semibold tracking-wide">
-          <Link href="#" className="border-2 px-8 py-2 rounded capitalize">
+        <div className=" font-medium tracking-wide pt-2">
+          <Link href="#" className="border-2 px-6 py-1 rounded uppercase">
             learn more
           </Link>
         </div>
