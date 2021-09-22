@@ -14,16 +14,10 @@ import { VscChromeClose } from "react-icons/vsc";
 
 const Navbar = () => {
   const [isNavToggled, setIsNavToggled] = useState(false);
-  const navLinkRef = useRef(null);
+  const navSectionRef = useRef(null);
 
   const closeNav = () => setIsNavToggled(false);
-  useEffect(() => {
-    // console.log(navLinkRef.current.getBoundingClientRect().height);
-  }, []);
-
-  const handleOpenMenu = () => {
-    setIsActive((isActive) => !isActive);
-  };
+  console.log("rendered");
 
   return (
     <React.Fragment>
@@ -31,11 +25,10 @@ const Navbar = () => {
         className="
         absolute z-10 
         w-full  h-24
-        border-2
         left-0 
         flex items-center justify-between 
         overflow-hidden
-        pr-4
+        pr-4 
     ">
         <div className="left-8">
           <Image
@@ -45,21 +38,25 @@ const Navbar = () => {
             height={220}
           />
         </div>
-        <button onClick={() => setIsNavToggled(true)}>
+        <button
+          onClick={() => {
+            setIsNavToggled(true);
+          }}>
           <RiMenuFoldLine className="text-white text-3xl" />
         </button>
       </nav>
 
       <nav
+        ref={navSectionRef}
         className={`
-      absolute z-50
+      fixed z-50
       h-screen w-full
       top-0 left-0
        overflow-hidden
        text-white
-       transform 
-        -translate-x-full
-        ${isNavToggled ? "-translate-x-0" : ""}`}>
+       transition duration-75 ease-out
+       transform ${!isNavToggled ? "-translate-x-full" : ""}
+        `}>
         <div
           onClick={closeNav}
           className=" 
