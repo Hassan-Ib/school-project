@@ -2,38 +2,21 @@ import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "./Link";
 import logo from "./../public/Faculty-Logo.png";
 import Image from "next/image";
-import { AiFillHome } from "react-icons/ai";
-import { FaBookReader } from "react-icons/fa";
-import { BiCalendarEvent } from "react-icons/bi";
-import { TiContacts } from "react-icons/ti";
-import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
-const NavData = [
-  {
-    href: "/",
-    text: "home",
-    // icon: <AiFillHome />,
-  },
-  {
-    href: "/about",
-    text: "about",
-    // icon: <FaBookReader />,
-  },
-  {
-    href: "/academics",
-    text: "academics",
-    // icon: <BiCalendarEvent />,
-  },
-  {
-    href: "/contact",
-    text: "contact",
-    // icon: <TiContacts />,
-  },
-];
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+import { RiMenuFoldLine } from "react-icons/ri";
+import { VscChromeClose } from "react-icons/vsc";
 
 const Navbar = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isNavToggled, setIsNavToggled] = useState(false);
   const navLinkRef = useRef(null);
 
+  const closeNav = () => setIsNavToggled(false);
   useEffect(() => {
     // console.log(navLinkRef.current.getBoundingClientRect().height);
   }, []);
@@ -46,13 +29,13 @@ const Navbar = () => {
     <React.Fragment>
       <nav
         className="
-    absolute z-10 
-    w-full h-24
-    left-0 
-    flex items-center justify-between 
-    border-2 
-    overflow-hidden
-     pr-4
+        absolute z-10 
+        w-full  h-24
+        border-2
+        left-0 
+        flex items-center justify-between 
+        overflow-hidden
+        pr-4
     ">
         <div className="left-8">
           <Image
@@ -62,45 +45,113 @@ const Navbar = () => {
             height={220}
           />
         </div>
-        <div>
+        <button onClick={() => setIsNavToggled(true)}>
           <RiMenuFoldLine className="text-white text-3xl" />
-        </div>
+        </button>
       </nav>
-      <div
-        className="
-      absolute z-20 top-0 left-0 
-      h-screen w-full 
-      bg-birch-500 bg-opacity-70"></div>
+
       <nav
-        className="
+        className={`
       absolute z-50
-      h-screen max-w-xs w-3/4
+      h-screen w-full
       top-0 left-0
-      bg-birch-500
-      ">
-        <Image
-          src={logo}
-          alt="Faculty of computing and Informatics"
-          width={200}
-          height={200}
-        />
-        <ul
+       overflow-hidden
+       text-white
+       transform 
+        -translate-x-full
+        ${isNavToggled ? "-translate-x-0" : ""}`}>
+        <div
+          onClick={closeNav}
+          className=" 
+            cursor-crosshair
+            absolute top-0 left-0 
+            h-screen w-full 
+            bg-birch-500 bg-opacity-70"></div>
+        <div
           className="
+          overflow-auto 
+          max-w-xs 
+          h-full
+          w-3/4
+        bg-birch-500
+          relative
+          z-20
+          ">
+          <section className="flex items-center transform -translate-y-8">
+            <Image
+              src={logo}
+              alt="Faculty of computing and Informatics"
+              width={200}
+              height={200}
+            />
+            <button onClick={closeNav} className="times">
+              <VscChromeClose className="text-2xl opacity-90" />
+            </button>
+          </section>
+          <ul
+            className="
         divide-y divide-white divide-opacity-50 
         text-white
         px-8
         font-medium tracking-wider 
         ">
-          {NavData.map((link, id) => {
-            return (
-              <li key={id}>
-                <NavLink link={link.href} className={" py-4 "}>
-                  {link.text}
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
+            <li>
+              <NavLink link={"/"} className={" py-4 "}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <details
+                className="
+               outline-none cursor-pointer">
+                <summary className="flex items-center gap-2  py-4">
+                  Explore <IoIosArrowDown className=" text-lg" />
+                </summary>
+                <ul
+                  className=" 
+              text-sm 
+              px-6 py-2 divide-y divide-white divide-opacity-50 
+              opacity-80
+              ">
+                  <li>
+                    <NavLink link={"/about-us"} className={" py-3 "}>
+                      About
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink link={"/Staff-profile"} className={" py-3 "}>
+                      Staff Profile
+                    </NavLink>
+                  </li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <NavLink link={"/news-events"} className={" py-4 "}>
+                News & Events
+              </NavLink>
+            </li>
+            <li>
+              <NavLink link={"/contact"} className={" py-4 "}>
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+          <div className="flex text-white mt-10 justify-evenly">
+            <div className=" border p-3 rounded-full">
+              <FaFacebookF />
+            </div>
+            <div className=" border p-3 rounded-full">
+              <FaLinkedinIn />
+            </div>
+            <div className=" border p-3 rounded-full">
+              <FaInstagram />
+            </div>
+            <div className=" border p-3 rounded-full">
+              <FaTwitter />
+            </div>
+          </div>
+        </div>
       </nav>
     </React.Fragment>
   );
