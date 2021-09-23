@@ -13,7 +13,9 @@
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.2.0"
+    "react-icons": "^4.2.0",
+    "safe-marked": "^7.0.0",
+    "slugify": "^1.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.1",
