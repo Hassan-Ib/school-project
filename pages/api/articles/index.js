@@ -1,8 +1,9 @@
 import DBConnect from "../../../utils/DBConnection";
+import withDBConnection from "../../../middleware/database";
 // import Articles from "../../../../models/ArticleModel";
 
-export default async function article(req, res) {
-  await DBConnect();
+export default withDBConnection(async function handler(req, res) {
+  // await DBConnect();
 
   switch (req.method) {
     case "GET":
@@ -43,4 +44,4 @@ export default async function article(req, res) {
     default:
       res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-}
+});

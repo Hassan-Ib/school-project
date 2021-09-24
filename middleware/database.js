@@ -4,9 +4,16 @@ import DBConnect from "../utils/DBConnection";
  * @param {handler} callback
  * @returns func
  */
-export default async function withDBConnection(handler) {
-  return async function (req, res) {
+
+function withDBConnection(handler) {
+  return async function apiRouter(req, res) {
     await DBConnect();
-    return handler(res, req);
+    return handler(req, res);
   };
 }
+
+// const withDBConnection = (handler) => async (req, res) => {
+//   await DBConnect();
+//   return handler(req, res);
+// };
+export default withDBConnection;
