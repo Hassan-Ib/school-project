@@ -1,4 +1,4 @@
-import { getUser } from "../../../../controller/userController";
+import { getUser } from "../../../controller/userController";
 
 export default async function user(req, res) {
   const httpMethod = req.method;
