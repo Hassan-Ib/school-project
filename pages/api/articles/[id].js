@@ -23,23 +23,16 @@ export default withDBConnection(async (req, res) => {
     case "PATCH":
       try {
         const { body } = req;
-
-        console.log("body : ", body);
-        // const article = await Articles.findByIdAndUpdate(id, body, {
-        //   new: true,
-        //   runValidators: true,
-        // });
-        const article = await Articles.getByIdAndPopulate(id, body);
-        console.log(article);
-        await article.save();
-        res.status(201).json({
+        const doc = await Articles.getByIdAndPopulate(id, body);
+        await doc.save();
+        return res.status(201).json({
           success: true,
-          data: article,
+          data: doc,
         });
       } catch (error) {
-        res.status(400).json({ success: false, message: error });
+        console.log(" error form catch ", error.message);
+        return res.status(400).json({ success: false, message: error.message });
       }
-      break;
     default:
       res
         .status(404)

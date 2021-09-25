@@ -30,23 +30,6 @@ const ArticleSchema = new Schema({
   image: [String],
 });
 
-ArticleSchema.statics.getByIdAndPopulate = async function (id, ArticleData) {
-  try {
-    // console.log("running get by id and populate");
-    const [doc] = await this.find({ _id: id });
-
-    for (const [key, value] of Object.entries(ArticleData)) {
-      console.log(doc[key]);
-      if (doc[key]) {
-        doc[key] = value;
-      }
-    }
-    return doc;
-  } catch (error) {
-    throw new Error({ ...error });
-  }
-};
-
 ArticleSchema.pre("save", function (next) {
   console.log("saving");
   this.slug = slugify(this.title, { trim: true, lower: true });
@@ -56,15 +39,23 @@ ArticleSchema.pre("save", function (next) {
   next();
 });
 
-ArticleSchema.pre("update", function (next) {
-  console.log("saving");
-  this.slug = slugify(this.title, { trim: true, lower: true });
-  const marked = markdown(this.markdown);
-  console.log(marked);
-  this.markDownHtml = marked;
-  next();
-});
-console.log(mongoose.models);
+ArticleSchema.statics.getByIdAndPopulate = async function (id, ArticleData) {
+  try {
+    console.log("running the schema method");
+    const [doc] = await this.find({ _id: id });
+
+    if (!doc) throw new Error("Document does not exist");
+    for (const [key, value] of Object.entries(ArticleData)) {
+      if (doc[key]) {
+        doc[key] = value;
+      }
+    }
+    return doc;
+  } catch (error) {
+    console.log("schema error", error);
+    throw new Error(`Document of id ${id} not does not exist`);
+  }
+};
 
 const Articles =
   mongoose.models.Article || mongoose.model("Article", ArticleSchema);
