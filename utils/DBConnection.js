@@ -4,7 +4,6 @@ const DB = process.env.DB_CONNECTION_LOCAL;
 
 const connection = {};
 export default async function DBConnect() {
-  console.log(DB);
   try {
     if (connection?.isConnected) {
       return;

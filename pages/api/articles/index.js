@@ -1,47 +1,47 @@
-import DBConnect from "../../../utils/DBConnection";
 import withDBConnection from "../../../middleware/database";
-// import Articles from "../../../../models/ArticleModel";
+import Articles from "../../../models/ArticleModel";
 
 export default withDBConnection(async function handler(req, res) {
-  // await DBConnect();
-
-  switch (req.method) {
+  const { method } = req;
+  switch (method) {
     case "GET":
       try {
-        const mockRes = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-        const data = await mockRes.json();
-        console.log(data);
+        const query = await Articles.find();
+
+        console.log(query);
         return res.status(200).json({
           susses: true,
-          data,
+          data: query,
         });
       } catch (error) {
         console.log(error);
         return res.status(404).json({
           susses: false,
           data: null,
+          error,
         });
       }
       break;
     case "POST":
       try {
-        console.log(req.body);
-        const body = req.body;
-        // const article = ArticleSchema.create(req.body)
+        const doc = await Articles.create({ ...req.body });
+
+        console.log("doc : ", doc);
+
         res.status(201).json({
           success: true,
-          data: body,
+          data: doc,
         });
       } catch (error) {
+        console.log(error);
         res.status(400).json({
           success: false,
           data: null,
+          error,
         });
       }
       break;
     default:
-      res.status(405).end(`Method ${req.method} Not Allowed`);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 });
