@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import ArticleImage from "./../public/img/mimi-thian-slWBjTGhREQ-unsplash.jpg";
-import { Link } from "./Link";
+import ArticleImage from "./../../public/img/mimi-thian-slWBjTGhREQ-unsplash.jpg";
+import { Link } from "../Link";
 
 const Article = ({ className }) => {
   return (
-    <article className="max-w-xs">
+    <article className={"max-w-xs"}>
       <div className="block rounded-lg overflow-hidden">
         <Image src={ArticleImage} layout="responsive" alt="article image" />
       </div>

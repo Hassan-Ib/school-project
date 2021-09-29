@@ -9,13 +9,15 @@ const Card = () => {
       className=" 
     w-11/12 
     m-auto 
-    px-4 py-8 
     md:grid md:grid-cols-2
      shadow-2xl
         mt-4
         mb-4
     ">
-      <article>
+      <article
+        className=" 
+      px-4
+      py-8">
         <h2 className=" text-xl font-bold mb-2">
           Education and Responsibility
         </h2>
@@ -37,14 +39,14 @@ const Card = () => {
         </button>
       </article>
       <div className="hidden md:block">
-        <Image src={cardImage} alt="graduating student image" />
+        <Image
+          src={cardImage}
+          layout="responsive"
+          alt="graduating student image"
+        />
       </div>
     </section>
   );
 };
-
-// Card.PropType = {
-//     imageData : PropType.object
-// }
 
 export default Card;

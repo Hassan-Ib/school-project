@@ -19,7 +19,6 @@ const ArticleCard = () => {
           alt="graduating student image"
         />
       </div>
-
       <article className="bg-gray-800 text-white px-6 py-8">
         <h2 className=" text-xl font-bold mb-2">
           Distruptive Technolgies, The demands on 21st century higher education

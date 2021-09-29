@@ -1,32 +1,32 @@
 import Image from "next/image";
-import Meta from "../components/Meta";
-import Hero from "../components/Hero";
-import { Link } from "../components/Link";
-import Navbar from "../components/Navbar";
-import Card from "../components/Card";
+import HeadMeta from "../components/Meta";
+import IntroCard from "../components/IntroCard";
 import ArticleCard from "../components/ArticleCard";
-import ArticleSection from "../components/ArticleSection";
-export default function Homepage() {
+import ArticleList from "../components/Article/ArticleList";
+import Header from "../components/Header";
+import Container from "../components/Container";
+import Section from "../components/Section";
+export default function Homepage({ articles, events }) {
   return (
-    <>
-      <Meta />
-      <header
-        className="bg-hero-banner
-       bg-cover
-       bg-center
-       bg-no-repeat
-       ">
-        <Navbar />
-        <Hero />
-      </header>
+    <Container>
+      <HeadMeta />
+      <Header />
       <main>
-        <Card />
+        <IntroCard />
         <ArticleCard />
-        <h3 className=" text-center text-lg font-medium mt-4">
+        <h3 className=" text-center text-lg font-medium my-10">
           Latest From the Faculty
         </h3>
-        <ArticleSection />
+        <Section>
+          <ArticleList />
+        </Section>
       </main>
-    </>
+    </Container>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: { articles: [], events: [] },
+  };
+};

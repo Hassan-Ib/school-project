@@ -28,6 +28,11 @@ const ArticleSchema = new Schema({
   markDownHtml: String,
   slug: { type: String, unique: true },
   image: [String],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    // select: false,
+  },
 });
 
 ArticleSchema.pre("save", function (next) {
