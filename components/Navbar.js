@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavLink } from "./Link";
+import { NavLink, Link } from "./Link";
 import logo from "./../public/Faculty-Logo.png";
 import Image from "next/image";
 import {
@@ -11,6 +11,7 @@ import {
 import { IoIosArrowDown } from "react-icons/io";
 import { RiMenuFoldLine } from "react-icons/ri";
 import { VscChromeClose } from "react-icons/vsc";
+import { socialLink } from "../utils/links";
 
 const Navbar = () => {
   const [isNavToggled, setIsNavToggled] = useState(false);
@@ -134,20 +135,14 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          <div className="flex text-white mt-10 justify-evenly">
-            <div className=" border p-3 rounded-full">
-              <FaFacebookF />
-            </div>
-            <div className=" border p-3 rounded-full">
-              <FaLinkedinIn />
-            </div>
-            <div className=" border p-3 rounded-full">
-              <FaInstagram />
-            </div>
-            <div className=" border p-3 rounded-full">
-              <FaTwitter />
-            </div>
-          </div>
+
+          <ul className="flex text-white mt-10 justify-evenly">
+            {socialLink.map((link, index) => (
+              <li key={index} className="border p-3 rounded-full">
+                <Link href={link.href}>{link.icon}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </nav>
     </React.Fragment>

@@ -1,7 +1,8 @@
 import React from "react";
-import PropType from "prop-types";
 import cardImage from "./../public/img/caleb-woods-RIcMwDLk1wo-unsplash.jpg";
 import Image from "next/image";
+import Paragraph from "./Typograhpy/Paragraph";
+import H2 from "./Typograhpy/H2";
 
 const Card = () => {
   return (
@@ -18,14 +19,12 @@ const Card = () => {
         className=" 
       px-4
       py-8">
-        <h2 className=" text-xl font-bold mb-2">
-          Education and Responsibility
-        </h2>
-        <p className=" mb-3 text-xs leading-relaxed">
+        <H2 className="">Education and Responsibility</H2>
+        <Paragraph>
           Our core philosophy is people over process. Our culture has been
           instrumental to our success and has helped us attract and produce
           Amazing students, making work here more satisfying.
-        </p>
+        </Paragraph>
         <button
           className="
         bg-gray-800 
@@ -43,6 +42,8 @@ const Card = () => {
           src={cardImage}
           layout="responsive"
           alt="graduating student image"
+          width={700}
+          height={400}
         />
       </div>
     </section>

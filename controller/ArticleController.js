@@ -42,6 +42,9 @@ export const updateArticle = async (req, res) => {
       body,
     } = req;
     const doc = await Articles.getByIdAndPopulate(id, body);
+    if (!doc) {
+      throw new Error(`No article of id ${id} found`);
+    }
     await doc.save();
     return res.status(201).json({
       success: true,

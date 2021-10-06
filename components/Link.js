@@ -39,4 +39,29 @@ Link.PropType = {
   className: PropType.string,
 };
 
-export { NavLink, Link };
+export const LinkBlue = ({ href, children, className }) => {
+  return (
+    <Link href={href}>
+      <a className={className + " " + "text-blue-800 underline"}>{children}</a>
+    </Link>
+  );
+};
+
+const Button = ({ children, className, type }) => {
+  const sectionBtnStyle =
+    type === "section" ? "border-blue-800 text-blue-800 rounded-lg" : " ";
+  return (
+    <button
+      className={
+        sectionBtnStyle +
+        " " +
+        className +
+        " " +
+        ` capitalize rounded px-4 py-1 text-sm border-2`
+      }>
+      {children}
+    </button>
+  );
+};
+
+export { NavLink, Link, Button };

@@ -45,21 +45,16 @@ ArticleSchema.pre("save", function (next) {
 });
 
 ArticleSchema.statics.getByIdAndPopulate = async function (id, ArticleData) {
-  try {
-    console.log("running the schema method");
-    const [doc] = await this.find({ _id: id });
-
-    if (!doc) throw new Error("Document does not exist");
-    for (const [key, value] of Object.entries(ArticleData)) {
-      if (doc[key]) {
-        doc[key] = value;
-      }
-    }
-    return doc;
-  } catch (error) {
-    console.log("schema error", error);
-    throw new Error(`Document of id ${id} not does not exist`);
+  const [doc] = await this.find({ _id: id });
+  if (!doc) {
+    return null;
   }
+  for (const [key, value] of Object.entries(ArticleData)) {
+    if (doc[key]) {
+      doc[key] = value;
+    }
+  }
+  return doc;
 };
 
 const Articles =
