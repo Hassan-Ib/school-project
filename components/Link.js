@@ -57,7 +57,7 @@ const Button = ({ children, className, type }) => {
         " " +
         className +
         " " +
-        ` capitalize rounded px-4 py-1 text-sm border-2`
+        ` capitalize rounded px-4 py-1 text-sm border-2 border-black`
       }>
       {children}
     </button>

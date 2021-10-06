@@ -1,13 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { NavLink, Link } from "./Link";
 import logo from "./../public/Faculty-Logo.png";
 import Image from "next/image";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaInstagram,
-  FaTwitter,
-} from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiMenuFoldLine } from "react-icons/ri";
 import { VscChromeClose } from "react-icons/vsc";

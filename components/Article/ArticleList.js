@@ -1,4 +1,4 @@
-import Article from "./ArticleCard";
+import Article from "./index";
 const ArticleSection = ({ articles }) => {
   return (
     <>
