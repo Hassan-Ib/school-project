@@ -9,10 +9,10 @@ import { socialLink } from "../utils/links";
 
 const Navbar = () => {
   const [isNavToggled, setIsNavToggled] = useState(false);
-  const navSectionRef = useRef(null);
+  // const navSectionRef = useRef(null);
 
   const closeNav = () => setIsNavToggled(false);
-  console.log("rendered");
+  // console.log("rendered");
 
   return (
     <React.Fragment>
@@ -22,7 +22,6 @@ const Navbar = () => {
         w-full  h-24
         left-0 
         flex items-center justify-between 
-        overflow-hidden
         pr-4 
     ">
         <div className="left-8">
@@ -33,6 +32,55 @@ const Navbar = () => {
             height={220}
           />
         </div>
+        <ul
+          className="
+        flex text-lg text-white gap-8 font-medium tracking-wider opacity-90
+        ">
+          <li>
+            <NavLink link={"/"} className={" py-4 "}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <details
+              className="
+               outline-none cursor-pointer relative group">
+              <summary className="flex items-center gap-2  py-4">
+                Explore{" "}
+                <IoIosArrowDown className="opacity-70 group-hover:opacity-100 text-lg" />
+              </summary>
+              <ul
+                className=" 
+              text-base
+              px-6 py-2 divide-y divide-black
+              absolute left-0 top-full
+              bg-white text-black rounded-sm
+              w-60
+              ">
+                <li>
+                  <NavLink link={"/about-us"} className={" py-3 "}>
+                    About
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink link={"/Staff-profile"} className={" py-3 "}>
+                    Staff Profile
+                  </NavLink>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <NavLink link={"/news-events"} className={" py-4 "}>
+              News & Events
+            </NavLink>
+          </li>
+          <li>
+            <NavLink link={"/contact"} className={" py-4 "}>
+              Contact
+            </NavLink>
+          </li>
+        </ul>
         <button
           onClick={() => {
             setIsNavToggled(true);
@@ -40,10 +88,18 @@ const Navbar = () => {
           <RiMenuFoldLine className="text-white text-3xl" />
         </button>
       </nav>
+      <MobileNav closeNav={closeNav} isNavToggled={isNavToggled} />
+    </React.Fragment>
+  );
+};
 
-      <nav
-        ref={navSectionRef}
-        className={`
+export default Navbar;
+
+const MobileNav = ({ closeNav, isNavToggled }) => {
+  return (
+    <nav
+      // ref={navSectionRef}
+      className={`
       fixed z-50
       h-screen w-full
       top-0 left-0
@@ -52,15 +108,15 @@ const Navbar = () => {
        transition duration-75 ease-out
        transform ${!isNavToggled ? "-translate-x-full" : ""}
         `}>
-        <div
-          onClick={closeNav}
-          className=" 
-            cursor-crosshair
+      <div
+        onClick={closeNav}
+        className=" 
+             cursor-pointer
             absolute top-0 left-0 
             h-screen w-full 
             bg-birch-500 bg-opacity-70"></div>
-        <div
-          className="
+      <div
+        className="
           overflow-auto 
           max-w-xs 
           h-full
@@ -69,78 +125,75 @@ const Navbar = () => {
           relative
           z-20
           ">
-          <section className="flex items-center transform -translate-y-8">
-            <Image
-              src={logo}
-              alt="Faculty of computing and Informatics"
-              width={200}
-              height={200}
-            />
-            <button onClick={closeNav} className="times">
-              <VscChromeClose className="text-2xl opacity-90" />
-            </button>
-          </section>
-          <ul
-            className="
+        <section className="flex items-center transform -translate-y-8">
+          <Image
+            src={logo}
+            alt="Faculty of computing and Informatics"
+            width={200}
+            height={200}
+          />
+          <button onClick={closeNav} className="times">
+            <VscChromeClose className="text-2xl opacity-90" />
+          </button>
+        </section>
+        <ul
+          className="
         divide-y divide-white divide-opacity-50 
         text-white
         px-8
         font-medium tracking-wider 
         ">
-            <li>
-              <NavLink link={"/"} className={" py-4 "}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <details
-                className="
+          <li>
+            <NavLink link={"/"} className={" py-4 "}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <details
+              className="
                outline-none cursor-pointer">
-                <summary className="flex items-center gap-2  py-4">
-                  Explore <IoIosArrowDown className=" text-lg" />
-                </summary>
-                <ul
-                  className=" 
+              <summary className="flex items-center gap-2  py-4">
+                Explore <IoIosArrowDown className=" text-lg" />
+              </summary>
+              <ul
+                className=" 
               text-sm 
               px-6 py-2 divide-y divide-white divide-opacity-50 
               opacity-80
               ">
-                  <li>
-                    <NavLink link={"/about-us"} className={" py-3 "}>
-                      About
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink link={"/Staff-profile"} className={" py-3 "}>
-                      Staff Profile
-                    </NavLink>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <NavLink link={"/news-events"} className={" py-4 "}>
-                News & Events
-              </NavLink>
-            </li>
-            <li>
-              <NavLink link={"/contact"} className={" py-4 "}>
-                Contact
-              </NavLink>
-            </li>
-          </ul>
+                <li>
+                  <NavLink link={"/about-us"} className={" py-3 "}>
+                    About
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink link={"/Staff-profile"} className={" py-3 "}>
+                    Staff Profile
+                  </NavLink>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <NavLink link={"/news-events"} className={" py-4 "}>
+              News & Events
+            </NavLink>
+          </li>
+          <li>
+            <NavLink link={"/contact"} className={" py-4 "}>
+              Contact
+            </NavLink>
+          </li>
+        </ul>
 
-          <ul className="flex text-white mt-10 justify-evenly">
-            {socialLink.map((link, index) => (
-              <li key={index} className="border p-3 rounded-full">
-                <Link href={link.href}>{link.icon}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
-    </React.Fragment>
+        <ul className="flex text-white mt-10 justify-evenly">
+          {socialLink.map((link, index) => (
+            <li key={index} className="border p-3 rounded-full">
+              <Link href={link.href}>{link.icon}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
   );
 };
-
-export default Navbar;

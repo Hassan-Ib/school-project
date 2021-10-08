@@ -9,31 +9,23 @@ const Card = () => {
   return (
     <section
       className={
-        "m-auto md:grid md:grid-cols-2 my-12 w-11/12  border-opacity-40 shadow-xl"
+        "m-auto md:grid md:grid-cols-2 my-12 w-11/12 max-w-4xl shadow-xl"
       }>
-      <article className=" py-14 flex flex-col items-start justify-center px-8 relative">
+      <article className="py-8 md:py-14 items-start justify-center px-8">
         <H2 className="">Education and Responsibility</H2>
         <Paragraph>
           Our core philosophy is people over process. Our culture has been
           instrumental to our success and has helped us attract and produce
           Amazing students, making work here more satisfying.
         </Paragraph>
-        <Button>read about our culture</Button>
+        <Button className="bg-black text-white">read about us</Button>
         {/* <div className="absolute right-0  w-6  bg-twine-500 h-full"></div> */}
       </article>
       <div className=" hidden relative md:block">
-        {/* <Image
-          src={image.src}
-          alt={image.alt}
-          layout="fill"
-          // layout="responsive"
-          // width={300}
-          // height={200}
-        /> */}
-        <image
+        <Image
           src={cardImage2}
           alt="article image of a confrence"
-          className="block object-cover object-center"
+          layout="fill"
         />
       </div>
     </section>

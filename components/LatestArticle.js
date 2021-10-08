@@ -6,8 +6,8 @@ import { Button } from "./Link";
 
 const LatestArticle = ({ title, desc, image }) => {
   return (
-    <section className="m-auto md:flex mt-4 mb-4 w-11/12 ">
-      <div className="block relative md:w-4/5 ">
+    <section className="m-auto md:grid md:grid-cols-2 my-16">
+      <div className="block relative">
         <Image
           src={image.src}
           alt={image.alt}
@@ -16,10 +16,10 @@ const LatestArticle = ({ title, desc, image }) => {
           height={400}
         />
       </div>
-      <article className="flex flex-col items-start justify-center">
+      <article className="flex flex-col items-start justify-center p-8 md:px-12 text-white bg-black">
         <H2 className="">{title}</H2>
         <Paragraph>{desc}</Paragraph>
-        <Button>read article</Button>
+        <Button className="border-white">read article</Button>
       </article>
     </section>
   );
