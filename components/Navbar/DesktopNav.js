@@ -26,7 +26,7 @@ const DesktopNav = ({ showNav }) => {
         />
       </div>
 
-      <ul className="flex items-center text-lg text-white gap-8 font-medium tracking-wider capitalize">
+      <ul className=" hidden  md:flex items-center text-lg text-white gap-8 font-medium tracking-wider capitalize">
         {links.map((link, key) => {
           if (link.sub) {
             return (
@@ -51,6 +51,7 @@ const DesktopNav = ({ showNav }) => {
         })}
       </ul>
       <button
+        className=" md:hidden"
         onClick={() => {
           showNav(true);
         }}>

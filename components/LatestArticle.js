@@ -7,7 +7,7 @@ import { Button } from "./Link";
 const LatestArticle = ({ title, desc, image }) => {
   return (
     <article className="m-auto md:grid md:grid-cols-2 my-16 w-11/12">
-      <div className="block relative">
+      <div className="block h-60 md:h-auto relative">
         <Image
           src={image.src}
           alt={image.alt}

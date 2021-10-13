@@ -14,6 +14,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
     <nav
       // ref={navSectionRef}
       className={`
+      md:hidden
       fixed z-50
       h-screen w-full
       top-0 left-0
@@ -23,12 +24,10 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
        transform ${!isNavToggled ? "-translate-x-full" : ""}
         `}>
       {/* overlay  */}
-
       <div
         onClick={closeNav}
         className=" cursor-pointer absolute top-0 left-0 h-screen w-full bg-birch-500 bg-opacity-70"></div>
-
-      <div className="overflow-auto max-w-xs h-full w-3/4 bg-birch-500 relative z-20">
+      <div className="overflow-auto max-w-xs h-full w-3/4 bg-birch-500 relative z-20 pb-8">
         <section className="flex items-center transform -translate-y-8">
           {/* logo */}
 
