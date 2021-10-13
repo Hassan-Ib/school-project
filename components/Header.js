@@ -11,6 +11,7 @@ const Header = () => {
        bg-no-repeat
        relative
        overflow-hidden
+       mb-4 
        ">
       <Navbar />
       <section
@@ -20,7 +21,6 @@ const Header = () => {
       pb-28 
       lg:px-12 
       text-gray-900
-       mb-4 
       ">
         <div className="absolute top-0 left-0 h-full w-full bg-birch-500 bg-opacity-70"></div>
         <section

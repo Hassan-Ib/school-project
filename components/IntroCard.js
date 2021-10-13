@@ -8,9 +8,7 @@ import cardImage2 from "../public/img/leon-wu-LLfRMRT-9AY-unsplash.jpg";
 const Card = () => {
   return (
     <section
-      className={
-        "m-auto md:grid md:grid-cols-2 my-12 w-11/12 max-w-4xl shadow-xl"
-      }>
+      className={"m-auto md:grid md:grid-cols-2 my-12 w-10/12  shadow-xl"}>
       <article className="py-8 md:py-14 items-start justify-center px-8">
         <H2 className="">Education and Responsibility</H2>
         <Paragraph>
@@ -26,6 +24,8 @@ const Card = () => {
           src={cardImage2}
           alt="article image of a confrence"
           layout="fill"
+          objectFit="cover"
+          objectPosition="bottom"
         />
       </div>
     </section>

@@ -1,16 +1,18 @@
 import React from "react";
 import PropType from "prop-types";
 import { default as NextLink } from "next/link";
-import { useRouter } from "next/dist/client/router";
+// import { useRouter } from "next/dist/client/router";
 
-const NavLink = ({ link, icon, handleNavToggle, className, children }) => {
-  const { asPath } = useRouter();
+const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
+  // const { asPath: path } = useRouter();
+  // console.log(path === href);
+
   return (
     <>
-      <NextLink href={link}>
+      <NextLink href={href}>
         <a
           onClick={handleNavToggle}
-          className={`relative flex items-center capitalize ${className}`}>
+          className={`${className} relative flex items-center capitalize py-4`}>
           {icon && <span>{icon}</span>}
           {children}
         </a>
@@ -18,13 +20,16 @@ const NavLink = ({ link, icon, handleNavToggle, className, children }) => {
     </>
   );
 };
-
+NavLink.defaultProps = {
+  className: " ",
+};
 NavLink.PropType = {
-  link: PropType.string.isRequired,
+  href: PropType.string.isRequired,
   handleNavToggle: PropType.func,
   icon: PropType.element,
   children: PropType.string.isRequired,
 };
+
 const Link = ({ href, children, className }) => {
   return (
     <NextLink href={href}>
@@ -57,7 +62,7 @@ const Button = ({ children, className, type }) => {
         " " +
         className +
         " " +
-        ` capitalize rounded px-4 py-1 text-sm border-2 border-black`
+        ` capitalize rounded px-4 py-1 text-sm border-2 border-black hover:bg-twine-500 hover:text-white hover:border-twine-500`
       }>
       {children}
     </button>

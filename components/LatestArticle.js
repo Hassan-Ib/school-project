@@ -6,22 +6,22 @@ import { Button } from "./Link";
 
 const LatestArticle = ({ title, desc, image }) => {
   return (
-    <section className="m-auto md:grid md:grid-cols-2 my-16">
+    <article className="m-auto md:grid md:grid-cols-2 my-16 w-11/12">
       <div className="block relative">
         <Image
           src={image.src}
           alt={image.alt}
-          layout="responsive"
-          width={600}
-          height={400}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="top"
         />
       </div>
-      <article className="flex flex-col items-start justify-center p-8 md:px-12 text-white bg-black">
+      <section className="flex flex-col items-start justify-center px-8 py-10 md:px-12 text-white bg-birch-800">
         <H2 className="">{title}</H2>
         <Paragraph>{desc}</Paragraph>
         <Button className="border-white">read article</Button>
-      </article>
-    </section>
+      </section>
+    </article>
   );
 };
 
