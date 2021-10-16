@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink, Link } from "../Link";
-import logo from "./../../public/Faculty-Logo.png";
-import Image from "next/image";
+import { NavLink, Link, Button } from "../Link";
+import { BsFillPersonFill } from "react-icons/bs";
+import Avatar from "../Avatar";
 import { VscChromeClose } from "react-icons/vsc";
 import PropType from "prop-types";
 import { SubNavLinkList, SubNav } from "./NavComponents";
@@ -28,15 +28,23 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
         onClick={closeNav}
         className=" cursor-pointer absolute top-0 left-0 h-screen w-full bg-birch-500 bg-opacity-70"></div>
       <div className="overflow-auto max-w-xs h-full w-3/4 bg-birch-500 relative z-20 pb-8">
-        <section className="flex items-center transform -translate-y-8">
+        <section className="flex items-center justify-between p-10">
           {/* logo */}
 
-          <Image
+          {/* <Image
             src={logo}
             alt="Faculty of computing and Informatics"
             width={200}
             height={200}
-          />
+          /> */}
+          <div className="flex items-center gap-4 ">
+            <Avatar />
+            <Button
+              color="twine-500"
+              className="text-white font-medium border-white bg-twine-500 tracking-wider">
+              log in{" "}
+            </Button>
+          </div>
 
           {/* burger */}
 

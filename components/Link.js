@@ -52,21 +52,26 @@ export const LinkBlue = ({ href, children, className }) => {
   );
 };
 
-const Button = ({ children, className, type }) => {
+const Button = ({ children, className, type, color }) => {
   const sectionBtnStyle =
     type === "section" ? "border-blue-800 text-blue-800 rounded-lg" : " ";
   return (
     <button
-      className={
-        sectionBtnStyle +
-        " " +
-        className +
-        " " +
-        ` capitalize rounded px-4 py-1 text-sm border-2 border-black hover:bg-twine-500 hover:text-white hover:border-twine-500`
-      }>
+      className={`${sectionBtnStyle} ${className} capitalize rounded px-4 py-1 text-sm border-2 border-${color} hover:bg-twine-500 hover:bg-opacity-90 hover:text-white hover:border-twine-500`}>
       {children}
     </button>
   );
+};
+Button.defaultProps = {
+  color: "black",
+  type: "",
+};
+
+Button.PropType = {
+  color: PropType.string,
+  children: PropType.element,
+  className: PropType.string,
+  type: PropType.oneOf(["section", ""]),
 };
 
 export { NavLink, Link, Button };

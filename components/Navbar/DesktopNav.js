@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import logo from "./../../public/Faculty-Logo.png";
-import { NavLink } from "../Link";
+import { NavLink, Button, Link } from "../Link";
 import { RiMenuFoldLine } from "react-icons/ri";
+import { BsFillPersonFill } from "react-icons/bs";
 import { SubNavLinkList, SubNav } from "./NavComponents";
 import { links } from "./navData";
 import PropType from "prop-types";
@@ -26,7 +27,7 @@ const DesktopNav = ({ showNav }) => {
         />
       </div>
 
-      <ul className=" hidden  md:flex items-center text-lg text-white gap-8 font-medium tracking-wider capitalize">
+      <ul className=" hidden md:flex items-center text-lg text-white gap-8 font-medium tracking-wider capitalize">
         {links.map((link, key) => {
           if (link.sub) {
             return (
@@ -50,6 +51,16 @@ const DesktopNav = ({ showNav }) => {
           }
         })}
       </ul>
+      <div className="flex items-center gap-4 ">
+        <Link href="/dashboard">
+          <BsFillPersonFill className="border-2 border-twine-500 text-4xl rounded-full text-white bg-twine-500 p-1" />
+        </Link>
+        <Button
+          color="twine-500"
+          className="text-white font-medium border-white bg-twine-500 tracking-wider">
+          log in{" "}
+        </Button>
+      </div>
       <button
         className=" md:hidden"
         onClick={() => {

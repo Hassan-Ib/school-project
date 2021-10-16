@@ -22,7 +22,7 @@ export const links = [
     text: "news & events",
   },
   {
-    href: "/contact",
-    text: "contact",
+    href: "/contacts",
+    text: "contacts",
   },
 ];
