@@ -38,7 +38,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
             height={200}
           /> */}
           <div className="flex items-center gap-4 ">
-            <Avatar />
+            <Avatar size="lg" />
             <Button
               color="twine-500"
               className="text-white font-medium border-white bg-twine-500 tracking-wider">
@@ -55,7 +55,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
 
         {/* navigation links */}
 
-        <ul className="divide-y divide-white divide-opacity-50 text-white px-8 font-bold tracking-wider capitalize">
+        <ul className="divide-y divide-white divide-opacity-50 text-white px-8 font-medium tracking-widest capitalize">
           {links.map((link, key) => {
             if (link.sub) {
               return (
@@ -68,7 +68,9 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
             }
             return (
               <li key={key}>
-                <NavLink href={link.href}>{link.text}</NavLink>
+                <NavLink href={link.href} className="py-4">
+                  {link.text}
+                </NavLink>
               </li>
             );
           })}

@@ -1,10 +1,10 @@
 import React from "react";
 import PropType from "prop-types";
 import { default as NextLink } from "next/link";
-// import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/dist/client/router";
 
 const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
-  // const { asPath: path } = useRouter();
+  const { asPath: path } = useRouter();
   // console.log(path === href);
 
   return (
@@ -12,7 +12,9 @@ const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
       <NextLink href={href}>
         <a
           onClick={handleNavToggle}
-          className={`${className} relative flex items-center capitalize py-4`}>
+          className={`${className} ${
+            path === href ? "md:border-b-2 md:border-birch-500" : ""
+          } relative flex items-center capitalize`}>
           {icon && <span>{icon}</span>}
           {children}
         </a>

@@ -9,14 +9,21 @@ import { links } from "./navData";
 import PropType from "prop-types";
 
 const DesktopNav = ({ showNav }) => {
+  const detailRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const detail = detailRef.current;
+    console.log("detailRef", detail);
+  }, []);
+
   return (
     <nav
       className="
-        absolute z-10 
-        w-full  h-24
+      relative z-10
+        w-full h-28
         left-0 
         flex items-center justify-between 
-        pr-4 
+        pr-4
     ">
       <div className="left-8">
         <Image
@@ -32,10 +39,13 @@ const DesktopNav = ({ showNav }) => {
           if (link.sub) {
             return (
               <li key={key}>
-                <SubNav text={link.text}>
+                <SubNav
+                  ref={detailRef}
+                  text={link.text}
+                  className=" hoverNavLink text-birch-700 relative ">
                   <SubNavLinkList
-                    className="text-base absolute left-0 -bottom-32
-                    bg-twine-800 text-white rounded-sm 
+                    className="text-base absolute top-full  pt-8
+                    bg-twine-800 text-white rounded-md 
                     w-60"
                     links={link.sub}
                   />
@@ -45,7 +55,11 @@ const DesktopNav = ({ showNav }) => {
           } else {
             return (
               <li key={key}>
-                <NavLink href={link.href}>{link.text}</NavLink>
+                <NavLink
+                  className=" hoverNavLink text-birch-700"
+                  href={link.href}>
+                  {link.text}
+                </NavLink>
               </li>
             );
           }
@@ -66,7 +80,7 @@ const DesktopNav = ({ showNav }) => {
         onClick={() => {
           showNav(true);
         }}>
-        <RiMenuFoldLine className="text-white text-3xl" />
+        <RiMenuFoldLine className="text-birch-700 text-3xl" />
       </button>
     </nav>
   );

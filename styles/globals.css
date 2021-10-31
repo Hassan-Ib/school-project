@@ -75,3 +75,19 @@ a {
   cursor: url(https://upload.wikimedia.org/wikipedia/commons/f/f9/Times_symbol.svg),
     crosshair;
 } */
+
+.hoverNavLink::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+
+  transform: scaleX(0);
+  transition: all 200ms ease-out;
+}
+
+.hoverNavLink:hover::after {
+  transform: scaleX(1);
+}
