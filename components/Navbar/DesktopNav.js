@@ -6,7 +6,7 @@ import { RiMenuFoldLine } from "react-icons/ri";
 import { BsFillPersonFill } from "react-icons/bs";
 import { SubNavLinkList, SubNav } from "./NavComponents";
 import { links } from "./navData";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 
 const DesktopNav = ({ showNav }) => {
   const detailRef = React.useRef(null);
@@ -24,25 +24,27 @@ const DesktopNav = ({ showNav }) => {
         left-0 
         flex items-center justify-between 
         pr-4
+        gap-6
     ">
-      <div className="left-8">
+      {/* logo */}
+      <div className="left-8 flex-grow lg:flex-grow-0">
         <Image
           src={logo}
           alt="Faculty of computing and Informatics"
           width={220}
           height={220}
+          priority
         />
       </div>
 
-      <ul className=" hidden md:flex items-center text-lg text-white gap-8 font-medium tracking-wider capitalize">
+      {/* links */}
+
+      <ul className=" hidden lg:flex items-center text-base text-white gap-8 font-medium tracking-wider capitalize">
         {links.map((link, key) => {
-          if (link.sub) {
-            return (
-              <li key={key}>
-                <SubNav
-                  ref={detailRef}
-                  text={link.text}
-                  className=" hoverNavLink text-birch-700 relative ">
+          return (
+            <li key={key} className="hover:text-opacity-60 text-birch-700">
+              {link.sub ? (
+                <SubNav ref={detailRef} text={link.text} className=" relative ">
                   <SubNavLinkList
                     className="text-base absolute top-full  pt-8
                     bg-twine-800 text-white rounded-md 
@@ -50,22 +52,17 @@ const DesktopNav = ({ showNav }) => {
                     links={link.sub}
                   />
                 </SubNav>
-              </li>
-            );
-          } else {
-            return (
-              <li key={key}>
-                <NavLink
-                  className=" hoverNavLink text-birch-700"
-                  href={link.href}>
+              ) : (
+                <NavLink className=" " href={link.href}>
                   {link.text}
                 </NavLink>
-              </li>
-            );
-          }
+              )}
+            </li>
+          );
         })}
       </ul>
-      <div className="flex items-center gap-4 ">
+
+      <div className="hidden md:flex items-center gap-4 ">
         <Link href="/dashboard">
           <BsFillPersonFill className="border-2 border-twine-500 text-4xl rounded-full text-white bg-twine-500 p-1" />
         </Link>
@@ -76,7 +73,7 @@ const DesktopNav = ({ showNav }) => {
         </Button>
       </div>
       <button
-        className=" md:hidden"
+        className=" lg:hidden"
         onClick={() => {
           showNav(true);
         }}>
@@ -84,10 +81,6 @@ const DesktopNav = ({ showNav }) => {
       </button>
     </nav>
   );
-};
-
-DesktopNav.PropType = {
-  showNav: PropType.func,
 };
 
 export default DesktopNav;

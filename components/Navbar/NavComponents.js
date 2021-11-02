@@ -3,7 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { NavLink } from "../Link";
 import PropTypes from "prop-types";
 
-const SubNav = ({ children, className, text }, ref) => {
+const SubNav = forwardRef(({ children, className, text }, ref) => {
   return (
     <details
       ref={ref}
@@ -15,9 +15,11 @@ const SubNav = ({ children, className, text }, ref) => {
       {children}
     </details>
   );
-};
+});
 
-SubNav.PropTypes = {
+SubNav.displayName = SubNav;
+
+SubNav.propTypes = {
   text: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
   className: PropTypes.string,
@@ -42,7 +44,7 @@ const SubNavLinkList = ({ className, links }) => {
   );
 };
 
-SubNavLinkList.PropTypes = {
+SubNavLinkList.propTypes = {
   links: PropTypes.array.isRequired,
   className: PropTypes.string,
 };

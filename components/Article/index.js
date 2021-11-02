@@ -6,7 +6,7 @@ import Paragraph from "../Typograhpy/Paragraph";
 import { Link } from "../Link";
 import PropType from "prop-types";
 
-const Article = ({ Id, title, body, key, image }) => {
+const Article = ({ Id, title, body, image }) => {
   // console.log(props);
   return (
     <article className={" max-w-sm"}>
@@ -16,6 +16,7 @@ const Article = ({ Id, title, body, key, image }) => {
           layout="responsive"
           width={1000}
           height={600}
+          priority
           alt="article image"
         />
       </div>
@@ -26,7 +27,7 @@ const Article = ({ Id, title, body, key, image }) => {
         </Paragraph>
         <Link
           className="underline capitalize text-blue-800 opacity-90 text-sm"
-          href="article">
+          href="/article">
           read in {Id} minute
         </Link>
       </div>

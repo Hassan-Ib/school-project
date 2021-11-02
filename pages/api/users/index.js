@@ -1,12 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { getUsers, createUsers } from "../../../../controller/userController";
+import { getUsers, createUsers } from "./../../../controller/userController";
 
 export default async function handler(req, res) {
   const httpMethod = req.method;
 
   switch (httpMethod) {
     case "GET":
-      getUsers(req, res, user);
+      getUsers(req, res);
       break;
     case "POST":
       createUsers(req, res);

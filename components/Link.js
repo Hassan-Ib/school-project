@@ -1,5 +1,5 @@
 import React from "react";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 import { default as NextLink } from "next/link";
 import { useRouter } from "next/dist/client/router";
 
@@ -25,11 +25,11 @@ const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
 NavLink.defaultProps = {
   className: " ",
 };
-NavLink.PropType = {
-  href: PropType.string.isRequired,
-  handleNavToggle: PropType.func,
-  icon: PropType.element,
-  children: PropType.string.isRequired,
+NavLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  handleNavToggle: PropTypes.func,
+  icon: PropTypes.element,
+  children: PropTypes.string.isRequired,
 };
 
 const Link = ({ href, children, className }) => {
@@ -40,16 +40,20 @@ const Link = ({ href, children, className }) => {
   );
 };
 
-Link.PropType = {
-  href: PropType.string.isRequired,
-  children: PropType.element.isRequired,
-  className: PropType.string,
+// Link.defaultProps = {
+//   href : "/"
+// }
+
+Link.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
 
 export const LinkBlue = ({ href, children, className }) => {
   return (
-    <Link href={href}>
-      <a className={className + " " + "text-blue-800 underline"}>{children}</a>
+    <Link href={href} className={className + " " + "text-blue-800 underline"}>
+      {children}
     </Link>
   );
 };
@@ -69,11 +73,11 @@ Button.defaultProps = {
   type: "",
 };
 
-Button.PropType = {
-  color: PropType.string,
-  children: PropType.element,
-  className: PropType.string,
-  type: PropType.oneOf(["section", ""]),
+Button.propTypes = {
+  color: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  type: PropTypes.oneOf(["section", ""]),
 };
 
 export { NavLink, Link, Button };

@@ -1,26 +1,29 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { Link } from "../components/Link";
+import Image from "next/image";
 
 const Header = () => {
   return (
     <header
-      className="bg-hero-banner
-       bg-cover
-       bg-center
-       bg-no-repeat
+      className="
        relative
        overflow-hidden
        mb-4 
        ">
+      {/* bg image */}
+      <div className="absolute left-0 top-0 -z-10 w-full h-full">
+        <Image
+          src="/img/hero-bg.jpg"
+          layout="fill"
+          objectFit="cover"
+          priority
+          alt="hero bannner image"
+        />
+      </div>
       {/* <Navbar /> */}
       <section
-        className="
-      relative
-       pt-60
-      pb-28 
-      lg:px-12 
-      text-gray-900
+        className="relative pt-60 pb-28 lg:px-12 text-gray-900
       ">
         <div className="absolute top-0 left-0 h-full w-full bg-birch-500 bg-opacity-70"></div>
         <section className="relative z-10 w-full text-white text-center grid gap-4">

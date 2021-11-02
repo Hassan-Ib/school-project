@@ -52,12 +52,7 @@ export default function Homepage({ articles, events }) {
 
 export const getStaticProps = async () => {
   // console.log("articles", articles);
-  const articleData = articles
-    .map((el) => {
-      const key = el.Id;
-      return { ...el, key };
-    })
-    .slice(0, 3);
+  const articleData = articles.slice(0, 3);
   // console.log("articleData", articleData);
 
   return {

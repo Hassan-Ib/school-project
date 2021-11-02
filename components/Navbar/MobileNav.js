@@ -14,7 +14,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
     <nav
       // ref={navSectionRef}
       className={`
-      md:hidden
+      lg:hidden
       fixed z-50
       h-screen w-full
       top-0 left-0
