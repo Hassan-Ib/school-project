@@ -25,7 +25,6 @@ const Card = () => {
           alt="article image of a confrence"
           layout="fill"
           objectFit="cover"
-          priority
           objectPosition="bottom"
         />
       </div>

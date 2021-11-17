@@ -18,13 +18,7 @@ const DesktopNav = ({ showNav }) => {
 
   return (
     <nav
-      className="
-      relative z-10
-        w-full h-28
-        left-0 
-        flex items-center justify-between 
-        pr-4
-        gap-6
+      className="relative z-10 w-full h-24 left-0 flex items-center justify-between pr-4 gap-6 bg-birch-500 text-birch-50
     ">
       {/* logo */}
       <div className="left-8 flex-grow lg:flex-grow-0">
@@ -42,7 +36,7 @@ const DesktopNav = ({ showNav }) => {
       <ul className=" hidden lg:flex items-center text-base text-white gap-8 font-medium tracking-wider capitalize">
         {links.map((link, key) => {
           return (
-            <li key={key} className="hover:text-opacity-60 text-birch-700">
+            <li key={key} className="hover:text-opacity-60 ">
               {link.sub ? (
                 <SubNav ref={detailRef} text={link.text} className=" relative ">
                   <SubNavLinkList
@@ -77,7 +71,7 @@ const DesktopNav = ({ showNav }) => {
         onClick={() => {
           showNav(true);
         }}>
-        <RiMenuFoldLine className="text-birch-700 text-3xl" />
+        <RiMenuFoldLine className="text-3xl" />
       </button>
     </nav>
   );

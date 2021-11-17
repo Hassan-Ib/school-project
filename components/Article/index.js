@@ -10,13 +10,12 @@ const Article = ({ Id, title, body, image }) => {
   // console.log(props);
   return (
     <article className={" max-w-sm"}>
-      <div className="block rounded-lg overflow-hidden">
+      <div className="relative block rounded-lg overflow-hidden h-60">
         <Image
           src={`/img/${image}`}
-          layout="responsive"
-          width={1000}
-          height={600}
-          priority
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
           alt="article image"
         />
       </div>
@@ -27,8 +26,8 @@ const Article = ({ Id, title, body, image }) => {
         </Paragraph>
         <Link
           className="underline capitalize text-blue-800 opacity-90 text-sm"
-          href="/article">
-          read in {Id} minute
+          href={"/articles/" + Id}>
+          continue reading
         </Link>
       </div>
     </article>

@@ -2,13 +2,15 @@ import { articles } from "../utils/articleData";
 import HeadMeta from "../components/Meta";
 import ArticleList from "../components/Article/ArticleList";
 import Header from "../components/Header";
-import Container, { Section } from "../components/Container";
+import { Section } from "../components/Container";
 import EventList from "../components/Event/EventList";
 import Card from "../components/IntroCard";
 import cardImage from "../public/img/christina.jpg";
 import LatestArticle from "../components/LatestArticle";
 import { Button } from "../components/Link";
 import Footer from "../components/Footer";
+import DBConnect from "../utils/DBConnection";
+import Articles from "../models/ArticleModel";
 
 export default function Homepage({ articles, events }) {
   const latesArticle = {
@@ -23,7 +25,7 @@ export default function Homepage({ articles, events }) {
   };
 
   return (
-    <Container>
+    <>
       <HeadMeta />
       <Header />
       <main>
@@ -46,17 +48,24 @@ export default function Homepage({ articles, events }) {
         </Section>
       </main>
       <Footer />
-    </Container>
+    </>
   );
 }
 
 export const getStaticProps = async () => {
   // console.log("articles", articles);
+  const fieldQuery = "title description image slug";
+  await DBConnect();
+  let query = Articles.find({}, { _id: 0 }).select(fieldQuery).limit(3);
+  query = await query.lean();
+
+  console.log("query", query);
+
   const articleData = articles.slice(0, 3);
-  // console.log("articleData", articleData);
 
   return {
     props: {
+      realArticle: query,
       articles: articleData,
       events: [],
     },

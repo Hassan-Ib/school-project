@@ -12,10 +12,13 @@ export const Section = ({ className, children }) => {
     <section className={className + " " + "px-6 mb-20"}>{children}</section>
   );
 };
-
-Container.defaultProps = {
-  className: " ",
+Section.defaultProps = {
+  className: "",
 };
+Container.defaultProps = {
+  className: "",
+};
+
 Container.PropType = {
   children: PropType.element.isRequired,
   className: PropType.string,

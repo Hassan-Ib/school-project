@@ -13,7 +13,6 @@ const LatestArticle = ({ title, desc, image }) => {
           alt={image.alt}
           layout="fill"
           objectFit="cover"
-          priority
           objectPosition="top"
         />
       </div>
