@@ -1,18 +1,23 @@
-import { articles } from "../utils/articleData";
 import HeadMeta from "../components/Meta";
-import ArticleList from "../components/Article/ArticleList";
+import {
+  Container,
+  Articles,
+  Section,
+  Events,
+  Navbar,
+  Card,
+  LatestArticle,
+  Button,
+  Footer,
+} from "../components";
 import Header from "../components/Header";
-import { Section } from "../components/Container";
-import EventList from "../components/Event/EventList";
-import Card from "../components/IntroCard";
-import cardImage from "../public/img/christina.jpg";
-import LatestArticle from "../components/LatestArticle";
-import { Button } from "../components/Link";
-import Footer from "../components/Footer";
-import DBConnect from "../utils/DBConnection";
-import Articles from "../models/ArticleModel";
 
-export default function Homepage({ articles, events }) {
+import { articles } from "../utils/articleData";
+import cardImage from "../public/img/christina.jpg";
+import DBConnect from "../utils/DBConnection";
+import { default as ArticlesModel } from "../models/ArticleModel";
+
+const Homepage = function ({ articles, events }) {
   const latesArticle = {
     image: {
       src: cardImage,
@@ -35,28 +40,40 @@ export default function Homepage({ articles, events }) {
           Latest From the Faculty
         </h3>
         <Section>
-          <ArticleList articles={articles} />
+          <Articles articles={articles} />
           <div className="flex justify-end mt-8">
             <Button type="section">see all articles</Button>
           </div>
         </Section>
         <Section>
-          <EventList events={events} />
+          <Events events={events} />
           <div className="flex justify-end mt-8">
             <Button type="section">see all Events</Button>
           </div>
         </Section>
       </main>
-      <Footer />
     </>
   );
-}
+};
+
+// eslint-disable-next-line react/display-name
+Homepage.getLayout = (page) => (
+  <Container>
+    <Navbar />
+    {page}
+    <Footer />
+  </Container>
+);
+
+Homepage.displayName = "Homepage";
+
+export default Homepage;
 
 export const getStaticProps = async () => {
   // console.log("articles", articles);
   const fieldQuery = "title description image slug";
   await DBConnect();
-  let query = Articles.find({}, { _id: 0 }).select(fieldQuery).limit(3);
+  let query = ArticlesModel.find({}, { _id: 0 }).select(fieldQuery).limit(3);
   query = await query.lean();
 
   console.log("query", query);
