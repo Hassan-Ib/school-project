@@ -3,12 +3,13 @@ import { Link } from "./Link";
 import { BsFillPersonFill } from "react-icons/bs";
 import PropType from "prop-types";
 
+const sizeToTailwind = {
+  sm: "xl",
+  md: "4xl",
+  lg: "5xl",
+};
+
 const Avatar = ({ size }) => {
-  const sizeToTailwind = {
-    sm: "xl",
-    md: "4xl",
-    lg: "5xl",
-  };
   return (
     <Link href="/dashboard">
       <BsFillPersonFill

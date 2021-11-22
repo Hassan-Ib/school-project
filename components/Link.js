@@ -4,17 +4,16 @@ import { default as NextLink } from "next/link";
 import { useRouter } from "next/dist/client/router";
 
 const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
-  const { asPath: path } = useRouter();
+  const { asPath: path, push } = useRouter();
   // console.log(path === href);
-
   return (
     <>
       <NextLink href={href}>
         <a
           onClick={handleNavToggle}
           className={`${className} ${
-            path === href ? "md:border-b-2 md:border-birch-500" : ""
-          } relative flex items-center capitalize`}>
+            path === href ? "md:border-b-2 md:border-white" : ""
+          } relative flex items-center capitalize hover:opacity-90`}>
           {icon && <span>{icon}</span>}
           {children}
         </a>
@@ -23,8 +22,9 @@ const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
   );
 };
 NavLink.defaultProps = {
-  className: " ",
+  className: "",
 };
+
 NavLink.propTypes = {
   href: PropTypes.string.isRequired,
   handleNavToggle: PropTypes.func,
@@ -34,15 +34,15 @@ NavLink.propTypes = {
 
 const Link = ({ href, children, className }) => {
   return (
-    <NextLink href={href}>
+    <NextLink href={href} passHref>
       <a className={className}>{children}</a>
     </NextLink>
   );
 };
 
-// Link.defaultProps = {
-//   href : "/"
-// }
+Link.defaultProps = {
+  className: "",
+};
 
 Link.propTypes = {
   href: PropTypes.string.isRequired,
@@ -50,34 +50,4 @@ Link.propTypes = {
   className: PropTypes.string,
 };
 
-export const LinkBlue = ({ href, children, className }) => {
-  return (
-    <Link href={href} className={className + " " + "text-blue-800 underline"}>
-      {children}
-    </Link>
-  );
-};
-
-const Button = ({ children, className, type, color }) => {
-  const sectionBtnStyle =
-    type === "section" ? "border-blue-800 text-blue-800 rounded-lg" : " ";
-  return (
-    <button
-      className={`${sectionBtnStyle} ${className} capitalize rounded px-4 py-1 text-sm border-2 border-${color} hover:bg-twine-500 hover:bg-opacity-90 hover:text-white hover:border-twine-500`}>
-      {children}
-    </button>
-  );
-};
-Button.defaultProps = {
-  color: "black",
-  type: "",
-};
-
-Button.propTypes = {
-  color: PropTypes.string,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  type: PropTypes.oneOf(["section", ""]),
-};
-
-export { NavLink, Link, Button };
+export { NavLink, Link };

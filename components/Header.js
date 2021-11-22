@@ -33,7 +33,7 @@ const Header = () => {
         <div className=" tracking-wider pt-2 text-lg">
           <Link
             href="#"
-            className=" px-6 py-2 rounded capitalize bg-twine-500 hover:bg-twine-100 hover:text-birch-500 transition-all">
+            className="px-6 py-2 rounded capitalize bg-twine-500 hover:bg-twine-100 hover:text-birch-500 transition-all">
             learn more
           </Link>
         </div>

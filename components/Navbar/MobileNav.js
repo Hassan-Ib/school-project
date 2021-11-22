@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link, Button } from "../Link";
+import { NavLink, Link } from "../Link";
 import { BsFillPersonFill } from "react-icons/bs";
 import Avatar from "../Avatar";
 import { VscChromeClose } from "react-icons/vsc";
@@ -39,11 +39,9 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
           /> */}
           <div className="flex items-center gap-4 ">
             <Avatar size="lg" />
-            <Button
-              color="twine-500"
-              className="text-white font-medium border-white bg-twine-500 tracking-wider">
+            <button className="text-white font-medium border-white bg-twine-500 tracking-wider">
               log in{" "}
-            </Button>
+            </button>
           </div>
 
           {/* burger */}

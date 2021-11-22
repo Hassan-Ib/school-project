@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Paragraph from "./Typograhpy/Paragraph";
 import H2 from "./Typograhpy/H2";
-import { Button } from "./Link";
+import { LinkButton } from "./Buttons";
 import cardImage2 from "../public/img/leon-wu-LLfRMRT-9AY-unsplash.jpg";
 
 const Card = () => {
@@ -16,7 +16,11 @@ const Card = () => {
           instrumental to our success and has helped us attract and produce
           Amazing students, making work here more satisfying.
         </Paragraph>
-        <Button className="bg-black text-white">read about us</Button>
+        <LinkButton
+          href="/articles"
+          className="bg-black text-white hover:bg-birch-500  ">
+          read about us
+        </LinkButton>
         {/* <div className="absolute right-0  w-6  bg-twine-500 h-full"></div> */}
       </article>
       <div className=" hidden relative md:block">

@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import logo from "./../../public/Faculty-Logo.png";
-import { NavLink, Button, Link } from "../Link";
+import { NavLink, Link } from "../Link";
 import { RiMenuFoldLine } from "react-icons/ri";
 import { BsFillPersonFill } from "react-icons/bs";
 import { SubNavLinkList, SubNav } from "./NavComponents";
 import { links } from "./navData";
-import PropTypes from "prop-types";
 
 const DesktopNav = ({ showNav }) => {
   const detailRef = React.useRef(null);
@@ -18,7 +17,7 @@ const DesktopNav = ({ showNav }) => {
 
   return (
     <nav
-      className="relative z-10 w-full h-24 left-0 flex items-center justify-between pr-4 gap-6 bg-birch-500 text-birch-50
+      className="relative z-40 w-full h-24 left-0 flex items-center justify-between pr-4 gap-6 bg-birch-500 text-birch-50
     ">
       {/* logo */}
       <div className="left-8 flex-grow lg:flex-grow-0">
@@ -60,11 +59,11 @@ const DesktopNav = ({ showNav }) => {
         <Link href="/dashboard">
           <BsFillPersonFill className="border-2 border-twine-500 text-4xl rounded-full text-white bg-twine-500 p-1" />
         </Link>
-        <Button
+        <button
           color="twine-500"
           className="text-white font-medium border-white bg-twine-500 tracking-wider">
           log in{" "}
-        </Button>
+        </button>
       </div>
       <button
         className=" lg:hidden"
