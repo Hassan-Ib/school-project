@@ -5,6 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { AiOutlineTwitter, AiFillFacebook } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import Image from "next/image";
+import { getLayout } from "../../components";
 
 const Article = ({ article }) => {
   const router = useRouter();
@@ -55,6 +56,8 @@ const Article = ({ article }) => {
     </main>
   );
 };
+
+Article.getLayout = getLayout;
 
 export default Article;
 

@@ -25,7 +25,7 @@ LinkButton.propTypes = {
 const SectionButton = (props) => {
   return (
     <LinkButton
-      onClick={() => router.push(props.href)}
+      href={props.href}
       className={`${props.className} border-blue-800 text-blue-800 rounded-lg  hover:text-white hover:bg-blue-800`}>
       {props.children}
     </LinkButton>

@@ -49,6 +49,7 @@ ArticleSchema.statics.getByIdAndPopulate = async function (id, ArticleData) {
   if (!doc) {
     return null;
   }
+  // matching article data with doc data and update
   for (const [key, value] of Object.entries(ArticleData)) {
     if (doc[key]) {
       doc[key] = value;

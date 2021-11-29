@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 // const DB = process.env.DB_CONNECTION_LOCAL;
-const DB = process.env.LOCAL_DB_URL;
+const DB = process.env.DB_CONNECTION_ATLAS;
 
-console.log(DB);
+console.log("DB STRING", DB);
 
 const connection = {};
 export default async function DBConnect() {

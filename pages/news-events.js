@@ -1,4 +1,5 @@
 import React from "react";
+import { getLayoutWithNavAndFooter } from "../components";
 
 const NewsEvents = () => {
   return (
@@ -8,4 +9,5 @@ const NewsEvents = () => {
   );
 };
 
+NewsEvents.getLayout = getLayoutWithNavAndFooter;
 export default NewsEvents;

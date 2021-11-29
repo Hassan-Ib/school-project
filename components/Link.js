@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { default as NextLink } from "next/link";
+import NextLink from "next/link";
 import { useRouter } from "next/dist/client/router";
 
 const NavLink = ({ href, icon, handleNavToggle, className, children }) => {

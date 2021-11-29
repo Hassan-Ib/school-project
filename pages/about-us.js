@@ -1,7 +1,10 @@
 import React from "react";
+import { getLayoutWithNavAndFooter } from "../components";
 
-const about = () => {
+const About = () => {
   return <div className="text-7xl capitalize font-bold">about page</div>;
 };
 
-export default about;
+About.getLayout = getLayoutWithNavAndFooter;
+
+export default About;

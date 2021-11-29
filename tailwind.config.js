@@ -68,6 +68,8 @@ module.exports = {
   variants: {
     extend: {
       transitionProperty: ["hover", "focus"],
+      gap: ["hover"],
+      padding: ["hover"],
     },
   },
   plugins: [],

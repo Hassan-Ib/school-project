@@ -1,4 +1,5 @@
 import React from "react";
+import { getLayoutWithNavAndFooter } from "../components";
 
 const StaffProfile = () => {
   return (
@@ -7,5 +8,7 @@ const StaffProfile = () => {
     </div>
   );
 };
+
+StaffProfile.getLayout = getLayoutWithNavAndFooter;
 
 export default StaffProfile;

@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { Link } from "../components/Link";
 import Image from "next/image";
 import HeroImage from "../public/hero-bg.jpg";
@@ -21,20 +20,18 @@ const Header = () => {
         />
       </div>
 
-      <section className="relative z-10 text-white text-center h-full md:w-2/3 md:m-auto grid gap-3 place-content-center place-items-center">
-        <h1 className="text-3xl font-medium tracking-wider md:text-5xl ">
+      <section className="relative z-10 text-white text-center h-full md:w-2/3 md:m-auto grid  place-content-center place-items-center">
+        <h1 className="text-4xl font-bold md:text-6xl lg:text-7xl mb-2 md:mb-4">
           Faculty of Computing and Infomatics
         </h1>
-        <p className="m-auto w-3/4  md:text-lg md:font-light tracking-wider">
-          Create a home filled with music with Connected Speakers. Compatible
-          with all setups, ready to play and tuned to your movement from room to
-          room.
+        <p className="m-auto w-3/4 text-lg md:text-2xl mb-6 md:mb-9 text-gray-300">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
         </p>
-        <div className=" tracking-wider pt-2 text-lg">
+        <div className="text-lg md:text-xl font-medium ">
           <Link
             href="#"
-            className="px-6 py-2 rounded capitalize bg-twine-500 hover:bg-twine-100 hover:text-birch-500 transition-all">
-            learn more
+            className="px-6 py-2 border-2 border-twine-100  capitalize hover:bg-twine-100 hover:text-gray-800 flex hover:gap-1 items-end transition-all duration-300">
+            Descover more
           </Link>
         </div>
       </section>

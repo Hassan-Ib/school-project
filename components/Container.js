@@ -1,9 +1,9 @@
 import React from "react";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 function Container({ children, className }) {
   return (
-    <div className={"lg:container relative m-auto sm:px-2 " + className}>
-      {children}
+    <div className={className}>
+      <div className="lg:container relative m-auto sm:px-2 ">{children}</div>
     </div>
   );
 }
@@ -19,9 +19,9 @@ Container.defaultProps = {
   className: "",
 };
 
-Container.PropType = {
-  children: PropType.element.isRequired,
-  className: PropType.string,
+Container.propTypes = {
+  children: PropTypes.element.isRequired,
+  className: PropTypes.string,
 };
 
 export default Container;

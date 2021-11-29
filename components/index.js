@@ -9,4 +9,4 @@ export { default as HeadMeta } from "./Meta";
 export { default as Events } from "./Event";
 export { default as Header } from "./Header";
 export { LinkButton, SectionButton } from "./Buttons";
-// export {default}
+export { getLayoutWithNavAndFooter, getLayout } from "./Layout";

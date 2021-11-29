@@ -1,14 +1,12 @@
 import HeadMeta from "../components/Meta";
 import {
-  Container,
+  getLayoutWithNavAndFooter,
   Articles,
   Section,
   Events,
-  Navbar,
   Card,
   LatestArticle,
   SectionButton,
-  Footer,
 } from "../components";
 import Header from "../components/Header";
 import { articles } from "../utils/articleData";
@@ -30,13 +28,13 @@ const Homepage = function ({ articles, events }) {
         <Section>
           <Articles articles={articles} />
           <div className="flex justify-end mt-8">
-            <SectionButton type="section">see all articles</SectionButton>
+            <SectionButton href="/articles">see all articles</SectionButton>
           </div>
         </Section>
         <Section>
           <Events events={events} />
           <div className="flex justify-end mt-8">
-            <SectionButton type="section">see all Events</SectionButton>
+            <SectionButton href="/articles">see all Events</SectionButton>
           </div>
         </Section>
       </main>
@@ -45,14 +43,7 @@ const Homepage = function ({ articles, events }) {
 };
 
 // eslint-disable-next-line react/display-name
-Homepage.getLayout = (page) => (
-  <Container>
-    <Navbar />
-    {page}
-    <Footer />
-  </Container>
-);
-
+Homepage.getLayout = getLayoutWithNavAndFooter;
 Homepage.displayName = "Homepage";
 
 export default Homepage;
