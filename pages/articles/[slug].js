@@ -40,6 +40,7 @@ const Article = ({ article }) => {
           layout="fill"
           objectFit="cover"
           objectPosition="center"
+          // placeholder="blur"
         />
       </section>
       <section className="max-w-2xl m-auto">
