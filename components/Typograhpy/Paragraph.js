@@ -6,7 +6,7 @@ const Paragraph = ({ children, className }) => {
       className={
         className +
         " " +
-        "font-medium mb-3 text-sm leading-relaxed md:text-base  md:opacity-80"
+        " font-normal tracking-wide mb-3 text-sm leading-relaxed md:text-base  md:opacity-80"
       }>
       {children}
     </p>

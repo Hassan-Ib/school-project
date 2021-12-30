@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-// const DB = process.env.DB_CONNECTION_LOCAL;
-const DB = process.env.DB_CONNECTION_ATLAS;
+const DB = process.env.DB_CONNECTION_LOCAL;
+// const DB = process.env.DB_CONNECTION_ATLAS;
 
 console.log("DB STRING", DB);
 

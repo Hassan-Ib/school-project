@@ -13,3 +13,5 @@ const ArticleSection = ({ articles }) => {
 };
 
 export default ArticleSection;
+export { default as EditArticleForm } from "./ArticleForm";
+export { default as PreviewArticle } from "./PreviewArticle";

@@ -1,7 +1,11 @@
 export { default as Container, Section } from "./Container";
 export { default as Navbar } from "./Navbar";
 export { default as LatestArticle } from "./LatestArticle";
-export { default as Articles } from "./Article";
+export {
+  default as Articles,
+  EditArticleForm,
+  PreviewArticle,
+} from "./Article";
 export { default as Card } from "./IntroCard";
 export { default as Footer } from "./Footer";
 export { default as Link } from "./Link";

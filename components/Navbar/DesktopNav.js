@@ -61,7 +61,7 @@ const DesktopNav = ({ showNav }) => {
         </Link>
         <button
           color="twine-500"
-          className="text-white font-medium border-white bg-twine-500 tracking-wider">
+          className="text-white font-medium  px-2 py-1 rounded-sm capitalize border-2 hover:bg-white hover:text-black border-white tracking-wider transition">
           log in{" "}
         </button>
       </div>

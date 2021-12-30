@@ -19,11 +19,25 @@ export const getAllArticles = async (req, res) => {
 
 export const createArticle = async (req, res) => {
   try {
-    const doc = await Articles.create({ ...req.body });
-    console.log("doc : ", doc);
+    const { body } = req.body;
+    console.log(body);
+    if (!body || !body.articlesData || !body.articlesData.markdown)
+      throw new Error("Article is required");
+
+    const gitMarkedData = await fetch("https://api.github.com/markdown", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mode: "markdown", text: body }),
+    });
+    console.log(gitMarked);
+    const htmlText = await gitMarkedData.text();
+    // const doc = await Articles.create({ ...req.body });
+    // console.log("doc : ", doc);
     return res.status(201).json({
       success: true,
-      data: doc,
+      data: htmlText,
     });
   } catch (error) {
     console.log(error);
