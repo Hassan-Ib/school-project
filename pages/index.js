@@ -25,18 +25,14 @@ const Homepage = function ({ articles, events }) {
         <h3 className=" text-center text-lg font-medium my-10">
           Latest From the Faculty
         </h3>
-        <Section>
+        <section className="m-auto flex flex-col items-center md:grid md:grid-col-2">
           <Articles articles={articles} />
-          <div className="flex justify-end mt-8">
-            <SectionButton href="/articles">see all articles</SectionButton>
-          </div>
-        </Section>
-        <Section>
+
           <Events events={events} />
           <div className="flex justify-end mt-8">
             <SectionButton href="/articles">see all Events</SectionButton>
           </div>
-        </Section>
+        </section>
       </main>
     </>
   );

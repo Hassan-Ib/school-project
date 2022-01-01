@@ -2,7 +2,7 @@ import React from "react";
 import Event from "./Event";
 const EventList = ({ events }) => {
   return (
-    <ul>
+    <ul className="flex flex-col gap-6">
       <li>
         <Event />
       </li>

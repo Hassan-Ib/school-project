@@ -1,53 +1,27 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
-:root {
-  --sm: 640px;
-  --md: 768px;
-  --lg: 1024px;
-  --scale: 0.8;
-  --primary: #fff;
-  --primary-100: "rgb(249,245,243)"; /*whitesmoke*/
-  --primary-900: "#29293a"; /* darkslategray */
-  --primary-1000: "rgb(27,27,24)"; /* black*/
-  --secondary-100: "rgb(50,178,131)	"; /*mediumseagreen*/
-  --secondary-200: "rgb(66,151,137)"; /*mediumseagreen*/
-  --secondary-300: "rgb(250,207,136)"; /*khaki*/
-  --secondary-400: "rgb(246,154,132)"; /*lightsalmon*/
-  --secondary-500: "rgb(254,206,0)"; /*gold*/
-  --secondary-600: "rgb(110,195,164)"; /*mediumaquamarine*/
-  --secondary-700: "rgb(29,161,242)"; /*dodgerblue*/
-  --secondary-800: "rgb(75,159,222)"; /*cornflowerblue*/
-  --secondary-900: "rgb(70,120,161)"; /* steelblue*/
-}
-
-/* .nav-overlay {
-  cursor: url(https://upload.wikimedia.org/wikipedia/commons/f/f9/Times_symbol.svg),
-    crosshair;
-} */
-
-/* 
-.hoverNavLink::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  height: 2px;
-  width: 100%;
-  background: currentColor;
-
-  transform: scaleX(0);
-  transition: all 200ms ease-out;
-}
-
-.hoverNavLink:hover::after {
-  transform: scaleX(1);
-} */
-.article-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  place-items: center;
+@layer components {
+  .hover--btn {
+    position: relative;
+  }
+  .hover--btn::before {
+    content: " ";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hover--btn:hover::before {
+    transform: scale(1.2);
+  }
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    place-items: center;
+  }
 }
 
 textarea {

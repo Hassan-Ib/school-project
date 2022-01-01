@@ -3,7 +3,7 @@ const ArticleSection = ({ articles }) => {
   // console.log("articleLisr", articles);
   return (
     <>
-      <ul className="article-grid">
+      <ul className="flex flex-col  gap-4">
         {articles.map((article) => (
           <Article key={article.Id} {...article} />
         ))}
