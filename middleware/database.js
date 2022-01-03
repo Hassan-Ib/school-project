@@ -12,8 +12,4 @@ function withDBConnection(handler) {
   };
 }
 
-// const withDBConnection = (handler) => async (req, res) => {
-//   await DBConnect();
-//   return handler(req, res);
-// };
 export default withDBConnection;

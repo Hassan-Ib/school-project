@@ -5,7 +5,11 @@ import LocalStorage from "../../utils/localStorage";
 
 const CreateArticle = () => {
   const [previewState, setPreview] = useState(false);
-  const [article, setArticle] = useState(null);
+  const [article, setArticle] = useState({
+    coverImage: "",
+    title: "",
+    markdown: "",
+  });
 
   const formRef = useRef(null);
 

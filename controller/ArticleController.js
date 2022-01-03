@@ -1,21 +1,16 @@
 import Articles from "../models/ArticleModel";
+import apiHandler from "../utils/apiHandler";
 
-export const getAllArticles = async (req, res) => {
-  try {
-    const query = await Articles.find();
-    return res.status(200).json({
-      susses: true,
-      data: query,
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(404).json({
-      susses: false,
-      data: null,
-      message: error.message,
-    });
-  }
-};
+export const getAllArticles = apiHandler(async (req, res) => {
+  const { body } = req;
+  console.log(body);
+  if (!body) throw new Error("no body asshole");
+  const query = await Articles.find();
+  return res.status(200).json({
+    susses: true,
+    data: query,
+  });
+});
 
 export const createArticle = async (req, res) => {
   try {

@@ -12,30 +12,6 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // const icon = ReactQuill.Quill.import("ui/icons");
 // icon["code-block"] = <AiOutlineCode />;
 
-const EditorModule = {
-  toolbar: [
-    [{ header: [1, 2, , 3, 4, 5, 6, false] }],
-    [
-      "bold",
-      "italic",
-      "underline",
-      //   "strike",
-      "blockquote",
-      "code",
-      "code-block",
-    ],
-    [{ align: [] }],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["link", "image"],
-    ["clean"],
-  ],
-};
-
 const EditorFormats = [
   "header",
   "bold",
@@ -114,6 +90,7 @@ const EditArticleForm = forwardRef((props, ref) => {
   useEffect(() => {
     titleRef.current.focus();
     const data = LocalStorage.getLocalData("articleData");
+    if (!data) return;
     setArticleData(data);
   }, []);
 
@@ -124,6 +101,32 @@ const EditArticleForm = forwardRef((props, ref) => {
   });
   console.log("articlestate in the body", articleData);
 
+  const EditorModule = React.memo({
+    toolbar: [
+      [{ header: [1, 2, , 3, 4, 5, 6, false] }],
+      [
+        "bold",
+        "italic",
+        "underline",
+        //   "strike",
+        "blockquote",
+        "code",
+        "code-block",
+      ],
+      [{ align: [] }],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image"],
+      ["clean"],
+    ],
+    handlers: {
+      image: uploadImage,
+    },
+  });
   // presentation
 
   return (
@@ -171,14 +174,14 @@ const EditArticleForm = forwardRef((props, ref) => {
 
         {/* <ReactQuill /> */}
 
-        <textarea
+        <input
           autoFocus={true}
           type="text"
           ref={titleRef}
           onChange={setTitle}
           name="article-title"
           id="article-title"
-          className=" text-3xl md:text-4xl lg:text-4xl capitalize font-extrabold resize-none outline-none"
+          className=" text-3xl md:text-4xl lg:text-4xl capitalize font-extrabold resize-none outline-none mb-4"
           placeholder="new post title here..."
         />
 
@@ -200,6 +203,7 @@ const EditArticleForm = forwardRef((props, ref) => {
         </div>
         {/* --- article body ---*/}
         <ReactQuill
+          // ref={(ref) => ref}
           theme="snow"
           value={articleData.markdown}
           onChange={onEditorStateChange}
