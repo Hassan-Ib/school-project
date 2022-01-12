@@ -2,13 +2,13 @@ import Article from "./Article";
 const ArticleSection = ({ articles }) => {
   // console.log("articleLisr", articles);
   return (
-    <>
-      <ul className="flex flex-col  gap-4">
+    <section className="my-6">
+      <ul className="flex flex-col lg:flex-row gap-4 ">
         {articles.map((article) => (
           <Article key={article.Id} {...article} />
         ))}
       </ul>
-    </>
+    </section>
   );
 };
 

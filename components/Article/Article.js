@@ -7,18 +7,19 @@ import PropType from "prop-types";
 const Article = ({ Id, title, body, image }) => {
   // console.log(props);
   return (
-    <article className=" max-w-xl border-2 border-black rounded-lg overflow-hidden">
-      <Link href={"/articles/" + Id}>
-        <div className="relative block h-60">
+    <Link href={"/articles/" + Id} className=" shadow">
+      <article className="border-2 md:flex lg:block border-black rounded-lg overflow-hidden ">
+        <div className="relative block h-60 md:h-52 md:w-1/2 lg:w-auto">
           <Image
             src={`/img/${image}`}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
             alt="article image"
+            className="hover:transform hover:scale-110 transition-all duration-300"
           />
         </div>
-        <div className=" p-4">
+        <div className=" p-4 md:w-1/2 lg:w-auto">
           <div className="flex items-center gap-2 mb-2">
             <div className="relative rounded-full w-8 h-8 border border-black overflow-hidden">
               <Image
@@ -35,16 +36,16 @@ const Article = ({ Id, title, body, image }) => {
               </p>
               {/* <time dateTime="" /> */}
               <p className="opacity-80 hover:opacity-100 transition-all duration-150">
-                Dec 31 '21 (18hours ago)
+                Dec 31 &apos;21 (18hours ago)
               </p>
             </div>
           </div>
-          <H2 className="text-xl ml-10 font-bold hover:text-blue-800 transition-all duration-150">
-            no way {title}
-          </H2>
+          <h2 className="text-2xl ml-10 font-bold hover:text-blue-800 transition-all duration-150">
+            No way {title}
+          </h2>
         </div>
-      </Link>
-    </article>
+      </article>
+    </Link>
   );
 };
 

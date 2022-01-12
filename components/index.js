@@ -12,5 +12,5 @@ export { default as Link } from "./Link";
 export { default as HeadMeta } from "./Meta";
 export { default as Events } from "./Event";
 export { default as Header } from "./Header";
-export { LinkButton, SectionButton } from "./Buttons";
+export { LinkButton } from "./Buttons";
 export { getLayoutWithNavAndFooter, getLayout } from "./Layout";

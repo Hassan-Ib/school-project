@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import FooterLogo from "../public/Faculty-Logo.png";
+import FooterLogo from "../public/img/LAUTECH-Logo.png";
 import { Section } from "./Container";
-import { Link, LinkBlue } from "./Link";
+import { Link } from "./Link";
 import SocialLinks from "./SocialLinks";
 
 const Footer = () => {
@@ -13,12 +13,9 @@ const Footer = () => {
     },
     {
       href: "/articles",
-      text: "see all articles",
+      text: "Articles / Events",
     },
-    {
-      href: "/events",
-      text: "see all Events",
-    },
+
     {
       href: "/contacts",
       text: "contacts",
@@ -29,9 +26,17 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="overflow-hidden bg-birch-500 text-white">
-      <Section className="border-black border-opacity-20 md:py-8 md:flex md:items-center md:justify-evenly">
-        <Image alt=" school logo" src={FooterLogo} width={300} height={300} />
+    <footer className="overflow-hidden bg-birch-500 text-white py-10">
+      <Section className="border-black border-opacity-20 md:py-8 md:flex md:justify-evenly">
+        <div className="mb-6">
+          <Image
+            alt="school logo"
+            src={FooterLogo}
+            width={200}
+            height={200}
+            className="mb-6"
+          />
+        </div>
         <section>
           <h4 className="font-semibold mb-6 md:text-lg">Quick Links</h4>
           <ul className="font-light  opacity-80 capitalize tracking-wider">
@@ -42,7 +47,7 @@ const Footer = () => {
             ))}
           </ul>
         </section>
-        <section className="mt-10">
+        <section className="">
           <h4 className=" font-semibold mb-6 md:text-lg">Social medias</h4>
 
           <SocialLinks
@@ -53,13 +58,9 @@ const Footer = () => {
         </section>
       </Section>
       <section className="opacity-80 text-xs md:text-sm px-4 pb-4 font-light tracking-wider flex flex-col md:flex-row gap-2 justify-center">
-        <p>Privacy and Policy</p>
+        <p>Privacy and Policy,</p>
         <p>
-          Design inspired by{" "}
-          <Link href="https://mayashavin.com" className="underline">
-            Maya shavin
-          </Link>{" "}
-          and Developed by{" "}
+          Developed by{" "}
           <Link href="/hassan-Ibrahim" className="underline">
             Hassan Ibrahim
           </Link>

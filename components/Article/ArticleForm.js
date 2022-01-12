@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef } from "react";
+import React, { useState, useRef, useEffect, forwardRef, useMemo } from "react";
 import { BsImage } from "react-icons/bs";
 import dynamic from "next/dynamic";
 import LocalStorage from "../../utils/localStorage";
@@ -12,7 +12,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // const icon = ReactQuill.Quill.import("ui/icons");
 // icon["code-block"] = <AiOutlineCode />;
 
-const EditorFormats = [
+const editorFormats = [
   "header",
   "bold",
   "italic",
@@ -49,7 +49,10 @@ const EditArticleForm = forwardRef((props, ref) => {
     console.log("articleData", articleData);
   };
 
+  const uploadImage = React.useCallback(() => {}, []);
+
   // uplaod cover image handler
+
   const uploadCoverImage = async (e) => {
     const reader = new FileReader();
     const { files } = e.target;
@@ -60,8 +63,8 @@ const EditArticleForm = forwardRef((props, ref) => {
         return { ...prevState, coverImage: imageUrl };
       });
     });
-    await reader.readAsDataURL(files[0]);
-    console.log(files, imageUrl);
+    reader.readAsDataURL(files[0]);
+    // console.log(files, imageUrl);
   };
 
   // remove cover image handler
@@ -101,32 +104,34 @@ const EditArticleForm = forwardRef((props, ref) => {
   });
   console.log("articlestate in the body", articleData);
 
-  const EditorModule = React.memo({
-    toolbar: [
-      [{ header: [1, 2, , 3, 4, 5, 6, false] }],
-      [
-        "bold",
-        "italic",
-        "underline",
-        //   "strike",
-        "blockquote",
-        "code",
-        "code-block",
+  const editorModules = useMemo(() => {
+    return {
+      toolbar: [
+        [{ header: [1, 2, , 3, 4, 5, 6, false] }],
+        [
+          "bold",
+          "italic",
+          "underline",
+          //   "strike",
+          "blockquote",
+          "code",
+          "code-block",
+        ],
+        [{ align: [] }],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" },
+        ],
+        ["link", "image"],
+        ["clean"],
       ],
-      [{ align: [] }],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link", "image"],
-      ["clean"],
-    ],
-    handlers: {
-      image: uploadImage,
-    },
-  });
+      handlers: {
+        image: uploadImage,
+      },
+    };
+  }, [uploadImage]);
   // presentation
 
   return (
@@ -208,8 +213,8 @@ const EditArticleForm = forwardRef((props, ref) => {
           value={articleData.markdown}
           onChange={onEditorStateChange}
           className="flex-1"
-          modules={EditorModule}
-          formats={EditorFormats}
+          modules={editorModules}
+          formats={editorFormats}
         />
       </form>
     </section>

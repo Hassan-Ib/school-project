@@ -3,20 +3,6 @@ export const links = [
     href: "/",
     text: "home",
   },
-  // {
-  //   href: "explore",
-  //   text: "explore",
-  //   sub: [
-  //     {
-  //       href: "/about-us",
-  //       text: "about",
-  //     },
-  //     {
-  //       href: "/staff-profile",
-  //       text: "staff profile",
-  //     },
-  //   ],
-  // },
   {
     href: "/about-us",
     text: "about",
@@ -26,7 +12,7 @@ export const links = [
     text: "staff profile",
   },
   {
-    href: "/news-events",
+    href: "/articles",
     text: "news & events",
   },
   {

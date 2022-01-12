@@ -5,7 +5,7 @@ import PropType from "prop-types";
 const SocialLinks = ({ color, className, size }) => {
   return (
     <ul
-      className={`${className} flex max-w-xs text-${color} mt-10 justify-evenly`}>
+      className={` flex max-w-xs text-${color} mt-10 justify-evenly ${className}`}>
       {socialLink.map((link, index) => (
         <li
           key={index}

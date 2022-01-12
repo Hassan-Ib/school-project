@@ -20,6 +20,8 @@ const CreateArticle = () => {
     // console.log(formValues);
   };
 
+  const uploadImage = () => {};
+
   return (
     <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
       <div className="capitalize px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">

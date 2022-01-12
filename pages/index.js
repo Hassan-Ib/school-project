@@ -2,11 +2,11 @@ import HeadMeta from "../components/Meta";
 import {
   getLayoutWithNavAndFooter,
   Articles,
-  Section,
   Events,
   Card,
   LatestArticle,
-  SectionButton,
+  LinkButton,
+  // SectionButton,
 } from "../components";
 import Header from "../components/Header";
 import { articles } from "../utils/articleData";
@@ -22,15 +22,33 @@ const Homepage = function ({ articles, events }) {
       <main>
         <Card />
         <LatestArticle {...articles[0]} />
-        <h3 className=" text-center text-lg font-medium my-10">
-          Latest From the Faculty
+        <h3 className="text-2xl text-center font-semibold my-12 ">
+          <span className="inline-block border-b-4 border-birch-600 pb-2">
+            Latest From the Faculty
+          </span>
         </h3>
-        <section className="m-auto flex flex-col items-center md:grid md:grid-col-2">
-          <Articles articles={articles} />
+        <section className="my-2 relative before:content-[' '] before:absolute before:inset-0 before:h-full before:w-2 before:bg-birch-500 before:-ml-4">
+          <p className="text-xl font-semibold mb-6 ">
+            {" "}
+            <span className="inline-block border-b-4 border-birch-500">
+              Articles
+            </span>
+          </p>
 
+          <Articles articles={articles} />
+          <p className="text-xl font-semibold mb-6">
+            <span className="inline-block border-b-4 border-birch-500">
+              Events
+            </span>
+          </p>
           <Events events={events} />
+
           <div className="flex justify-end mt-8">
-            <SectionButton href="/articles">see all Events</SectionButton>
+            <LinkButton
+              href="/articles"
+              className=" bg-birch-500 text-white hover:bg-birch-400 font-medium py-2 px-4">
+              view more
+            </LinkButton>
           </div>
         </section>
       </main>

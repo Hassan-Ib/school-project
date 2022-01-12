@@ -22,9 +22,8 @@
     gap: 1rem;
     place-items: center;
   }
-}
-
-textarea {
-  resize: none;
-  outline: none;
+  textarea {
+    resize: none;
+    outline: none;
+  }
 }

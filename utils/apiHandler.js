@@ -1,6 +1,7 @@
 import globalErrorController from "../controller/globalErrorController";
+export default apiHandler;
 
-export default function apiHandler(handler) {
+function apiHandler(handler) {
   return async (req, res) => {
     try {
       await handler(req, res);

@@ -6,7 +6,7 @@ const LinkButton = ({ children, className, href }) => {
   return (
     <button
       onClick={() => router.push(href)}
-      className={`capitalize rounded px-4 py-1 text-base border-2 ${className} transition-all duration-300  `}>
+      className={`capitalize px-4 py-1 font-medium border-2  transition-all duration-300 ${className} `}>
       {children}
     </button>
   );
@@ -22,14 +22,4 @@ LinkButton.propTypes = {
   className: PropTypes.string,
 };
 
-const SectionButton = (props) => {
-  return (
-    <LinkButton
-      href={props.href}
-      className={`${props.className} border-blue-800 text-blue-800 rounded-lg  hover:text-white hover:bg-blue-800`}>
-      {props.children}
-    </LinkButton>
-  );
-};
-
-export { LinkButton, SectionButton };
+export { LinkButton };

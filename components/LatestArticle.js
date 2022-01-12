@@ -13,6 +13,8 @@ const LatestArticle = ({ title, body, image, Id }) => {
           layout="fill"
           objectFit="cover"
           objectPosition="center"
+          // placeholder="blur"
+          priority="true"
         />
       </div>
       <section className="flex flex-col gap-3 items-start justify-center px-8 py-10 md:px-12 text-white bg-birch-800">
@@ -20,7 +22,7 @@ const LatestArticle = ({ title, body, image, Id }) => {
         <Paragraph>{body}</Paragraph>
         <LinkButton
           href={`/articles/${Id}`}
-          className="border-white hover:text-black hover:bg-white">
+          className="text-black bg-white hover:bg-opacity-90">
           read article
         </LinkButton>
       </section>
