@@ -5,10 +5,12 @@ import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(
   async () => {
     const { default: RQ } = await import("react-quill");
+    // eslint-disable-next-line react/display-name
     return ({ forwardedRef, ...props }) => <RQ ref={forwardedRef} {...props} />;
   },
   {
     ssr: false,
+    // eslint-disable-next-line react/display-name
     loading: () => <p>Loading ...</p>,
   }
 );
