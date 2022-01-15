@@ -10,7 +10,7 @@ export { default as Card } from "./IntroCard";
 export { default as Footer } from "./Footer";
 export { Link, NavLink } from "./Link";
 export { default as HeadMeta } from "./Meta";
-export { EventList } from "./Event";
+export { EventList } from "./event";
 export { default as Header } from "./Header";
 export { LinkButton } from "./Buttons";
 export { getLayoutWithNavAndFooter, getLayout } from "./Layout";
