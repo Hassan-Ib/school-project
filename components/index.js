@@ -8,7 +8,7 @@ export {
 } from "./Article";
 export { default as Card } from "./IntroCard";
 export { default as Footer } from "./Footer";
-export { default as Link } from "./Link";
+export { Link, NavLink } from "./Link";
 export { default as HeadMeta } from "./Meta";
 export { default as Events } from "./Event";
 export { default as Header } from "./Header";
