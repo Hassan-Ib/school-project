@@ -1,17 +1,17 @@
-import HeadMeta from "../components/Meta";
-import {
-  getLayoutWithNavAndFooter,
-  Articles,
-  Events,
-  Card,
-  LatestArticle,
-  LinkButton,
-} from "../components";
-import Header from "../components/Header";
 import { articles } from "../utils/articleData";
 import cardImage from "../public/img/christina.jpg";
 import DBConnect from "../utils/DBConnection";
 import { default as ArticlesModel } from "../models/ArticleModel";
+import {
+  getLayoutWithNavAndFooter,
+  Articles,
+  EventList,
+  Card,
+  LatestArticle,
+  LinkButton,
+  Header,
+  HeadMeta,
+} from "../components";
 
 const Homepage = function ({ articles, events }) {
   return (
@@ -40,7 +40,7 @@ const Homepage = function ({ articles, events }) {
               Events
             </span>
           </p>
-          <Events events={events} />
+          <EventList events={events} />
 
           <div className="flex justify-end mt-8">
             <LinkButton
