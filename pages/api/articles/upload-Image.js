@@ -15,6 +15,8 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       try {
+        cloudinary.v2.uploader.upload(body);
+
         res.status(201).json({
           success: true,
           data: { url: "imageurl" },
@@ -30,3 +32,8 @@ export default async function handler(req, res) {
       });
   }
 }
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
