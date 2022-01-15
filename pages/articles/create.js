@@ -30,19 +30,28 @@ const CreateArticle = () => {
           <p className="flex-1 font-semibold">create article</p>
           <div className="flex gap-4 capitalize">
             <button
+              className={`relative z-10 border-b-2 border-blue-800 border-opacity-0 capitalize py-1 transition-all duration-300 hover:before:absolute hover:before:-z-10 hover:before:bg-blue-300 hover:before:bg-opacity-30 hover:before:w-full hover:before:h-[95%] hover:before:transform hover:before:scale-x-150
+                    ${
+                      !previewState &&
+                      "font-semibold border-opacity-100 hover:before:border-b-2 hover:before:border-blue-800 "
+                    }`}
               onClick={() => {
                 setPreview(false);
-              }}
-              className=" hover--btn border-b-2 border-blue-800 font-semibold capitalize hover:bg-blue-300 hover:bg-opacity-30 py-1 transition-all">
+              }}>
               edit
             </button>
             <button
-              className=" hover--btn border-b border-transparent capitalize"
+              className={`relative z-10 border-b-2 border-blue-800 border-opacity-0 capitalize py-1 transition-all duration-300 hover:before:absolute hover:before:-z-10 hover:before:bg-blue-300 hover:before:bg-opacity-30 hover:before:w-full hover:before:h-[95%] hover:before:transform hover:before:scale-x-125
+                  ${
+                    previewState &&
+                    "font-semibold border-opacity-100 hover:before:border-b-2 hover:before:border-blue-800 "
+                  }`}
               onClick={() => {
                 setPreview(true);
                 const article = LocalStorage.getLocalData("articleData");
                 setArticle(article);
               }}>
+              {" "}
               preview
             </button>
           </div>

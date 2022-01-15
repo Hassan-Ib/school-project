@@ -1,35 +1,8 @@
 import React, { useState, useRef, useEffect, forwardRef, useMemo } from "react";
-import { BsImage } from "react-icons/bs";
-import dynamic from "next/dynamic";
 import LocalStorage from "../../utils/localStorage";
-import "react-quill/dist/quill.snow.css";
 import { AiOutlineCode } from "react-icons/ai";
 import Image from "next/image";
-// dynamic import Editor;
-
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
-// const icon = ReactQuill.Quill.import("ui/icons");
-// icon["code-block"] = <AiOutlineCode />;
-
-const editorFormats = [
-  "header",
-  "bold",
-  "italic",
-  "underline",
-  "strick",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "align",
-  "image",
-  "blockquote",
-  "code",
-  "code-block",
-];
-
-// editor / form
+import Editor from "./Editor";
 
 const EditArticleForm = forwardRef((props, ref) => {
   const [articleData, setArticleData] = useState({
@@ -39,32 +12,47 @@ const EditArticleForm = forwardRef((props, ref) => {
   });
 
   const titleRef = useRef(null);
-
   const coverImageRef = useRef(null);
+  let editorRef = useRef(null);
+  console.log("editorRef", editorRef);
 
   const onEditorStateChange = (editorState) => {
     setArticleData((prevState) => {
       return { ...prevState, markdown: editorState };
     });
-    console.log("articleData", articleData);
   };
 
-  const uploadImage = React.useCallback(() => {}, []);
+  const uploadImage = () => {};
 
   // uplaod cover image handler
 
   const uploadCoverImage = async (e) => {
-    const reader = new FileReader();
     const { files } = e.target;
-    let imageUrl;
+    const reader = new FileReader();
     reader.addEventListener("load", () => {
-      imageUrl = reader.result;
+      const imageUrl = reader.result;
       setArticleData((prevState) => {
         return { ...prevState, coverImage: imageUrl };
       });
     });
     reader.readAsDataURL(files[0]);
-    // console.log(files, imageUrl);
+
+    const formData = new FormData();
+    // formData.append("file", files[0]);
+    formData.append("name", "hassan Ibrahim ayomide");
+    formData.append("age", 30);
+    formData.append("userName", "@Azanebrahim");
+
+    console.log("formData", formData.entries());
+    try {
+      const response = await fetch("/api/articles/upload-Image", {
+        method: "POST",
+        body: formData,
+      }).then((res) => res.json());
+      console.log(response);
+    } catch (error) {
+      console.log("api call upload error ", error, error.message);
+    }
   };
 
   // remove cover image handler
@@ -83,11 +71,6 @@ const EditArticleForm = forwardRef((props, ref) => {
     });
   };
 
-  // local data handler
-  const localStorageUpdate = () => {
-    LocalStorage.setLocalData("articleData", articleData);
-  };
-
   // Local data fetching effect
 
   useEffect(() => {
@@ -100,38 +83,10 @@ const EditArticleForm = forwardRef((props, ref) => {
   // Local data update effect
 
   useEffect(() => {
-    localStorageUpdate();
+    LocalStorage.setLocalData("articleData", articleData);
   });
-  console.log("articlestate in the body", articleData);
 
-  const editorModules = useMemo(() => {
-    return {
-      toolbar: [
-        [{ header: [1, 2, , 3, 4, 5, 6, false] }],
-        [
-          "bold",
-          "italic",
-          "underline",
-          //   "strike",
-          "blockquote",
-          "code",
-          "code-block",
-        ],
-        [{ align: [] }],
-        [
-          { list: "ordered" },
-          { list: "bullet" },
-          { indent: "-1" },
-          { indent: "+1" },
-        ],
-        ["link", "image"],
-        ["clean"],
-      ],
-      handlers: {
-        image: uploadImage,
-      },
-    };
-  }, [uploadImage]);
+  // console.log("articlestate in the body", articleData);
   // presentation
 
   return (
@@ -148,7 +103,6 @@ const EditArticleForm = forwardRef((props, ref) => {
               <Image src={articleData.coverImage} alt="hello" layout="fill" />
             </div>
           )}
-
           <label
             className="cursor-pointer border-2 border-gray-400 px-4 py-2 rounded-sm font-medium "
             htmlFor="cover-image-input">
@@ -170,7 +124,7 @@ const EditArticleForm = forwardRef((props, ref) => {
             id="cover-image-input"
             type="file"
             accept="image/*"
-            className=" hidden"
+            className="hidden"
             data-max-file-size-mb="25"
           />
         </div>
@@ -188,33 +142,14 @@ const EditArticleForm = forwardRef((props, ref) => {
           id="article-title"
           className=" text-3xl md:text-4xl lg:text-4xl capitalize font-extrabold resize-none outline-none mb-4"
           placeholder="new post title here..."
+          value={articleData.title}
         />
 
-        {/*--- upload image ---*/}
-        <div className="bg-gray-100 py-2 mb-6">
-          <label
-            htmlFor="upload-article-image"
-            className="font-medium px-6 py-2  cursor-pointer inline-block">
-            {" "}
-            <BsImage className="inline-block mr-1" /> upload image
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            className="hidden"
-            name="upload-article-image"
-            id="upload-article-image"
-          />
-        </div>
         {/* --- article body ---*/}
-        <ReactQuill
-          // ref={(ref) => ref}
-          theme="snow"
-          value={articleData.markdown}
-          onChange={onEditorStateChange}
-          className="flex-1"
-          modules={editorModules}
-          formats={editorFormats}
+        <Editor
+          ref={editorRef}
+          onEditorStateChange={onEditorStateChange}
+          editorState={articleData.markdown}
         />
       </form>
     </section>

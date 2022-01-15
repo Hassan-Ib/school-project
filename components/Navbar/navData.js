@@ -7,10 +7,10 @@ export const links = [
     href: "/about-us",
     text: "about",
   },
-  {
-    href: "/staff-profile",
-    text: "staff profile",
-  },
+  // {
+  //   href: "/staff-profile",
+  //   text: "staff profile",
+  // },
   {
     href: "/articles",
     text: "news & events",

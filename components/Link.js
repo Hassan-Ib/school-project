@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import NextLink from "next/link";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 
 const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
-  const { asPath: path, push } = useRouter();
-  // console.log(path === href);
+  const { asPath: path } = useRouter();
   return (
     <>
       <NextLink href={href}>
         <a
           onClick={handleNavToggle}
-          className={`${className} ${
-            path === href ? "md:border-b-2 md:border-white" : ""
-          } relative flex items-center capitalize hover:opacity-90`}>
+          className={`navlink relative z-10 flex items-center capitalize font-medium tracking-widest opacity-70 ${className} group
+          ${path === href ? "opacity-100" : ""} `}>
           {icon && <span>{icon}</span>}
           {children}
+          <span className="absolute w-full h-[1px] bg-white left-0 -bottom-1 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100 group-hover:origin-left"></span>
         </a>
       </NextLink>
     </>

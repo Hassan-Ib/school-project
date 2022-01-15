@@ -6,7 +6,6 @@ import {
   Card,
   LatestArticle,
   LinkButton,
-  // SectionButton,
 } from "../components";
 import Header from "../components/Header";
 import { articles } from "../utils/articleData";
@@ -27,17 +26,17 @@ const Homepage = function ({ articles, events }) {
             Latest From the Faculty
           </span>
         </h3>
-        <section className="my-2 relative before:content-[' '] before:absolute before:inset-0 before:h-full before:w-2 before:bg-birch-500 before:-ml-4">
+        <section className="my-2 px-4 md:px-6 relative before:absolute before:inset-0 before:h-full before:w-1 before:bg-birch-500 before:-ml-4">
           <p className="text-xl font-semibold mb-6 ">
             {" "}
-            <span className="inline-block border-b-4 border-birch-500">
+            <span className="inline-block border-b-2 border-birch-500">
               Articles
             </span>
           </p>
 
           <Articles articles={articles} />
           <p className="text-xl font-semibold mb-6">
-            <span className="inline-block border-b-4 border-birch-500">
+            <span className="inline-block border-b-2 border-birch-500">
               Events
             </span>
           </p>

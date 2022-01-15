@@ -34,24 +34,13 @@ const DesktopNav = ({ showNav }) => {
       <div className="flex-1"></div>
       {/* links */}
 
-      <ul className=" hidden lg:flex items-center text-white gap-8  tracking-wider capitalize mr-4">
+      <ul className=" hidden lg:flex items-center text-white gap-8 mr-4">
         {links.map((link, key) => {
           return (
-            <li key={key} className="hover:text-opacity-60 ">
-              {link.sub ? (
-                <SubNav ref={detailRef} text={link.text} className=" relative ">
-                  <SubNavLinkList
-                    className=" absolute top-full  pt-8
-                    bg-twine-800 text-white rounded-md 
-                    w-60"
-                    links={link.sub}
-                  />
-                </SubNav>
-              ) : (
-                <NavLink className=" " href={link.href}>
-                  {link.text}
-                </NavLink>
-              )}
+            <li key={key} className="">
+              <NavLink className=" " href={link.href}>
+                {link.text}
+              </NavLink>
             </li>
           );
         })}
