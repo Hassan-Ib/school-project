@@ -5,6 +5,7 @@ export {
   default as Articles,
   EditArticleForm,
   PreviewArticle,
+  ArticleCard,
 } from "./Article";
 export { default as Card } from "./IntroCard";
 export { default as Footer } from "./Footer";

@@ -26,15 +26,16 @@ const Homepage = function ({ articles, events }) {
             Latest From the Faculty
           </span>
         </h3>
-        <section className="my-2 px-4 md:px-6 relative before:absolute before:inset-0 before:h-full before:w-1 before:bg-birch-500 before:-ml-4">
+        <section className="my-2 px-4 md:px-6  relative before:absolute before:inset-0 before:h-full before:w-1 before:bg-birch-500 before:-ml-4">
           <p className="text-xl font-semibold mb-6 ">
             {" "}
             <span className="inline-block border-b-2 border-birch-500">
               Articles
             </span>
           </p>
-
-          <Articles articles={articles} />
+          <div className="flex items-center justify-center md:max-w-">
+            <Articles articles={articles} />
+          </div>
           <p className="text-xl font-semibold mb-6">
             <span className="inline-block border-b-2 border-birch-500">
               Events
