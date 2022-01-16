@@ -9,7 +9,7 @@ const Articles = () => {
     <main className="grid md:grid-cols-3">
       {/* side bar */}
       {/* articles container */}
-      <section className="col-start-1 col-end-3 p-10">
+      <section className="col-start-1 col-end-3 p-10 md:px-20">
         <article>
           {/* cover image */}
           <div></div>
@@ -22,13 +22,13 @@ const Articles = () => {
         {/* search input */}
         <section
           tabIndex={0}
-          className="relative flex items-center shadow-sm text-birch-800 bg-twine-100 rounded-md overflow-hidden">
+          className="relative items-center shadow-sm text-birch-800 bg-twine-100 rounded-md overflow-hidden">
           <input
             type="text"
             placeholder="Enter search keyword..."
-            className="flex-1 p-4 pr-12 bg-inherit outline-twine-500 group border "
+            className="p-4 pr-12 inline-block w-full bg-inherit outline-twine-500 outline-offset-5 group border rounded-md"
           />
-          <button className="absolute right-0 h-full px-2 hover:bg-twine-500 hover:text-white transition-all duration-300">
+          <button className="absolute z-10 right-0 h-full px-2 hover:bg-twine-500 hover:text-white transition-all duration-300">
             <AiOutlineSearch className="text-2xl font-bold" />
           </button>
         </section>
