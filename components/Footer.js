@@ -64,7 +64,7 @@ const Footer = () => {
           <p>
             Developed by{" "}
             <Link href="/hassan-Ibrahim" className="underline">
-              Hassan Ibrahim
+              Hassan Ibrahim & Alade Sodiq
             </Link>
             . © 2021 Faculty of computing and informatics, LAUTECH. All Rights
             Reserved.
