@@ -29,7 +29,7 @@ const Header = () => {
         </p>
         <div className="text-lg md:text-xl font-medium ">
           <Link
-            href="#"
+            href="/about-us"
             className="px-6 py-2 border-2 border-twine-100  capitalize hover:bg-twine-100 hover:text-gray-800 flex hover:gap-1 items-end transition-all duration-300">
             Descover more
           </Link>

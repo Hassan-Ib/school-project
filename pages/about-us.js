@@ -16,7 +16,6 @@ const ImportantFigure = ({ title }) => {
       />
       <span className="absolute z-20 w-full text-center bottom-10 left-0 tracking-widest uppercase text-3xl font-semibold text-white bg-slate-800 bg-opacity-50">
         {title}
-        cto
       </span>
     </div>
   );
@@ -49,9 +48,9 @@ const About = () => {
         </div>
         {/* gallary for the importants */}
         <div className=" grid place-items-center gap-6 lg:grid-cols-3 py-16">
-          <ImportantFigure />
-          <ImportantFigure />
-          <ImportantFigure />
+          <ImportantFigure title={"VC"} />
+          <ImportantFigure title={"Hod"} />
+          <ImportantFigure title={"Hod"} />
         </div>
       </section>
       <section className="my-10">
@@ -66,42 +65,22 @@ const About = () => {
             <span className="absolute w-full h-full top-[90%] left-0 bg-twine-700 group-hover:top-0 transition-all duration-300"></span>
           </button>
         </div>
-        <div className="flex  overflow-x-scroll  mx-auto snap-x snap-proximity gap-4 my-20">
-          <div className="relative flex-shrink-0 basis-[600px]  whitespace-nowrap h-96  snap-center">
-            <Image
-              src={"/img/mohammad-rahmani-_Fx34KeqIEw-unsplash.jpg"}
-              alt="staff"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
-          </div>
-          <div className="relative flex-shrink-0 basis-[600px]  whitespace-nowrap h-96 snap-center">
-            <Image
-              src={"/img/mohammad-rahmani-_Fx34KeqIEw-unsplash.jpg"}
-              alt="staff"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
-          </div>{" "}
-          <div className="relative flex-shrink-0 basis-[600px]  whitespace-nowrap h-96 snap-center">
-            <Image
-              src={"/img/mohammad-rahmani-_Fx34KeqIEw-unsplash.jpg"}
-              alt="staff"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
-          </div>{" "}
-          <div className="relative flex-shrink-0 basis-[600px]  whitespace-nowrap h-96 snap-center">
-            <Image
-              src={"/img/mohammad-rahmani-_Fx34KeqIEw-unsplash.jpg"}
-              alt="staff"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
+        <div className="flex overflow-x-scroll mx-auto md:w-[70%] lg:w-[60%] snap-x snap-proximity gap-4 my-20">
+          <div className="relative basis-full flex-shrink-0 snap-center">
+            {/* image */}
+            <div className="relative  w-full  whitespace-nowrap h-96  ">
+              <Image
+                src={"/img/mohammad-rahmani-_Fx34KeqIEw-unsplash.jpg"}
+                alt="staff"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
+            </div>
+            {/* card */}
+            <div className="absolute w-full h-full top-0 left-0 bg-twine-700 bg-opacity-40 ">
+              <p></p>
+            </div>
           </div>
         </div>
       </section>
