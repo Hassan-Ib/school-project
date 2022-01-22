@@ -4,10 +4,11 @@ import logo from "./../../public/img/LAUTECH-Logo.png";
 import { NavLink, Link } from "../Link";
 import { RiMenuFoldLine } from "react-icons/ri";
 import { BsFillPersonFill } from "react-icons/bs";
-import { SubNavLinkList, SubNav } from "./NavComponents";
 import { links } from "./navData";
+import { signIn, useSession } from "next-auth/react";
 
 const DesktopNav = ({ showNav }) => {
+  const { data: session, status } = useSession();
   const detailRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -51,6 +52,7 @@ const DesktopNav = ({ showNav }) => {
           <BsFillPersonFill className="border-2 border-twine-500 text-4xl rounded-full text-white bg-twine-500 p-1" />
         </Link>
         <button
+          onClick={() => signIn()}
           color="twine-500"
           className="text-white font-medium  px-4 py-1 rounded-sm capitalize border-2 hover:bg-white hover:text-black border-white tracking-wider transition">
           log in{" "}

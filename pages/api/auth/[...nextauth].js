@@ -1,7 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 
-options = {
+const options = {
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -19,22 +19,25 @@ options = {
         const user = { id: 1, name: "J Smith", email: "jsmith@example.com" };
         console.log(credentials);
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
-        } else {
-          // If you return null or false then the credentials will be rejected
-          return null;
-          // You can also Reject this callback with an Error or with a URL:
-          // throw new Error('error message') // Redirect to error page
-          // throw '/path/to/redirect'        // Redirect to a URL
-        }
+        return user;
+        // if (user) {
+        //   // Any object returned will be saved in `user` property of the JWT
+        //   return user;
+        // } else {
+        //   // If you return null or false then the credentials will be rejected
+        //   return null;
+        //   // You can also Reject this callback with an Error or with a URL:
+        //   // throw new Error('error message') // Redirect to error page
+        //   // throw '/path/to/redirect'        // Redirect to a URL
+        // }
       },
     }),
   ],
   session: {
-    jwt: true,
+    strategy: "jwt",
   },
+  secret: process.env.JWT_SECRET,
+  // secret: "nextauthjssecretformyjsonwebtokenimplementation",
 };
 
 const auth = (req, res) => NextAuth(req, res, options);
