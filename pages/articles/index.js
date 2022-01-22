@@ -9,7 +9,7 @@ const Articles = () => {
     <main className="md:grid md:grid-cols-3">
       {/* side bar */}
       {/* articles container */}
-      <section className="flex flex-col gap-10 md:col-start-1 md:col-end-3 py-10 px-6 ">
+      <section className="flex flex-col gap-16 md:col-start-1 md:col-end-3 py-10 px-6 ">
         {/* {articleData.map({ Id, image, title }, index)} */}
         <ArticleCard {...articleData[0]} />
         <ArticleCard {...articleData[0]} />
