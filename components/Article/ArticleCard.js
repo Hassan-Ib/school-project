@@ -9,7 +9,7 @@ const Article = ({ Id, title, body, image }) => {
   return (
     <Link href={"/articles/" + Id} className=" shadow mx-auto">
       <article className="border-2  border-black rounded-lg overflow-hidden">
-        <div className="relative block h-60 w-full ">
+        <div className="relative block h-72 w-full border-b-2 border-black">
           <Image
             src={`/img/${image}`}
             layout="fill"
@@ -41,10 +41,10 @@ const Article = ({ Id, title, body, image }) => {
             </div>
           </div>
           <div className="ml-10">
-            <h2 className="text-2xl font-bold hover:text-blue-800 transition-all duration-150">
+            <h2 className="text-xl sm:text-2xl font-bold hover:text-blue-800 transition-all duration-150">
               No way {title}
             </h2>
-            <p className="mt-2 opacity-80">{body} ...</p>
+            <p className="mt-2 text-sm md:text-base opacity-80">{body} ...</p>
           </div>
         </div>
       </article>

@@ -20,12 +20,13 @@ const ImportantFigure = ({ title }) => {
     </div>
   );
 };
+
 const About = () => {
   return (
-    <main className="text-twine-900">
-      <section className="grid md:h-[80vh] place-items-center md:grid-cols-2 px-10 mb-10 md:px-0 bg-twine-100 ">
+    <main className="text-twine-900 ">
+      <section className="grid md:h-[80vh] place-items-center md:grid-cols-2 px-4 mb-10 bg-twine-100 ">
         <div>
-          <h2 className="text-xl text-twine-800 md:text-2xl font-semibold tracking-wide py-20 px-12 md:py-0">
+          <h2 className="text-xl text-twine-800 md:text-2xl font-semibold tracking-wide py-20 md:px-10 md:py-0">
             Our board of directors are dedicated to expanding our positive
             impact.
           </h2>
@@ -34,7 +35,7 @@ const About = () => {
           <Image src={Svg} alt="student sitting for exam svg" />
         </div>
       </section>
-      <section className="px-10 my-14">
+      <section className="md:px-10 my-14">
         <div>
           <h2 className="text-lg md:text-xl font-semibold tracking-wide">
             We believe that tech can play an significant role in alleviating
@@ -53,7 +54,7 @@ const About = () => {
           <ImportantFigure title={"Hod"} />
         </div>
       </section>
-      <section className="my-10">
+      <section className="md:px-10 my-10">
         <div>
           <h1 className="text-3xl md:text-4xl font-medium max-w-xl mb-10">
             Cooperation unifies the best teammates & create miracles.

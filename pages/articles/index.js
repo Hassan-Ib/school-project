@@ -6,19 +6,19 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { articles as articleData } from "../../utils/articleData";
 const Articles = () => {
   return (
-    <main className="grid md:grid-cols-3">
+    <main className="md:grid md:grid-cols-3">
       {/* side bar */}
       {/* articles container */}
-      <section className="col-start-1 col-end-3 p-10 md:px-20">
-        <article>
-          {/* cover image */}
-          <div></div>
-        </article>
+      <section className="flex flex-col gap-10 md:col-start-1 md:col-end-3 py-10 px-6 ">
         {/* {articleData.map({ Id, image, title }, index)} */}
+        <ArticleCard {...articleData[0]} />
+        <ArticleCard {...articleData[0]} />
+        <ArticleCard {...articleData[0]} />
+        <ArticleCard {...articleData[0]} />
         <ArticleCard {...articleData[0]} />
       </section>
 
-      <section className="  p-10 ">
+      <section className="py-10 px-6 md:py-10 ">
         {/* search input */}
         <section
           tabIndex={0}
