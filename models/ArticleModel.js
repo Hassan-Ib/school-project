@@ -44,7 +44,14 @@ ArticleSchema.pre("save", function (next) {
   next();
 });
 
-ArticleSchema.statics.getByIdAndPopulate = async function (id, ArticleData) {
+/**
+ *
+ * @param {string} id mongodb id
+ * @param {object} ArticleData data from client side
+ * @returns  mongo doc || null
+ */
+
+ArticleSchema.statics.getByIdAndUpdate = async function (id, ArticleData) {
   const [doc] = await this.find({ _id: id });
   if (!doc) {
     return null;
@@ -56,6 +63,12 @@ ArticleSchema.statics.getByIdAndPopulate = async function (id, ArticleData) {
     }
   }
   return doc;
+};
+ArticleSchema.statics.getConsole = function () {
+  console.log("some weird shit going on here for static");
+};
+ArticleSchema.methods.getConsoles = function () {
+  console.log("some weird shit going on here for methods");
 };
 
 const Articles =

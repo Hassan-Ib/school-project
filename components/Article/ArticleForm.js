@@ -28,31 +28,29 @@ const EditArticleForm = forwardRef((props, ref) => {
 
   const uploadCoverImage = async (e) => {
     const { files } = e.target;
+    console.log(file);
     const reader = new FileReader();
-    reader.addEventListener("load", () => {
+    reader.addEventListener("load", async () => {
       const imageUrl = reader.result;
-      setArticleData((prevState) => {
-        return { ...prevState, coverImage: imageUrl };
-      });
+      try {
+        const response = await fetch("/api/articles/upload-Image", {
+          headers: {
+            "Content-type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({ imageUrl }),
+        });
+
+        const data = await response.json();
+        if (!data.success) throw new Error("file");
+        setArticleData((prevState) => {
+          return { ...prevState, coverImage: imageUrl };
+        });
+      } catch (error) {
+        console.log("api call upload error ", error, error.message);
+      }
     });
     reader.readAsDataURL(files[0]);
-
-    const formData = new FormData();
-    // formData.append("file", files[0]);
-    formData.append("name", "hassan Ibrahim ayomide");
-    formData.append("age", 30);
-    formData.append("userName", "@Azanebrahim");
-
-    console.log("formData", formData.entries());
-    try {
-      const response = await fetch("/api/articles/upload-Image", {
-        method: "POST",
-        body: formData,
-      }).then((res) => res.json());
-      console.log(response);
-    } catch (error) {
-      console.log("api call upload error ", error, error.message);
-    }
   };
 
   // remove cover image handler

@@ -1,14 +1,11 @@
-import Articles from "../models/ArticleModel";
+import ArticlesModel from "../models/ArticleModel";
 import catchAsync from "../utils/apiHandler";
 
 export const getAllArticles = catchAsync(async (req, res) => {
-  const { body } = req;
+  ArticlesModel.getConsole();
 
-  console.log("body data", body);
-  console.log("name", body.name);
-
-  if (!body) throw new Error("no body asshole");
-  const query = await Articles.find();
+  const query = await ArticlesModel.find();
+  query.getConsoles();
   return res.status(200).json({
     success: true,
     data: query,
@@ -40,7 +37,7 @@ export const updateArticle = catchAsync(async (req, res) => {
     query: { id },
     body,
   } = req;
-  const doc = await Articles.getByIdAndPopulate(id, body);
+  const doc = await ArticlesModel.getByIdAndUpdate(id, body);
   if (!doc) {
     throw new Error(`No article of id ${id} found`);
   }
@@ -55,7 +52,7 @@ export const getArticle = catchAsync(async (req, res) => {
   const {
     query: { id },
   } = req;
-  const query = await Articles.findById(id);
+  const query = await ArticlesModel.findById(id);
   console.log(query);
   if (!query)
     throw new Error(`article of id ${id} does not exist, supply a valid id`);

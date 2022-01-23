@@ -15,25 +15,29 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       try {
-        cloudinary.v2.uploader.upload(body);
-
+        const response = await cloudinary.v2.uploader.upload(body.imageUrl);
+        const imageData = await response.json();
         res.status(201).json({
           success: true,
-          data: { url: "imageurl" },
+          data: { imageData },
         });
       } catch (error) {
         console.log(error);
+        res.status(400).json({
+          success: false,
+          error,
+        });
       }
       break;
     default:
-      res.status(400).json({
+      return res.status(403).json({
         success: false,
-        message: "bad request",
+        message: "POST request only",
       });
   }
 }
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// };
