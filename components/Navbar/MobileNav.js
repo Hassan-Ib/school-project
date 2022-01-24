@@ -27,7 +27,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
       {/* overlay ends */}
 
       <div className="overflow-auto max-w-xs h-full sm:w-3/4 bg-birch-500 relative z-20 pb-8">
-        <section className="flex  p-10">
+        <section className="flex  pt-10  px-6">
           {/* logo */}
 
           <div className="flex flex-wrap items-center gap-4">
