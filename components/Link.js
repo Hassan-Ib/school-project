@@ -10,11 +10,10 @@ const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
       <NextLink href={href}>
         <a
           onClick={handleNavToggle}
-          className={`navlink relative z-10 flex items-center capitalize font-medium tracking-widest opacity-70 ${className} group
+          className={`navlink relative z-10 flex items-center capitalize font-medium tracking-widest opacity-80 ${className} group
           ${path === href ? "opacity-100" : ""} `}>
           {icon && <span>{icon}</span>}
           {children}
-          <span className="absolute w-full h-[1px] bg-white left-0 -bottom-1 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100 group-hover:origin-left"></span>
         </a>
       </NextLink>
     </>

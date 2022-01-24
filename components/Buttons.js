@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const LinkButton = ({ children, className, href }) => {
   const router = useRouter();
@@ -22,4 +23,22 @@ LinkButton.propTypes = {
   className: PropTypes.string,
 };
 
-export { LinkButton };
+const SignButton = () => {
+  const { status } = useSession();
+
+  const signHandler = () => {
+    if (status !== "authenticated") {
+      return signIn();
+    }
+    return signOut();
+  };
+  return (
+    <button
+      onClick={signHandler}
+      className="font-medium capitalize tracking-wider  underline underline-offset-2">
+      {status === "authenticated" ? "singOut" : "signIn"}
+    </button>
+  );
+};
+
+export { LinkButton, SignButton };

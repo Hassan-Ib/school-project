@@ -1,20 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import logo from "./../../public/img/LAUTECH-Logo.png";
-import { NavLink, Link } from "../Link";
+import { NavLink } from "../Link";
 import { RiMenuFoldLine } from "react-icons/ri";
-import { BsFillPersonFill } from "react-icons/bs";
+import Avatar from "../Avatar";
 import { links } from "./navData";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { SignButton } from "../Buttons";
 
 const DesktopNav = ({ showNav }) => {
+  const router = useRouter();
   const { data: session, status } = useSession();
-  const detailRef = React.useRef(null);
-
-  React.useEffect(() => {
-    const detail = detailRef.current;
-    console.log("detailRef", detail);
-  }, []);
+  console.log("session nav", session);
 
   return (
     <nav
@@ -38,32 +36,36 @@ const DesktopNav = ({ showNav }) => {
       <ul className=" hidden lg:flex items-center text-white gap-8 mr-4">
         {links.map((link, key) => {
           return (
-            <li key={key} className="">
+            <li key={key} className="relative group">
               <NavLink className=" " href={link.href}>
                 {link.text}
               </NavLink>
+              <span className="absolute w-full h-[2px] bg-white left-0 -bottom-1 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100 group-hover:origin-left" />
             </li>
           );
         })}
       </ul>
 
-      <div className="hidden md:flex justify-self-end items-center gap-4">
-        <Link href="/dashboard">
-          <BsFillPersonFill className="border-2 border-twine-500 text-4xl rounded-full text-white bg-twine-500 p-1" />
-        </Link>
+      <div className="hidden lg:flex justify-self-end items-center gap-4">
+        <SignButton />
+        <Avatar size="md" />
+
         <button
-          onClick={() => signIn()}
+          onClick={() =>
+            // signIn()
+            router.push("/articles/create")
+          }
           color="twine-500"
           className="text-white font-medium  px-4 py-1 rounded-sm capitalize border-2 hover:bg-white hover:text-black border-white tracking-wider transition">
-          log in{" "}
+          create article
         </button>
       </div>
       <button
-        className=" lg:hidden justify-self-end"
+        className="flex items-center font-medium px-4 py-1 rounded-sm capitalize border-2 border-white hover:bg-white hover:text-black tracking-wider transition gap-2 lg:hidden justify-self-end"
         onClick={() => {
           showNav(true);
         }}>
-        <RiMenuFoldLine className="text-3xl" />
+        <span>menu</span> <RiMenuFoldLine className="text-2xl" />
       </button>
     </nav>
   );
