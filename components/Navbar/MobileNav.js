@@ -6,8 +6,10 @@ import PropType from "prop-types";
 import { links } from "./navData";
 import SocialLinks from "../SocialLinks";
 import { SignButton } from "../Buttons";
+import { useRouter } from "next/router";
 
 const MobileNav = ({ closeNav, isNavToggled }) => {
+  const router = useRouter();
   return (
     <nav
       className={`
