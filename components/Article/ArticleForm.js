@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, forwardRef, useMemo } from "react";
 import LocalStorage from "../../utils/localStorage";
-import { AiOutlineCode } from "react-icons/ai";
 import Image from "next/image";
 import Editor from "./Editor";
 
@@ -28,7 +27,6 @@ const EditArticleForm = forwardRef((props, ref) => {
 
   const uploadCoverImage = async (e) => {
     const { files } = e.target;
-    console.log(file);
     const reader = new FileReader();
     reader.addEventListener("load", async () => {
       const imageUrl = reader.result;
@@ -42,7 +40,8 @@ const EditArticleForm = forwardRef((props, ref) => {
         });
 
         const data = await response.json();
-        if (!data.success) throw new Error("file");
+        console.log(data);
+        if (!data.success) throw new Error("image upload error");
         setArticleData((prevState) => {
           return { ...prevState, coverImage: imageUrl };
         });

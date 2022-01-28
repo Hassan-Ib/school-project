@@ -1,10 +1,9 @@
 // import catchAsync from "../../../utils/apiHandler";
-// const cloudinary = import("cloudinary").v2;
 import cloudinary from "cloudinary";
 
 export default async function handler(req, res) {
   const { method, body } = req;
-  console.log(method, body);
+  console.log(body.imageUrl ? true : false);
 
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -16,13 +15,22 @@ export default async function handler(req, res) {
     case "POST":
       try {
         const response = await cloudinary.v2.uploader.upload(body.imageUrl);
-        const imageData = await response.json();
+        console.log("server response", response);
+        const { public_id, width, height, format, bytes, url } = response;
+        const imageData = {
+          url,
+          public_id,
+          width,
+          height,
+          format,
+          bytes,
+        };
         res.status(201).json({
           success: true,
           data: { imageData },
         });
       } catch (error) {
-        console.log(error);
+        console.log("server error", error);
         res.status(400).json({
           success: false,
           error,

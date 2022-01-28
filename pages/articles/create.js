@@ -27,7 +27,7 @@ const CreateArticle = () => {
 
   if (status === "loading") {
     return (
-      <div className="flex items-center justify-center text-3xl capitalize font-bold">
+      <div className="flex w-full h-full items-center justify-center text-3xl capitalize font-bold">
         {" "}
         loading...
       </div>

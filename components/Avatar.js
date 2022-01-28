@@ -13,7 +13,7 @@ const Avatar = ({ size }) => {
   const { data: session, status } = useSession();
 
   return (
-    <Link href="/dashboard" className="flex items-center w-36 gap-1">
+    <Link href="/dashboard" className="flex items-center gap-1">
       <BsFillPersonFill
         className={`border-2 border-twine-500 text-${sizeToTailwind[size]}   text-white bg-twine-500 p-1`}
       />
