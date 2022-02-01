@@ -7,7 +7,7 @@ import Avatar from "../Avatar";
 import { links } from "./navData";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { SignButton } from "../Buttons";
+import { SignButton, LinkButton } from "../Buttons";
 
 const DesktopNav = ({ showNav }) => {
   const router = useRouter();
@@ -50,15 +50,11 @@ const DesktopNav = ({ showNav }) => {
         <SignButton />
         <Avatar size="md" />
 
-        <button
-          onClick={() =>
-            // signIn()
-            router.push("/articles/create")
-          }
-          color="twine-500"
-          className="text-white font-medium  px-4 py-1 rounded-sm capitalize border-2 hover:bg-white hover:text-black border-white tracking-wider transition">
+        <LinkButton
+          href="/articles/create"
+          className="btn btn-sm text-white hover:bg-white hover:text-black border-white tracking-wider ">
           create article
-        </button>
+        </LinkButton>
       </div>
       <button
         className="flex items-center font-medium px-4 py-1 rounded-sm capitalize border-2 border-white hover:bg-white hover:text-black tracking-wider transition gap-2 lg:hidden justify-self-end"

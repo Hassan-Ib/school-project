@@ -18,7 +18,7 @@ const Card = () => {
         </Paragraph>
         <LinkButton
           href="/articles"
-          className="bg-black text-white hover:bg-birch-500  ">
+          className="btn btn-sm bg-black text-white hover:bg-birch-500  ">
           read about us
         </LinkButton>
         {/* <div className="absolute right-0  w-6  bg-twine-500 h-full"></div> */}

@@ -22,7 +22,7 @@ const LatestArticle = ({ title, body, image, Id }) => {
         <Paragraph>{body}</Paragraph>
         <LinkButton
           href={`/articles/${Id}`}
-          className="text-black bg-white hover:bg-opacity-90">
+          className="btn btn-sm text-black bg-white hover:bg-opacity-90">
           read article
         </LinkButton>
       </section>

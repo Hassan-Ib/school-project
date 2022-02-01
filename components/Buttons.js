@@ -5,9 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const LinkButton = ({ children, className, href }) => {
   const router = useRouter();
   return (
-    <button
-      onClick={() => router.push(href)}
-      className={`capitalize px-4 py-1 font-medium border-2  transition-all duration-300 ${className} `}>
+    <button onClick={() => router.push(href)} className={className}>
       {children}
     </button>
   );
@@ -35,8 +33,8 @@ const SignButton = () => {
   return (
     <button
       onClick={signHandler}
-      className="font-medium capitalize tracking-wider  underline underline-offset-2">
-      {status === "authenticated" ? "singOut" : "signIn"}
+      className="font-medium tracking-wider  underline  underline-offset-4">
+      {status === "authenticated" ? "sing Out" : "sign In"}
     </button>
   );
 };

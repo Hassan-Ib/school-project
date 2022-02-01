@@ -3,22 +3,22 @@ import PropTypes from "prop-types";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
-const NavLink = ({ href, icon, handleNavToggle, className, children }) => {
+const NavLink = ({ href, handleNavToggle, className, children }) => {
   const { asPath: path } = useRouter();
   return (
     <>
-      <NextLink href={href}>
+      <NextLink href={href} passHref>
         <a
           onClick={handleNavToggle}
-          className={`navlink relative z-10 flex items-center capitalize font-medium tracking-widest opacity-80 ${className} group
-          ${path === href ? "opacity-100" : ""} `}>
-          {icon && <span>{icon}</span>}
+          className={`navlink relative z-10 flex items-center capitalize font-medium tracking-widest opacity-100 ${className} group
+          ${path === href ? "border-b-2 border-twine-600 " : ""} `}>
           {children}
         </a>
       </NextLink>
     </>
   );
 };
+
 NavLink.defaultProps = {
   className: "",
 };

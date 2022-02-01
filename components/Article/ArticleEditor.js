@@ -4,6 +4,7 @@ import Image from "next/image";
 import Editor from "./Editor";
 
 const EditArticleForm = forwardRef((props, ref) => {
+  // const [] = useState();
   const [articleData, setArticleData] = useState({
     title: "",
     coverImage: null,
@@ -81,7 +82,7 @@ const EditArticleForm = forwardRef((props, ref) => {
 
   useEffect(() => {
     LocalStorage.setLocalData("articleData", articleData);
-  });
+  }, [articleData]);
 
   // console.log("articlestate in the body", articleData);
   // presentation

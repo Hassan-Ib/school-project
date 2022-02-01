@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-import { EditArticleForm, PreviewArticle } from "../../components";
+import { ArticleEditor, PreviewArticle } from "../../components";
 import LocalStorage from "../../utils/localStorage";
 import { useSession, signIn } from "next-auth/react";
 
@@ -18,16 +18,28 @@ const CreateArticle = () => {
 
   const formRef = useRef(null);
 
-  const publishArticle = (e) => {
-    // const formData = new FormData(formRef.current);
-    // console.log("formData", formData);
-    // const formValues = Object.fromEntries(formData.entries());
-    // console.log(formValues);
+  const publishArticle = async (e) => {
+    const articleData = LocalStorage.getLocalData(
+      LocalStorage.articleLocalStorageKey
+    );
+    console.log("local data ", articleData);
+    try {
+      const res = await fetch("/api/articles", {
+        headers: {
+          "Content-type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(articleData),
+      });
+      console.log(res);
+    } catch (error) {
+      console.log("articleFetchError", error);
+    }
   };
 
   if (status === "loading") {
     return (
-      <div className="flex w-full h-full items-center justify-center text-3xl capitalize font-bold">
+      <div className="flex w-full h-[100vh] items-center justify-center text-3xl capitalize font-bold">
         {" "}
         loading...
       </div>
@@ -72,7 +84,7 @@ const CreateArticle = () => {
 
           {/*--- form ---*/}
           {!previewState ? (
-            <EditArticleForm ref={formRef} />
+            <ArticleEditor ref={formRef} />
           ) : (
             <PreviewArticle article={article} />
           )}

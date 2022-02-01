@@ -14,5 +14,5 @@ const ArticleSection = ({ articles }) => {
 
 export default ArticleSection;
 export { ArticleCard };
-export { default as EditArticleForm } from "./ArticleForm";
+export { default as ArticleEditor } from "./ArticleEditor";
 export { default as PreviewArticle } from "./PreviewArticle";

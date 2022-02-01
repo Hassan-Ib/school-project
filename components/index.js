@@ -3,7 +3,7 @@ export { default as Navbar } from "./Navbar";
 export { default as LatestArticle } from "./LatestArticle";
 export {
   default as Articles,
-  EditArticleForm,
+  ArticleEditor,
   PreviewArticle,
   ArticleCard,
 } from "./Article";

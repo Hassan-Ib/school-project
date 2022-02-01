@@ -46,7 +46,7 @@ const Homepage = function ({ articles, events }) {
           <div className="flex justify-end mt-8">
             <LinkButton
               href="/articles"
-              className=" bg-birch-500 text-white hover:bg-birch-400 font-medium py-2 px-4">
+              className="btn btn-sm bg-birch-500 text-white hover:bg-birch-400">
               view more
             </LinkButton>
           </div>

@@ -1,5 +1,6 @@
 import ArticlesModel from "../models/ArticleModel";
 import catchAsync from "../utils/apiHandler";
+import { getSession } from "next-auth";
 
 export const getAllArticles = catchAsync(async (req, res) => {
   ArticlesModel.getConsole();
@@ -18,14 +19,15 @@ export const createArticle = catchAsync(async (req, res) => {
   if (!body || !body.articlesData || !body.articlesData.markdown)
     throw new Error("Article is required");
 
-  const gitMarkedData = await fetch("https://api.github.com/markdown", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ mode: "markdown", text: body }),
-  });
-  console.log(gitMarked);
+  // const gitMarkedData = await fetch("https://api.github.com/markdown", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({ mode: "markdown", text: body }),
+  // });
+  // console.log(gitMarked);
+
   return res.status(201).json({
     success: true,
     data: htmlText,

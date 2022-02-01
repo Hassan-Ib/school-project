@@ -28,9 +28,14 @@ const Header = () => {
           Lorem ipsum dolor sit amet consectetur, adipisicing elit.
         </p>
         <div className="text-lg md:text-xl font-medium ">
-          <Link
+          {/* <Link
             href="/about-us"
             className="px-6 py-2 border-2 border-twine-100  capitalize hover:bg-twine-100 hover:text-gray-800 flex hover:gap-1 items-end transition-all duration-300">
+            Descover more
+          </Link> */}
+          <Link
+            href="/about-us"
+            className="btn btn-md hover:bg-twine-100 hover:text-gray-800">
             Descover more
           </Link>
         </div>

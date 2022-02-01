@@ -1,4 +1,5 @@
 export default class LocalStorage {
+  static articleLocalStorageKey = "articleData";
   /**
    *
    * @param {string} dataName

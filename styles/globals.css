@@ -2,7 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .padding-sm {
+    @apply px-4 py-1;
+  }
+  .padding-md {
+    @apply px-6 py-2;
+  }
+}
+
 @layer components {
+  .btn {
+    @apply capitalize font-medium border-2 rounded-sm transition-all duration-500;
+  }
+  .btn-sm {
+    @apply px-4 py-1;
+  }
+  .btn-md {
+    @apply px-6 py-2;
+  }
+
   .hover--btn {
     position: relative;
   }
