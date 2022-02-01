@@ -33,7 +33,7 @@ const DesktopNav = ({ showNav }) => {
       <div className="flex-1"></div>
       {/* links */}
 
-      <ul className=" hidden lg:flex items-center text-white gap-8 mr-4">
+      <ul className=" hidden lg:flex items-center text-white gap-6 ">
         {links.map((link, key) => {
           return (
             <li key={key} className="relative group">
@@ -52,7 +52,7 @@ const DesktopNav = ({ showNav }) => {
 
         <LinkButton
           href="/articles/create"
-          className="btn btn-sm text-white hover:bg-white hover:text-black border-white tracking-wider ">
+          className="btn btn-sm text-white border-white hover:bg-white hover:text-black tracking-wider ">
           create article
         </LinkButton>
       </div>

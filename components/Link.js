@@ -11,7 +11,11 @@ const NavLink = ({ href, handleNavToggle, className, children }) => {
         <a
           onClick={handleNavToggle}
           className={`navlink relative z-10 flex items-center capitalize font-medium tracking-widest opacity-100 ${className} group
-          ${path === href ? "border-b-2 border-twine-600 " : ""} `}>
+          ${
+            path === href
+              ? "bg-twine-900 lg:bg-transparent lg:border-b-2 lg:border-twine-600 "
+              : ""
+          } `}>
           {children}
         </a>
       </NextLink>

@@ -13,10 +13,10 @@
 
 @layer components {
   .btn {
-    @apply capitalize font-medium border-2 rounded-sm transition-all duration-500;
+    @apply capitalize font-medium border-2 rounded-sm tracking-wider transition-all duration-500;
   }
   .btn-sm {
-    @apply px-4 py-1;
+    @apply px-3 md:px-4 py-1;
   }
   .btn-md {
     @apply px-6 py-2;

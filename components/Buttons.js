@@ -30,11 +30,12 @@ const SignButton = () => {
     }
     return signOut();
   };
+
   return (
     <button
       onClick={signHandler}
-      className="font-medium tracking-wider  underline  underline-offset-4">
-      {status === "authenticated" ? "sing Out" : "sign In"}
+      className="font-medium tracking-widest underline underline-offset-4">
+      {status === "authenticated" ? "sign Out" : "sign In"}
     </button>
   );
 };
