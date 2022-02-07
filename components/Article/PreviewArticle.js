@@ -9,7 +9,7 @@ const PreviewArticle = ({ article }) => {
           <Image src={article?.coverImage} alt={article?.title} layout="fill" />
         </section>
       )}
-      <section className="m-auto overflow-auto pt-8 prose prose-slate">
+      <section className="m-auto overflow-auto pt-8 prose prose-base">
         {article.title && <h1 className="">{article?.title}</h1>}
         {article.markdown && (
           <section className="">

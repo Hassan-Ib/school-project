@@ -3,8 +3,9 @@ import catchAsync from "../utils/apiHandler";
 import { getSession } from "next-auth";
 
 export const getAllArticles = catchAsync(async (req, res) => {
-  ArticlesModel.getConsole();
-
+  // ArticlesModel.getConsole();
+  const session = getSession();
+  console.log(session);
   const query = await ArticlesModel.find();
   query.getConsoles();
   return res.status(200).json({
@@ -16,8 +17,7 @@ export const getAllArticles = catchAsync(async (req, res) => {
 export const createArticle = catchAsync(async (req, res) => {
   const { body } = req;
   console.log(body);
-  if (!body || !body.articlesData || !body.articlesData.markdown)
-    throw new Error("Article is required");
+  if (!body?.articlesData?.markdown) throw new Error("Article is required");
 
   // const gitMarkedData = await fetch("https://api.github.com/markdown", {
   //   method: "POST",

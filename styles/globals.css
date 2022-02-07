@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer utilities {
+  .padding-xs {
+    @apply py-1 px-2;
+  }
   .padding-sm {
     @apply px-4 py-1;
   }

@@ -5,35 +5,30 @@ import { NavLink } from "../Link";
 import { RiMenuFoldLine } from "react-icons/ri";
 import Avatar from "../Avatar";
 import { links } from "./navData";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { SignButton, LinkButton } from "../Buttons";
-
 const DesktopNav = ({ showNav }) => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-  console.log("session nav", session);
-
   return (
     <nav
-      className="relative z-40 w-full h-20 left-0 flex items-center p-4 gap-6 bg-birch-500 text-birch-50
+      className="relative z-40 w-full h-20 left-0 flex items-center p-4 gap-3 bg-birch-500 text-birch-50
     ">
       {/* logo */}
-
-      <div className="relative w-16 h-full">
-        <Image
-          src={logo}
-          alt="Faculty of computing and Informatics"
-          width="200"
-          height="200"
-          // layout="fill"
-          priority
-        />
+      <div className="flex items-center gap-2">
+        <div className="relative w-16 h-full">
+          <Image
+            src={logo}
+            alt="Faculty of computing and Informatics"
+            width="200"
+            height="200"
+            // layout="fill"
+            priority
+          />
+        </div>
+        <span className="text-xl font-semibold tracking-widest">FCI</span>
       </div>
       <div className="flex-1"></div>
       {/* links */}
 
-      <ul className=" hidden lg:flex items-center text-white gap-6 ">
+      <ul className=" hidden lg:flex items-center text-white gap-8 ">
         {links.map((link, key) => {
           return (
             <li key={key} className="relative group">
@@ -49,7 +44,6 @@ const DesktopNav = ({ showNav }) => {
       <div className="hidden lg:flex justify-self-end items-center gap-4">
         <SignButton />
         <Avatar size="md" />
-
         <LinkButton
           href="/articles/create"
           className="btn btn-sm text-white border-white hover:bg-white hover:text-black tracking-wider ">

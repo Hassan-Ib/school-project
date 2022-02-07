@@ -6,10 +6,8 @@ import PropType from "prop-types";
 import { links } from "./navData";
 import SocialLinks from "../SocialLinks";
 import { SignButton, LinkButton } from "../Buttons";
-import { useRouter } from "next/router";
 
 const MobileNav = ({ closeNav, isNavToggled }) => {
-  const router = useRouter();
   return (
     <nav
       className={`lg:hidden fixed z-50 h-screen w-full top-0 left-0 overflow-hidden text-white transition duration-75 ease-out
@@ -34,13 +32,13 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
 
         {/* navigation links */}
 
-        <ul className="text-white pt-6 font-medium tracking-widest capitalize">
+        <ul className="text-white pt-12 tracking-widest capitalize">
           {links.map((link, key) => {
             return (
               <li key={key} onClick={closeNav}>
                 <NavLink
                   href={link.href}
-                  className="p-3 hover:bg-twine-900 mb-1">
+                  className="p-3 hover:bg-twine-900 hover:bg-opacity-70 mb-1">
                   {link.text}
                 </NavLink>
               </li>
@@ -48,8 +46,8 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
           })}
         </ul>
 
-        <div className="flex-1 ">
-          <div className="flex items-center gap-4 px-1 pt-8">
+        <div className="flex-1 pt-12">
+          <div className="flex items-center gap-4 px-1">
             <SignButton />
             <LinkButton
               href="/articles/create"

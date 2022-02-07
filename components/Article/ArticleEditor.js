@@ -62,7 +62,7 @@ const EditArticleForm = forwardRef((props, ref) => {
   };
 
   // set article title
-  const setTitle = () => {
+  const setTitle = (titleRef) => {
     const title = titleRef.current.value;
     setArticleData((prevState) => {
       return { ...prevState, title };

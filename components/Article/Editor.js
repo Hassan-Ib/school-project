@@ -36,15 +36,7 @@ const Editor = forwardRef(({ editorState, onEditorStateChange }, ref) => {
   const editorModules = {
     toolbar: [
       [{ header: [1, 2, , 3, 4, 5, 6, false] }],
-      [
-        "bold",
-        "italic",
-        "underline",
-        //   "strike",
-        "blockquote",
-        "code",
-        "code-block",
-      ],
+      ["bold", "italic", "underline", "blockquote", "code-block"],
       [{ align: [] }],
       [
         { list: "ordered" },
@@ -66,7 +58,7 @@ const Editor = forwardRef(({ editorState, onEditorStateChange }, ref) => {
       theme="snow"
       value={editorState}
       onChange={onEditorStateChange}
-      className="flex-1 "
+      className=" text-2xl normal-case"
       modules={editorModules}
       formats={editorFormats}
     />

@@ -34,8 +34,8 @@ const SignButton = () => {
   return (
     <button
       onClick={signHandler}
-      className="font-medium tracking-widest underline underline-offset-4">
-      {status === "authenticated" ? "sign Out" : "sign In"}
+      className="padding-sm rounded-sm hover:underline hover:bg-twine-500 hover:bg-opacity-70">
+      {status === "authenticated" ? "Log out" : "Log in"}
     </button>
   );
 };
