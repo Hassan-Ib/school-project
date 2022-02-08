@@ -58,7 +58,7 @@ const Editor = forwardRef(({ editorState, onEditorStateChange }, ref) => {
       theme="snow"
       value={editorState}
       onChange={onEditorStateChange}
-      className=" text-2xl normal-case"
+      className="normal-case overflow-auto"
       modules={editorModules}
       formats={editorFormats}
     />

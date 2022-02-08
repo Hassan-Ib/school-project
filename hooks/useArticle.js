@@ -3,24 +3,12 @@ import LocalStorage from "../../utils/localStorage";
 import { uploadImage } from "../utils/uploadImage";
 
 export const useArticle = () => {
-  const [articleData, setArticleData] = useState({
-    title: "",
-    coverImage: null,
-    markdown: "",
-  });
   const [articleTitle, setArticleTitle] = useState("");
   const [articleCoverImage, setArticleCoverImage] = useState(null);
   const [articleBody, setArticleBody] = useState("");
 
-  const titleRef = useRef(null);
-  const coverImageRef = useRef(null);
-  let editorRef = useRef(null);
-  console.log("editorRef", editorRef);
-
   const onEditorStateChange = (editorState) => {
-    setArticleData((prevState) => {
-      return { ...prevState, markdown: editorState };
-    });
+    setArticleBody(editorState);
   };
 
   // uplaod cover image handler

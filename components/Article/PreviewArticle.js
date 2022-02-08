@@ -3,23 +3,25 @@ import Image from "next/image";
 
 const PreviewArticle = ({ article }) => {
   return (
-    <div className="bg-white overflow-auto max-w-3xl flex-1">
-      {article.coverImage && (
+    <div className="bg-white overflow-auto flex-1">
+      {article.coverImage ? (
         <section className="relative h-96 overflow-hidden">
           <Image src={article?.coverImage} alt={article?.title} layout="fill" />
         </section>
-      )}
-      <section className="m-auto overflow-auto pt-8 prose prose-base">
-        {article.title && <h1 className="">{article?.title}</h1>}
-        {article.markdown && (
+      ) : null}
+      <section className="m-auto overflow-auto pt-8 prose prose-slate">
+        {article.title ? (
+          <h1 className="capitalize">{article?.title}</h1>
+        ) : null}
+        {article.markdown ? (
           <section className="">
             {/* <p className="">Read in 4 minutes</p> */}
-            <section
+            <article
               className=""
               dangerouslySetInnerHTML={{ __html: article?.markdown }}
             />
           </section>
-        )}
+        ) : null}
       </section>
     </div>
   );

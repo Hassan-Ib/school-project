@@ -6,6 +6,7 @@ export {
   ArticleEditor,
   PreviewArticle,
   ArticleCard,
+  TipTapEditor,
 } from "./Article";
 export { default as Card } from "./IntroCard";
 export { default as Footer } from "./Footer";

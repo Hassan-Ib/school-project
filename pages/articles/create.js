@@ -49,9 +49,9 @@ const CreateArticle = () => {
   if (status === "authenticated") {
     return (
       <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
-        <div className="capitalize px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">
+        <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">
           {/*--- header ---*/}
-          <section className="flex pt-4 pb-2">
+          <section className="flex pt-4 pb-2 capitalize">
             <p className="flex-1 font-semibold">create article</p>
             <div className="flex gap-4 capitalize">
               <button

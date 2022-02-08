@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, forwardRef, useMemo } from "react";
 import LocalStorage from "../../utils/localStorage";
 import Image from "next/image";
 import Editor from "./Editor";
+import TipTapEditor from "./TipTapEditor";
 
 const EditArticleForm = forwardRef((props, ref) => {
   // const [] = useState();
@@ -144,6 +145,7 @@ const EditArticleForm = forwardRef((props, ref) => {
         />
 
         {/* --- article body ---*/}
+        <TipTapEditor />
         <Editor
           ref={editorRef}
           onEditorStateChange={onEditorStateChange}

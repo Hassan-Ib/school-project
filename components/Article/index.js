@@ -15,4 +15,5 @@ const ArticleSection = ({ articles }) => {
 export default ArticleSection;
 export { ArticleCard };
 export { default as ArticleEditor } from "./ArticleEditor";
+export { default as TipTapEditor } from "./TipTapEditor";
 export { default as PreviewArticle } from "./PreviewArticle";
