@@ -32,7 +32,7 @@ const editorFormats = [
   "code-block",
 ];
 
-const Editor = forwardRef(({ editorState, onEditorStateChange }, ref) => {
+const Editor = forwardRef(({ editorState, setArticleData }, ref) => {
   const editorModules = {
     toolbar: [
       [{ header: [1, 2, , 3, 4, 5, 6, false] }],
@@ -52,6 +52,12 @@ const Editor = forwardRef(({ editorState, onEditorStateChange }, ref) => {
     // },
   };
 
+  const onEditorStateChange = (editorState) => {
+    setArticleData((prevState) => {
+      return { ...prevState, body: editorState };
+    });
+  };
+
   return (
     <ReactQuill
       forwardedRef={ref}
@@ -64,5 +70,6 @@ const Editor = forwardRef(({ editorState, onEditorStateChange }, ref) => {
     />
   );
 });
+
 Editor.displayName = "Editor";
 export default Editor;

@@ -30,6 +30,7 @@ const Card = () => {
           layout="fill"
           objectFit="cover"
           objectPosition="bottom"
+          placeholder="blur"
         />
       </div>
     </section>

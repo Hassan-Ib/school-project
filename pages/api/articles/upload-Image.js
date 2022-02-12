@@ -14,7 +14,11 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       try {
-        const response = await cloudinary.v2.uploader.upload(body.imageUrl);
+        if (!body || !body.imageUrl)
+          throw new Error("image must be provided for uploaded");
+        const response = await cloudinary.v2.uploader.upload(body.imageUrl, {
+          upload_preset: "article_img",
+        });
         console.log("server response", response);
         const { public_id, width, height, format, bytes, url } = response;
         const imageData = {
@@ -33,6 +37,7 @@ export default async function handler(req, res) {
         console.log("server error", error);
         res.status(400).json({
           success: false,
+          data: null,
           error,
         });
       }

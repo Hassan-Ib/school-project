@@ -16,9 +16,10 @@ export const getAllArticles = catchAsync(async (req, res) => {
 
 export const createArticle = catchAsync(async (req, res) => {
   const { body } = req;
-  console.log(body);
+
   if (!body?.articlesData?.markdown) throw new Error("Article is required");
 
+  console.log(body);
   // const gitMarkedData = await fetch("https://api.github.com/markdown", {
   //   method: "POST",
   //   headers: {

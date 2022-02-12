@@ -6,15 +6,8 @@ import { useSession, signIn } from "next-auth/react";
 
 const CreateArticle = () => {
   const [previewState, setPreview] = useState(false);
-  const [article, setArticle] = useState({
-    coverImage: "",
-    title: "",
-    markdown: "",
-  });
 
-  const { data: session, status } = useSession();
-  console.log("status", status);
-  console.log("session", session);
+  const { status } = useSession();
 
   const formRef = useRef(null);
 
@@ -45,69 +38,65 @@ const CreateArticle = () => {
       </div>
     );
   }
+  if (status !== "authenticated") {
+    signIn();
+    return null;
+  }
 
-  if (status === "authenticated") {
-    return (
-      <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
-        <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">
-          {/*--- header ---*/}
-          <section className="flex pt-4 pb-2 capitalize">
-            <p className="flex-1 font-semibold">create article</p>
-            <div className="flex gap-4 capitalize">
-              <button
-                className={`relative z-10 border-b-2 border-blue-800 border-opacity-0 capitalize py-1 transition-all duration-300 hover:before:absolute hover:before:-z-10 hover:before:bg-blue-300 hover:before:bg-opacity-30 hover:before:w-full hover:before:h-[95%] hover:before:transform hover:before:scale-x-150
+  return (
+    <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
+      <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">
+        {/*--- header ---*/}
+        <section className="flex pt-4 pb-2 capitalize">
+          <p className="flex-1 font-semibold">create article</p>
+          <div className="flex gap-4 capitalize">
+            <button
+              className={`relative z-10 border-b-2 border-blue-800 border-opacity-0 capitalize py-1 transition-all duration-300 hover:before:absolute hover:before:-z-10 hover:before:bg-blue-300 hover:before:bg-opacity-30 hover:before:w-full hover:before:h-[95%] hover:before:transform hover:before:scale-x-150
                     ${
                       !previewState &&
-                      "font-semibold border-opacity-100 hover:before:border-b-2 hover:before:border-blue-800 "
+                      "font-semibold border-opacity-100 hover:before:border-b-2 hover:before:border-blue-800"
                     }`}
-                onClick={() => {
-                  setPreview(false);
-                }}>
-                edit
-              </button>
-              <button
-                className={`relative z-10 border-b-2 border-blue-800 border-opacity-0 capitalize py-1 transition-all duration-300 hover:before:absolute hover:before:-z-10 hover:before:bg-blue-300 hover:before:bg-opacity-30 hover:before:w-full hover:before:h-[95%] hover:before:transform hover:before:scale-x-125
+              onClick={() => {
+                setPreview(false);
+              }}>
+              edit
+            </button>
+            <button
+              className={`relative z-10 border-b-2 border-blue-800 border-opacity-0 capitalize py-1 transition-all duration-300 hover:before:absolute hover:before:-z-10 hover:before:bg-blue-300 hover:before:bg-opacity-30 hover:before:w-full hover:before:h-[95%] hover:before:transform hover:before:scale-x-125
                   ${
                     previewState &&
                     "font-semibold border-opacity-100 hover:before:border-b-2 hover:before:border-blue-800 "
                   }`}
-                onClick={() => {
-                  setPreview(true);
-                  const article = LocalStorage.getLocalData("articleData");
-                  setArticle(article);
-                }}>
-                {" "}
-                preview
-              </button>
-            </div>
-          </section>
-
-          {/*--- form ---*/}
-          {!previewState ? (
-            <ArticleEditor ref={formRef} />
-          ) : (
-            <PreviewArticle article={article} />
-          )}
-          {/*--- foootet ---*/}
-          <footer className=" flex flex-wrap gap-3 md:gap-4 py-2 md:py-8 text-sm md:text-base md:tracking-wide">
-            <button
-              onClick={publishArticle}
-              className="bg-blue-700 text-white font-semibold capitalize px-4 py-2 rounded">
-              publish
-            </button>
-            <button className="bg-gray-300 tracking-wide font-semibold capitalize px-4 py-2 rounded">
+              onClick={() => {
+                setPreview(true);
+              }}>
               {" "}
-              save draft{" "}
+              preview
             </button>
-            <button className="revert underline"> Revert new changes </button>
-            {/* hint goes below */}
-          </footer>
-        </div>
-      </main>
-    );
-  }
-  signIn();
-  return null;
+          </div>
+        </section>
+
+        {/*--- form ---*/}
+
+        {!previewState ? <ArticleEditor ref={formRef} /> : <PreviewArticle />}
+
+        {/*--- foootet ---*/}
+        <footer className=" flex flex-wrap gap-3 md:gap-4 py-2 md:py-8 text-sm md:text-base md:tracking-wide">
+          <button
+            onClick={publishArticle}
+            className="bg-blue-700 text-white font-semibold capitalize px-4 py-2 rounded">
+            publish
+          </button>
+          <button className="bg-gray-300 tracking-wide font-semibold capitalize px-4 py-2 rounded">
+            {" "}
+            save draft{" "}
+          </button>
+          <button className="revert underline"> Revert new changes </button>
+          {/* hint goes below */}
+        </footer>
+      </div>
+    </main>
+  );
 };
 
 export default CreateArticle;
