@@ -8,6 +8,7 @@ export const useArticle = () => {
   const [article, setArticle] = useState(
     () => LocalStorage.getLocalData("articleData") ?? intialData
   );
+  const [coverImageLoading, setCoverImageLoading] = useState(false);
 
   const setArticleTitle = (e) => {
     setArticle((prevState) => ({ ...prevState, title: e.target.value }));
@@ -18,18 +19,22 @@ export const useArticle = () => {
   };
 
   const setCoverImage = (e) => {
+    setCoverImageLoading(true);
     const { files } = e.target;
     const reader = new FileReader();
     reader.addEventListener("load", async () => {
       const blobUrl = reader.result;
       try {
-        const cloudinaryImageUrl = await uploadImage(blobUrl);
+        const { data } = await uploadImage(blobUrl);
+        console.log(data.imageData.url);
         setArticle((prevState) => ({
           ...prevState,
-          coverImage: cloudinaryImageUrl,
+          coverImage: data.imageData,
         }));
+        setCoverImageLoading(false);
       } catch (error) {
         console.log(error.message);
+        setCoverImageLoading(false);
       }
     });
     reader.readAsDataURL(files[0]);
@@ -38,23 +43,17 @@ export const useArticle = () => {
   // remove cover image handler
   const removeCoverImage = (e) => {
     e.target.value = null;
-    setArticleData((prevState) => {
+    setArticle((prevState) => {
       return { ...prevState, coverImage: null };
     });
   };
-
-  // useEffect(() => {
-  //   // titleRef.current.focus();
-  //   const data = LocalStorage.getLocalData("articleData") || intialData;
-  //   // if (!data) return;
-  //   setArticle(data);
-  // }, []);
 
   useEffect(() => {
     LocalStorage.setLocalData("articleData", article);
   }, [article]);
 
   return {
+    coverImageLoading,
     article,
     setArticleTitle,
     setCoverImage,

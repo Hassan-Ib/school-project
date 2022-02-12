@@ -1,27 +1,50 @@
 import React, { useState, useRef, useEffect, forwardRef, useMemo } from "react";
-import LocalStorage from "../../utils/localStorage";
 import Image from "next/image";
-import Editor from "./Editor";
 import TipTapEditor from "./TipTapEditor";
 import { useArticle } from "../../hooks/useArticle";
+import spinner from "../../public/svg/spinner.gif";
 
 const EditArticleForm = forwardRef((_, ref) => {
-  const { article, setArticleBody, setArticleTitle, setCoverImage } =
-    useArticle();
+  const {
+    article,
+    coverImageLoading,
+    setArticleBody,
+    setArticleTitle,
+    setCoverImage,
+    removeCoverImage,
+  } = useArticle();
 
   return (
     <section className="flex flex-1 overflow-hidden relative border border-blue-700">
       <form
         ref={ref}
         id="createArticleFrom"
-        onClick={(e) => e.preventDefault()}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
         className="h-full shadow-inner bg-white px-2 pt-6 md:px-6 md:pt-8 pb-4 rounded w-full flex flex-col">
         {/*--- cover image ---*/}
 
-        <div className="relative flex items-center gap-4 mb-4 ">
+        <div className="relative flex flex-col md:flex-row items-center gap-4 mb-4 ">
           {article?.coverImage ? (
             <div className="relative w-60 h-32 inline-block overflow-hidden rounded-md">
-              <Image src={article.coverImage} alt="hello" layout="fill" />
+              <Image
+                src={article.coverImage.url}
+                height={article.coverImage.height}
+                width={article.coverImage.width}
+                alt="hello"
+                // layout="fill"
+              />
+            </div>
+          ) : null}
+          {coverImageLoading ? (
+            <div>
+              <Image
+                src={spinner}
+                height="100px"
+                width="100px"
+                alt="image loading spinner"
+              />
             </div>
           ) : null}
           <label

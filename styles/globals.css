@@ -64,5 +64,5 @@
   pointer-events: none;
 }
 .editor-menu-container button {
-  @apply text-sm md:text-xl px-2 capitalize border-2 border-slate-700 rounded-md;
+  @apply text-sm md:text-base xl:text-lg px-2 capitalize border-2 border-slate-700 rounded-md;
 }

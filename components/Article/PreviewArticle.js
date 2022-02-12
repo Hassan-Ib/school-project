@@ -5,13 +5,15 @@ import { useArticle } from "../../hooks/useArticle";
 const PreviewArticle = () => {
   const { article } = useArticle();
 
-  console.log("PREVIEW", article.body);
-
   return (
     <div className="bg-white overflow-auto flex-1">
       {article.coverImage ? (
         <section className="relative h-96 overflow-hidden">
-          <Image src={article?.coverImage} alt={article?.title} layout="fill" />
+          <Image
+            src={article?.coverImage.url}
+            alt={article?.title}
+            layout="fill"
+          />
         </section>
       ) : null}
       <section className="m-auto overflow-auto pt-8 prose prose-sm sm:prose lg:prose-lg ">

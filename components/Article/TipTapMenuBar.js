@@ -92,23 +92,31 @@ const menuBarNode = [
       file.type = "file";
       file.accept = "image/*";
       file.click();
-      let selectedImageFile = file.files ? file.files[0] : null;
-      if (!selectedImageFile) return null;
-      const fileReader = new FileReader();
-      fileReader.addEventListener("load", async () => {
-        const blobUrl = reader.result;
-        try {
-          const cloudinaryImageUrl = await uploadImage(blobUrl);
-          console.log(cloudinaryImageUrl);
-          // if (cloudinaryImageUrl) {
-          //   editor.chain().focus().setImage({ src: url }).run()
-          // }
-        } catch (error) {
-          console.log(error.message);
-          alert(error.message);
-        }
+      file.addEventListener("change", async () => {
+        let selectedImageFile = file.files ? file.files[0] : null;
+        if (!selectedImageFile) return null;
+        const fileReader = new FileReader();
+        fileReader.addEventListener("load", async () => {
+          const blobUrl = fileReader.result;
+          try {
+            const res = await uploadImage(blobUrl);
+            console.log(res);
+            const {
+              data: {
+                imageData: { url },
+              },
+            } = res;
+            if (url) {
+              console.log("url", url);
+              editor.chain().focus().setImage({ src: url }).run();
+            }
+          } catch (error) {
+            console.log(error.message);
+            alert(error.message);
+          }
+        });
+        fileReader.readAsDataURL(selectedImageFile);
       });
-      fileReader.readAsDataURL(selectedImageFile);
     },
     icon: <BiImage />,
   },

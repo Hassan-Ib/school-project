@@ -2,6 +2,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import MenuBar from "./TipTapMenuBar";
 import Placeholder from "@tiptap/extension-placeholder";
+import Image from "@tiptap/extension-image";
 
 const Tiptap = ({ articleBody, setArticleBody }) => {
   console.log("TIPTAP RERENDERS");
@@ -12,6 +13,7 @@ const Tiptap = ({ articleBody, setArticleBody }) => {
       Placeholder.configure({
         placeholder: " Write your engaging article here ...",
       }),
+      Image,
     ],
     content: articleBody,
     editorProps: {

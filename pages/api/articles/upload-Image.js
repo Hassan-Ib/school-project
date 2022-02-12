@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         if (!body || !body.imageUrl)
           throw new Error("image must be provided for uploaded");
         const response = await cloudinary.v2.uploader.upload(body.imageUrl, {
-          upload_preset: "article_img",
+          upload_preset: "articles_img",
         });
         console.log("server response", response);
         const { public_id, width, height, format, bytes, url } = response;
