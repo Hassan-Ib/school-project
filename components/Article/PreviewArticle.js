@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import LocalStorage from "../../utils/localStorage";
-import { useArticle } from "../../hooks/useArticle";
+import { useCreateArticle } from "../../hooks/useCreateArticle";
 const PreviewArticle = () => {
-  const { article } = useArticle();
-
+  const { article } = useCreateArticle();
+  // console.log("previewRender");
   return (
     <div className="bg-white overflow-auto flex-1">
       {article.coverImage ? (

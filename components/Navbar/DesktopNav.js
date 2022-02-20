@@ -5,7 +5,7 @@ import { NavLink } from "../Link";
 import { RiMenuFoldLine } from "react-icons/ri";
 import Avatar from "../Avatar";
 import { links } from "./navData";
-import { SignButton, LinkButton } from "../Buttons";
+import { SignButton, CreateArticleButton } from "../Buttons";
 const DesktopNav = ({ showNav }) => {
   return (
     <nav
@@ -44,11 +44,9 @@ const DesktopNav = ({ showNav }) => {
       <div className="hidden lg:flex justify-self-end items-center gap-4">
         <SignButton />
         <Avatar size="md" />
-        <LinkButton
-          href="/articles/create"
-          className="btn btn-sm text-white border-white hover:bg-white hover:text-black tracking-wider ">
+        <CreateArticleButton className="btn btn-sm text-white border-white hover:bg-white hover:text-black tracking-wider ">
           create article
-        </LinkButton>
+        </CreateArticleButton>
       </div>
       <button
         className="flex items-center font-medium px-4 py-1 rounded-sm capitalize border-2 border-white hover:bg-white hover:text-black tracking-wider transition gap-2 lg:hidden justify-self-end"

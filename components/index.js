@@ -16,3 +16,4 @@ export { default as Header } from "./Header";
 export { LinkButton } from "./Buttons";
 export { getLayoutWithNavAndFooter, getLayout } from "./Layout";
 export { EventList } from "./EventComponent";
+export { default as Laoder } from "./Loader";

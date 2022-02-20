@@ -1,13 +1,13 @@
 import ArticlesModel from "../models/ArticleModel";
 import catchAsync from "../utils/apiHandler";
-import { getSession } from "next-auth";
+// import { getToken } from "next-auth/jwt";
 
 export const getAllArticles = catchAsync(async (req, res) => {
-  // ArticlesModel.getConsole();
-  const session = getSession();
-  console.log(session);
+  const { headers, cookies } = req;
+  console.log("header", headers);
+  console.log("cookies", cookies);
   const query = await ArticlesModel.find();
-  query.getConsoles();
+
   return res.status(200).json({
     success: true,
     data: query,

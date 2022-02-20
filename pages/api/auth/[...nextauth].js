@@ -12,24 +12,22 @@ const options = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const { matricNo } = credentials;
-        console.log(matricNo);
+        const { matricNo, password } = credentials;
+        console.log(matricNo, password);
 
         try {
           await DBConnect();
           const user = await UserModel.findOne({ matricNo: Number(matricNo) });
-          const userInfo = {
-            name: user.name,
-            email: user.matricNo,
-            image: user.password,
-          };
           console.log(user);
           const userExist = user ? true : false;
 
           if (userExist) {
             // Any object returned will be saved in `user` property of the JWT
-            // req.body.user = user;
-            return userInfo;
+            req.body.user = user;
+            return {
+              name: user.name,
+              email: user.matricNo,
+            };
           } else {
             // If you return null or false then the credentials will be rejected
             // return false;
@@ -45,6 +43,7 @@ const options = {
   ],
   session: {
     strategy: "jwt",
+    maxAge: 20 * 1,
   },
   secret: process.env.JWT_SECRET,
   // secret: "nextauthjssecretformyjsonwebtokenimplementation",

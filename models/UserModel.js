@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcryptjs");
+const util = require("util");
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
@@ -20,6 +21,17 @@ const UserSchema = new Schema({
   },
 
   articles: [String],
+});
+
+UserSchema.pre("save", async function (next) {
+  // if password is not modified or save for the first time return from function
+  if (!this.isModified("password")) return;
+
+  // if password is being modified
+  this.password = await bcrypt.hash(this.password, 12);
+  console.log(password);
+
+  next();
 });
 
 // UserSchema.pre("save", function (next) {

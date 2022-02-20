@@ -1,13 +1,25 @@
-import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { ArticleEditor, PreviewArticle } from "../../components";
+import { useState, useRef, Suspense } from "react";
+import { ArticleEditor, Loader } from "../../components";
 import LocalStorage from "../../utils/localStorage";
+import dynamic from "next/dynamic";
 import { useSession, signIn } from "next-auth/react";
 
-const CreateArticle = () => {
-  const [previewState, setPreview] = useState(false);
+const DynamicPreviewArticle = dynamic(
+  () => import("../../components/Article/PreviewArticle"),
+  {
+    suspence: true,
+  }
+);
 
-  const { status } = useSession();
+const CreateArticle = () => {
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated: () => {
+      signIn();
+    },
+  });
+
+  const [previewState, setPreview] = useState(false);
 
   const formRef = useRef(null);
 
@@ -38,11 +50,6 @@ const CreateArticle = () => {
       </div>
     );
   }
-  if (status !== "authenticated") {
-    signIn();
-    return null;
-  }
-
   return (
     <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
       <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">
@@ -70,7 +77,6 @@ const CreateArticle = () => {
               onClick={() => {
                 setPreview(true);
               }}>
-              {" "}
               preview
             </button>
           </div>
@@ -78,7 +84,13 @@ const CreateArticle = () => {
 
         {/*--- form ---*/}
 
-        {!previewState ? <ArticleEditor ref={formRef} /> : <PreviewArticle />}
+        {!previewState ? (
+          <ArticleEditor ref={formRef} />
+        ) : (
+          <Suspense fallback={<Loader />}>
+            <DynamicPreviewArticle />
+          </Suspense>
+        )}
 
         {/*--- foootet ---*/}
         <footer className=" flex flex-wrap gap-3 md:gap-4 py-2 md:py-8 text-sm md:text-base md:tracking-wide">

@@ -3,7 +3,7 @@ import cloudinary from "cloudinary";
 
 export default async function handler(req, res) {
   const { method, body } = req;
-  console.log(body.imageUrl ? true : false);
+  console.log("body", body.imageUrl ? true : false);
 
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -34,10 +34,11 @@ export default async function handler(req, res) {
           data: { imageData },
         });
       } catch (error) {
-        console.log("server error", error);
+        // console.log("server error", error);
         res.status(400).json({
           success: false,
           data: null,
+          message: error.message,
           error,
         });
       }

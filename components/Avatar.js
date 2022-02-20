@@ -12,17 +12,28 @@ const sizeToTailwind = {
 const Avatar = ({ size }) => {
   const { data: session, status } = useSession();
   const isAuthenticated = status === "authenticated" ? true : false;
+  if (isAuthenticated) {
+    const [firstName, lastName] = session?.user?.name
+      .split(" ")
+      .map((el) => el.split("")[0].toUpperCase());
+    console.log(firstName, lastName);
 
-  return isAuthenticated ? (
-    <Link href="/dashboard" className="flex items-center gap-1">
-      <BsFillPersonFill
-        className={`border-2 border-twine-500 text-${sizeToTailwind[size]}   text-white bg-twine-500 p-1`}
-      />
-      <span className="text-xs">
-        welcome, <br /> {session?.user?.name}
-      </span>
-    </Link>
-  ) : null;
+    return (
+      <Link
+        href="/dashboard"
+        className="flex items-center justify-center gap-2">
+        <div className="rounded-full bg-twine-500 px-2 p-1 font-bold">
+          {firstName}
+          {lastName}
+        </div>
+        <span className="text-xs">
+          welcome, <br /> {session?.user?.name}
+        </span>
+      </Link>
+    );
+  }
+
+  return null;
 };
 
 Avatar.defaultProps = {

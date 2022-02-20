@@ -1,5 +1,4 @@
 import { articles } from "../utils/articleData";
-import cardImage from "../public/img/christina.jpg";
 import DBConnect from "../utils/DBConnection";
 import { default as ArticlesModel } from "../models/ArticleModel";
 import {

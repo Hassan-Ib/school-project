@@ -4,11 +4,13 @@ import { uploadImage } from "../utils/uploadImage";
 
 const intialData = { title: "", coverImage: null, body: "hello hassan" };
 
-export const useArticle = () => {
+export const useCreateArticle = () => {
   const [article, setArticle] = useState(
     () => LocalStorage.getLocalData("articleData") ?? intialData
   );
   const [coverImageLoading, setCoverImageLoading] = useState(false);
+
+  const [error, setError] = useState(null);
 
   const setArticleTitle = (e) => {
     setArticle((prevState) => ({ ...prevState, title: e.target.value }));
@@ -34,6 +36,8 @@ export const useArticle = () => {
         setCoverImageLoading(false);
       } catch (error) {
         console.log(error.message);
+        setError(error.message);
+        setArticle((prevState) => ({ ...prevState, coverImage: false }));
         setCoverImageLoading(false);
       }
     });
@@ -53,6 +57,8 @@ export const useArticle = () => {
   }, [article]);
 
   return {
+    error,
+    setError,
     coverImageLoading,
     article,
     setArticleTitle,

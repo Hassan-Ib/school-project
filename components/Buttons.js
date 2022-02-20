@@ -11,6 +11,20 @@ const LinkButton = ({ children, className, href }) => {
   );
 };
 
+const CreateArticleButton = ({ className, children }) => {
+  const router = useRouter();
+
+  const clickHandler = () => {
+    router.push("/articles/create");
+  };
+
+  return (
+    <button onClick={clickHandler} className={className}>
+      {children}
+    </button>
+  );
+};
+
 LinkButton.defaultProps = {
   className: "",
 };
@@ -34,10 +48,10 @@ const SignButton = () => {
   return (
     <button
       onClick={signHandler}
-      className="padding-sm rounded-sm hover:underline hover:bg-twine-500 hover:bg-opacity-70">
+      className="btn-sm  rounded-sm hover:underline bg-twine-500 tracking-wider">
       {status === "authenticated" ? "Log out" : "Log in"}
     </button>
   );
 };
 
-export { LinkButton, SignButton };
+export { LinkButton, SignButton, CreateArticleButton };

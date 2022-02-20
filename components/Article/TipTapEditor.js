@@ -19,16 +19,17 @@ const Tiptap = ({ articleBody, setArticleBody }) => {
     editorProps: {
       attributes: {
         class:
-          "prose prose-sm prose-slate sm:prose lg:prose-lg xl:prose-2xl focus:outline-none h-full ",
+          "prose prose-sm prose-slate sm:prose lg:prose-lg xl:prose-2xl focus:outline-none h-full min-w-full",
       },
     },
     onUpdate: ({ editor }) => {
+      console.log("updated");
       setArticleBody(editor.getHTML());
     },
   });
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden border-2 border-slate-600">
+    <div className="flex-1 flex flex-col overflow-hidden border-2 border-slate-600 ">
       <MenuBar editor={editor} />
       <EditorContent
         className="flex-1 overflow-hidden overflow-y-auto p-2"

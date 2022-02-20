@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect, forwardRef, useMemo } from "react";
+import React, { forwardRef } from "react";
 import Image from "next/image";
 import TipTapEditor from "./TipTapEditor";
-import { useArticle } from "../../hooks/useArticle";
+import { useCreateArticle } from "../../hooks/useCreateArticle";
 import spinner from "../../public/svg/spinner.gif";
 
 const EditArticleForm = forwardRef((_, ref) => {
@@ -12,7 +12,9 @@ const EditArticleForm = forwardRef((_, ref) => {
     setArticleTitle,
     setCoverImage,
     removeCoverImage,
-  } = useArticle();
+  } = useCreateArticle();
+
+  // console.log("article editor commit");
 
   return (
     <section className="flex flex-1 overflow-hidden relative border border-blue-700">
@@ -25,15 +27,14 @@ const EditArticleForm = forwardRef((_, ref) => {
         className="h-full shadow-inner bg-white px-2 pt-6 md:px-6 md:pt-8 pb-4 rounded w-full flex flex-col">
         {/*--- cover image ---*/}
 
-        <div className="relative flex flex-col md:flex-row items-center gap-4 mb-4 ">
+        <div className="relative flex flex-col md:flex-row md:items-center gap-4 mb-4 ">
           {article?.coverImage ? (
             <div className="relative w-60 h-32 inline-block overflow-hidden rounded-md">
               <Image
                 src={article.coverImage.url}
                 height={article.coverImage.height}
                 width={article.coverImage.width}
-                alt="hello"
-                // layout="fill"
+                alt="cover image"
               />
             </div>
           ) : null}
@@ -41,8 +42,8 @@ const EditArticleForm = forwardRef((_, ref) => {
             <div>
               <Image
                 src={spinner}
-                height="100px"
-                width="100px"
+                height="50px"
+                width="50px"
                 alt="image loading spinner"
               />
             </div>

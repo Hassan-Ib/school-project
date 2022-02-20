@@ -5,7 +5,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import PropType from "prop-types";
 import { links } from "./navData";
 import SocialLinks from "../SocialLinks";
-import { SignButton, LinkButton } from "../Buttons";
+import { SignButton, CreateArticleButton } from "../Buttons";
 
 const MobileNav = ({ closeNav, isNavToggled }) => {
   return (
@@ -49,11 +49,9 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
         <div className="flex-1 pt-12">
           <div className="flex items-center gap-4 px-1">
             <SignButton />
-            <LinkButton
-              href="/articles/create"
-              className="text-white btn btn-sm hover:bg-white hover:text-black border-white tracking-wider ">
+            <CreateArticleButton className="text-white btn btn-sm hover:bg-white hover:text-black border-white tracking-wider ">
               create article
-            </LinkButton>
+            </CreateArticleButton>
           </div>
         </div>
 
