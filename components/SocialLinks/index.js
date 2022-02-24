@@ -1,6 +1,6 @@
 import React from "react";
-import { socialLink } from "../utils/links";
-import { Link } from "./Link";
+import { socialLink } from "./links";
+import { Link } from "../Link";
 import PropType from "prop-types";
 const SocialLinks = ({ color, className, size }) => {
   return (

@@ -5,7 +5,7 @@ import H2 from "./Typograhpy/H2";
 import { LinkButton } from "./Buttons";
 const LatestArticle = ({ title, body, image, Id }) => {
   return (
-    <article className="m-auto md:grid md:grid-cols-2 my-16 w-11/12">
+    <article className="m-auto md:grid md:grid-cols-2 my-12 w-11/12">
       <div className=" h-80 md:h-full relative">
         <Image
           src={`/img/${image}`}

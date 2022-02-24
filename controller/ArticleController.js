@@ -1,11 +1,15 @@
 import ArticlesModel from "../models/ArticleModel";
-import catchAsync from "../utils/apiHandler";
+import catchAsync from "../utils/catchAsync";
 // import { getToken } from "next-auth/jwt";
+// import querystring from "querystring";
+import { URLSearchParams } from "url";
 
 export const getAllArticles = catchAsync(async (req, res) => {
-  const { headers, cookies } = req;
-  console.log("header", headers);
-  console.log("cookies", cookies);
+  // 1 - check for queries [limit, page, sort, field]
+
+  const params = new URLSearchParams(req.url);
+  console.log("params", params);
+
   const query = await ArticlesModel.find();
 
   return res.status(200).json({
@@ -42,9 +46,11 @@ export const updateArticle = catchAsync(async (req, res) => {
   } = req;
   const doc = await ArticlesModel.getByIdAndUpdate(id, body);
   if (!doc) {
-    throw new Error(`No article of id ${id} found`);
+    const error = new Error(`No article of id ${id} found`);
+    error.statusCode = 401;
+    throw error;
   }
-  await doc.save();
+  // await doc.save();
   return res.status(201).json({
     success: true,
     data: doc,
@@ -52,6 +58,8 @@ export const updateArticle = catchAsync(async (req, res) => {
 });
 
 export const getArticle = catchAsync(async (req, res) => {
+  const paramsObj = req.query;
+  console.log("query ", paramsObj);
   const {
     query: { id },
   } = req;

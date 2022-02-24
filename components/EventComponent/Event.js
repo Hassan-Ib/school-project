@@ -6,7 +6,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 
 const Event = () => {
   return (
-    <section className="flex flex-col items-center hover:border">
+    <section className="flex flex-col items-center md:flex-row md:items-auto md:justify-center gap-6  cursor-text">
       <div className=" w-36 h-36 bg-twine-500 text-twine-500 text-center  mb-5">
         <div className=" m-auto w-3/4 bg-white h-5/6">
           <h1 className=" font-extrabold text-5xl">08</h1>

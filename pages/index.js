@@ -18,35 +18,44 @@ const Homepage = function ({ articles, events }) {
       <HeadMeta />
       <Header />
       <main>
-        <Card />
-        <LatestArticle {...articles[0]} />
-        <h3 className="text-2xl text-center font-semibold my-12 ">
-          <span className="inline-block border-b-4 border-birch-600 pb-2">
-            Latest From the Faculty
-          </span>
-        </h3>
-        <section className="my-2 px-4 md:px-6  relative before:absolute before:inset-0 before:h-full before:w-1 before:bg-birch-500 before:-ml-4">
-          <p className="text-xl font-semibold mb-6 ">
-            {" "}
-            <span className="inline-block border-b-2 border-birch-500">
-              Articles
-            </span>
-          </p>
-          <div className="flex items-center justify-center md:max-w-">
-            <Articles articles={articles} />
-          </div>
-          <p className="text-xl font-semibold mb-6">
-            <span className="inline-block border-b-2 border-birch-500">
-              Events
-            </span>
-          </p>
-          <EventList events={events} />
+        <section aria-label="introduction cards" className="py-10 ">
+          <Card />
+          <LatestArticle {...articles[0]} />
+        </section>
 
-          <div className="flex justify-end mt-8">
+        <section aria-label="latest from the faculty">
+          <h2 className="text-2xl text-center font-semibold py-10 ">
+            <span className="inline-block border-b-4 border-birch-600 pb-2">
+              Latest From the Faculty
+            </span>
+          </h2>
+          <section
+            aria-label="article section"
+            className="my-2 px-4 md:px-6 py-10  ">
+            <h3 className="text-xl font-semibold mb-6 ">
+              {" "}
+              <span className="inline-block border-b-2 border-birch-500">
+                Articles
+              </span>
+            </h3>
+
+            <Articles articles={articles} />
+          </section>
+          <section
+            aria-label="article section"
+            className="my-2 px-4 md:px-6 py-10 ">
+            <h3 className="text-xl font-semibold mb-6">
+              <span className="inline-block border-b-2 border-birch-500">
+                Events
+              </span>
+            </h3>
+            <EventList events={events} />
+          </section>
+          <div className="flex justify-end mt-8 py-10">
             <LinkButton
               href="/articles"
               className="btn btn-sm bg-birch-500 text-white hover:bg-birch-400">
-              view more
+              view faculty&apos;s latests
             </LinkButton>
           </div>
         </section>

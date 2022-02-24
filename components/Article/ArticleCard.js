@@ -7,9 +7,9 @@ import PropType from "prop-types";
 const Article = ({ Id, title, body, image }) => {
   // console.log(props);
   return (
-    <Link href={"/articles/" + Id} className=" shadow mx-auto">
-      <article className="border-2  border-black rounded-lg overflow-hidden">
-        <div className="relative block h-72 w-full border-b-2 border-black">
+    <Link href={"/articles/" + Id} className=" shadow-lg mx-auto">
+      <article className=" rounded-lg overflow-hidden">
+        <div className="relative block h-72 w-full ">
           <Image
             src={`/img/${image}`}
             layout="fill"
