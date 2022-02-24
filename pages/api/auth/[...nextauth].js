@@ -2,6 +2,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 import DBConnect from "../../../utils/DBConnection";
 import UserModel from "../../../models/UserModel";
+import AppError from "../../../utils/appError";
+import { login } from "../../../controller/authController";
 
 const options = {
   providers: [
@@ -17,24 +19,14 @@ const options = {
 
         try {
           await DBConnect();
-          const user = await UserModel.findOne({ matricNo: Number(matricNo) });
-          console.log(user);
-          const userExist = user ? true : false;
+          const user = await login(credentials);
+          // const user = await UserModel.findOne({ matricNo });
 
-          if (userExist) {
-            // Any object returned will be saved in `user` property of the JWT
-            req.body.user = user;
-            return {
-              name: user.name,
-              email: user.matricNo,
-            };
-          } else {
-            // If you return null or false then the credentials will be rejected
-            // return false;
-            // You can also Reject this callback with an Error or with a URL:
-            throw new Error("error message"); // Redirect to error page
-            // throw '/path/to/redirect'        // Redirect to a URL
-          }
+          return {
+            name: user.name,
+            email: user.matricNo,
+            matricNo: user.matricNo,
+          };
         } catch (error) {
           console.log(error);
         }
@@ -43,9 +35,17 @@ const options = {
   ],
   session: {
     strategy: "jwt",
-    maxAge: 20 * 1,
+    maxAge: 60 * 60,
   },
   secret: process.env.JWT_SECRET,
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user?.matricNo) {
+        token.matricNo = user.matricNo;
+      }
+      return token;
+    },
+  },
   // secret: "nextauthjssecretformyjsonwebtokenimplementation",
 };
 

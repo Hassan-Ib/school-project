@@ -1,20 +1,26 @@
 import ArticlesModel from "../models/ArticleModel";
 import catchAsync from "../utils/catchAsync";
+import { protect } from "./authController";
 // import { getToken } from "next-auth/jwt";
 // import querystring from "querystring";
-import { URLSearchParams } from "url";
 
 export const getAllArticles = catchAsync(async (req, res) => {
-  // 1 - check for queries [limit, page, sort, field]
+  // TODO - Get all articles
+  // [x] 1 - get queries from user
+  // [ ] 2 - parse queries [limit, page, sort, field]
+  // [ ] 3 - query database for data
+  // [ ] 4 - respond to client with data
+  // !user respond to user with bad Request 400
 
-  const params = new URLSearchParams(req.url);
-  console.log("params", params);
+  await protect(req);
 
-  const query = await ArticlesModel.find();
+  const { query } = req;
+
+  const queryData = await ArticlesModel.find();
 
   return res.status(200).json({
     success: true,
-    data: query,
+    data: queryData,
   });
 });
 
