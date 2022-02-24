@@ -40,7 +40,7 @@ const options = {
   secret: process.env.JWT_SECRET,
   callbacks: {
     async jwt({ token, user }) {
-      if (user?.matricNo) {
+      if (user && user?.matricNo) {
         token.matricNo = user.matricNo;
       }
       return token;

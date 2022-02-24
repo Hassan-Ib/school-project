@@ -12,15 +12,31 @@ export const getAllArticles = catchAsync(async (req, res) => {
   // [ ] 4 - respond to client with data
   // !user respond to user with bad Request 400
 
-  await protect(req);
+  // await protect(req);
+  // console.log(req.query);
 
-  const { query } = req;
+  let queryStr = JSON.stringify(req.query);
+
+  console.log(queryStr);
+
+  const regex = /\[(gt|gte|lt|lte)\]":"\w*"/g;
+
+  // console.log("stringify test", JSON.stringify({ age: { gte: 20 } }));
+  console.log("regex ", queryStr.match(regex));
+
+  queryStr = queryStr.replace(regex, (match) => `":{"$${match}}`);
+  queryStr = queryStr.replace(/[\[\]]/g, "");
+
+  console.log(queryStr);
+
+  // console.log("query from the back ", quer);
 
   const queryData = await ArticlesModel.find();
 
   return res.status(200).json({
     success: true,
     data: queryData,
+    queryStr: JSON.parse(queryStr),
   });
 });
 

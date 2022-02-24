@@ -13,10 +13,14 @@ const NavLink = ({ href, handleNavToggle, className, children }) => {
           className={`navlink relative z-10 font-medium flex items-center capitalize tracking-widest opacity-100 ${className} group
           ${
             path === href
-              ? "bg-twine-900 lg:bg-transparent lg:border-b-2 lg:border-twine-600 "
+              ? // ? "bg-twine-900 lg:bg-transparent lg:border-b-2 lg:border-twine-600 "
+                "bg-twine-900 lg:bg-transparent "
               : ""
           } `}>
           {children}
+          {path === href ? (
+            <span className="hidden lg:block absolute w-[20px] h-[10px]  bg-white -bottom-8 left-1/2 right-1/2 -translate-x-1/2 " />
+          ) : null}
         </a>
       </NextLink>
     </>

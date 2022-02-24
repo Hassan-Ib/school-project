@@ -58,9 +58,6 @@ module.exports = {
       backgroundImage: {
         "hero-banner": "url('/img/hero-bg.jpg')",
       },
-      transitionProperty: {
-        maxHeight: "max-height",
-      },
     },
   },
 };

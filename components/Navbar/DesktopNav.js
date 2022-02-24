@@ -28,14 +28,15 @@ const DesktopNav = ({ showNav }) => {
       <div className="flex-1"></div>
       {/* links */}
 
-      <ul className=" hidden lg:flex items-center text-white gap-8 ">
+      <ul className=" hidden lg:flex items-center text-white gap-6 ">
         {links.map((link, key) => {
           return (
-            <li key={key} className="relative group">
+            <li
+              key={key}
+              className="relative group hover:bg-birch-700 py-1 px-2">
               <NavLink className=" " href={link.href}>
                 {link.text}
               </NavLink>
-              <span className="absolute w-full h-[2px] bg-white left-0 -bottom-1 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100 group-hover:origin-left" />
             </li>
           );
         })}
