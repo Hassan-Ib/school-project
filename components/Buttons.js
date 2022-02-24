@@ -48,7 +48,7 @@ const SignButton = () => {
   return (
     <button
       onClick={signHandler}
-      className="btn-sm  rounded-sm hover:underline bg-twine-500 tracking-wider">
+      className="btn-sm  rounded-sm hover:underline bg-twine-700 tracking-wider">
       {status === "authenticated" ? "Log out" : "Log in"}
     </button>
   );

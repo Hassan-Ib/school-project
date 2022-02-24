@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import logo from "./../../public/img/LAUTECH-Logo.png";
-import { NavLink } from "../Link";
+import NavLinkList from "./NavLinkList";
 import { RiMenuFoldLine } from "react-icons/ri";
 import Avatar from "../Avatar";
-import { links } from "./navData";
 import { SignButton, CreateArticleButton } from "../Buttons";
+
 const DesktopNav = ({ showNav }) => {
   return (
     <nav
@@ -27,21 +27,7 @@ const DesktopNav = ({ showNav }) => {
       </div>
       <div className="flex-1"></div>
       {/* links */}
-
-      <ul className=" hidden lg:flex items-center text-white gap-6 ">
-        {links.map((link, key) => {
-          return (
-            <li
-              key={key}
-              className="relative group hover:bg-birch-700 py-1 px-2">
-              <NavLink className=" " href={link.href}>
-                {link.text}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
-
+      <NavLinkList />
       <div className="hidden lg:flex justify-self-end items-center gap-4">
         <SignButton />
         <Avatar size="md" />

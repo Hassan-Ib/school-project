@@ -18,9 +18,6 @@ const NavLink = ({ href, handleNavToggle, className, children }) => {
               : ""
           } `}>
           {children}
-          {path === href ? (
-            <span className="hidden lg:block absolute w-[20px] h-[10px]  bg-white -bottom-8 left-1/2 right-1/2 -translate-x-1/2 " />
-          ) : null}
         </a>
       </NextLink>
     </>
