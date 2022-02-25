@@ -1,6 +1,6 @@
 import ArticlesModel from "../models/ArticleModel";
 import catchAsync from "../utils/catchAsync";
-import { protect } from "./authController";
+// import { protect } from "./authController";
 // import { getToken } from "next-auth/jwt";
 // import querystring from "querystring";
 
@@ -14,29 +14,65 @@ export const getAllArticles = catchAsync(async (req, res) => {
 
   // await protect(req);
   // console.log(req.query);
+  const { numericFields, limit, page, sort, fields, title } = req.query;
 
-  let queryStr = JSON.stringify(req.query);
+  let queryObj = { ...req.query };
 
-  console.log(queryStr);
+  const sepcialQuerys = ["limit", "page", "sort", "fields", "numericFields"];
 
-  const regex = /\[(gt|gte|lt|lte)\]":"\w*"/g;
+  sepcialQuerys.forEach((el) => delete queryObj[el]);
 
-  // console.log("stringify test", JSON.stringify({ age: { gte: 20 } }));
-  console.log("regex ", queryStr.match(regex));
+  console.log("queryObj", queryObj);
 
-  queryStr = queryStr.replace(regex, (match) => `":{"$${match}}`);
-  queryStr = queryStr.replace(/[\[\]]/g, "");
+  if (title) {
+    queryObj.title = { $regex: title, $options: "i" };
+  }
+  let queryResult = ArticlesModel.find(queryObj);
 
-  console.log(queryStr);
+  if (numericFields) {
+    const operatorMap = {
+      "<": "lt",
+      "<=": "lte",
+      ">": "gt",
+      ">=": "gte",
+    };
 
-  // console.log("query from the back ", quer);
+    let fields = numericFields
+      .replace(/\b(<|>=|>|<=)\b/g, (match) => `--$${operatorMap[match]}--`)
+      .split(",");
 
-  const queryData = await ArticlesModel.find();
+    fields.forEach((el) => {
+      let [key, operator, value] = el.split("--"); // createAt, <=, "value"
+      queryObj[key] = { [operator]: value };
+    });
+    console.log("numeric fields ", fields, " queryObj ", queryObj);
 
+    queryResult.find(queryObj);
+  }
+
+  if (sort) {
+    const sortStr = sort.split(",").join(" ");
+    queryResult.sort(sortStr);
+  } else {
+    queryResult.sort("createdAt");
+  }
+
+  if (fields) {
+    const fieldsStr = fields.split(",").join(" ");
+    queryResult.select(fieldsStr);
+  }
+
+  if (limit || page) {
+    const limitNum = Number(limit) ?? 10;
+    const pageNum = Number(page) ?? 1;
+    const skip = (pageNum - 1) * limitNum;
+    queryResult.skip(skip).limit(limitNum);
+  }
+
+  const data = await queryResult;
   return res.status(200).json({
     success: true,
-    data: queryData,
-    queryStr: JSON.parse(queryStr),
+    data,
   });
 });
 
@@ -95,4 +131,4 @@ export const getArticle = catchAsync(async (req, res) => {
   });
 });
 
-const uploadImage = catchAsync(async (req, res) => {});
+export const uploadImage = catchAsync(async (req, res) => {});

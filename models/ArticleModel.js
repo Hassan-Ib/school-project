@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import slugify from "slugify";
-import sanitizeHtml from "sanitize-html";
+const mongoose = require("mongoose");
+const slugify = require("slugify");
+const sanitizeHtml = require("sanitize-html");
 
 const { Schema } = mongoose;
 
@@ -12,7 +12,7 @@ const ArticleSchema = new Schema({
   },
   bodyChunk: {
     type: String,
-    required: [true, "An Article must have Description"],
+    // required: [true, "An Article must have body"],
     trim: true,
   },
   authorId: {
@@ -21,11 +21,11 @@ const ArticleSchema = new Schema({
   },
   body: {
     type: String,
-    required: [true, "An article must have markdown"],
+    required: [true, "An article must have a body"],
     trim: true,
   },
   slug: { type: String, unique: true },
-  coverImage: [String],
+  coverImage: String,
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -37,7 +37,9 @@ ArticleSchema.pre("save", function (next) {
   this.slug = slugify(this.title, { trim: true, lower: true });
   next();
 });
+
 ArticleSchema.pre("save", function (next) {
+  this.bodyChunk = this.body.slice(0, 200);
   next();
 });
 
@@ -72,4 +74,4 @@ ArticleSchema.pre("save", function (next) {
 const Articles =
   mongoose.models.Article || mongoose.model("Article", ArticleSchema);
 
-export default Articles;
+module.exports = Articles;

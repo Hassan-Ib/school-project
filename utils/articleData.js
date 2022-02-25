@@ -1,4 +1,4 @@
-exports.articles = [
+const articles = [
   {
     Id: 1,
     author: "Hassan Ibrahim",
@@ -50,3 +50,5 @@ exports.articles = [
     image: "jeswin-thomas.jpg",
   },
 ];
+
+module.exports = { articles };
