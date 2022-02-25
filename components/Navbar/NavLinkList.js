@@ -6,7 +6,7 @@ function NavLinkList() {
   const { asPath: path } = useRouter();
 
   return (
-    <ul className=" hidden lg:flex items-center text-white gap-6 ">
+    <ul className=" hidden lg:flex items-center text-white gap-4 ">
       {links.map((link, key) => {
         return (
           <li key={key} className="relative group hover:bg-birch-700 py-1 px-2">

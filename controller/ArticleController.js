@@ -5,15 +5,6 @@ import catchAsync from "../utils/catchAsync";
 // import querystring from "querystring";
 
 export const getAllArticles = catchAsync(async (req, res) => {
-  // TODO - Get all articles
-  // [x] 1 - get queries from user
-  // [ ] 2 - parse queries [limit, page, sort, field]
-  // [ ] 3 - query database for data
-  // [ ] 4 - respond to client with data
-  // !user respond to user with bad Request 400
-
-  // await protect(req);
-  // console.log(req.query);
   const { numericFields, limit, page, sort, fields, title } = req.query;
 
   let queryObj = { ...req.query };
@@ -45,7 +36,7 @@ export const getAllArticles = catchAsync(async (req, res) => {
       let [key, operator, value] = el.split("--"); // createAt, <=, "value"
       queryObj[key] = { [operator]: value };
     });
-    console.log("numeric fields ", fields, " queryObj ", queryObj);
+    // console.log("numeric fields ", fields, " queryObj ", queryObj);
 
     queryResult.find(queryObj);
   }

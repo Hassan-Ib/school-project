@@ -5,7 +5,7 @@ import HeroImage from "../public/hero-bg.jpg";
 
 const Header = () => {
   return (
-    <header className="relative my-6 h-hero ">
+    <header className="relative md:mt-2 lg:mt-4 mb-6 h-hero ">
       {/* <div className="absolute bg-blend-overlay h-8 w-full -top-3  z-10 bg-gradient-to-b from-birch-500 to-transparent"></div> */}
       {/* bg image */}
       <div className="absolute top-0 left-0 h-full w-full z-10 bg-birch-500 bg-opacity-80"></div>
