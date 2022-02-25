@@ -10,7 +10,7 @@ import { SignButton, CreateArticleButton } from "../Buttons";
 const MobileNav = ({ closeNav, isNavToggled }) => {
   return (
     <nav
-      className={`lg:hidden fixed z-50 h-screen w-full top-0 left-0 overflow-hidden text-white transition duration-75 ease-out
+      className={`lg:hidden fixed z-50 w-full pb-6 top-0 left-0 bottom-0 overflow-hidden text-white transition duration-75 ease-out
        transform ${!isNavToggled ? "-translate-x-full" : ""}
         `}>
       {/* overlay  */}
