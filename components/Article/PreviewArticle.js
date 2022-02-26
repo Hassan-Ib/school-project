@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import Image from "next/image";
-import LocalStorage from "../../utils/localStorage";
 import { useCreateArticle } from "../../hooks/useCreateArticle";
 const PreviewArticle = () => {
   const { article } = useCreateArticle();
@@ -11,8 +9,10 @@ const PreviewArticle = () => {
         <section className="relative h-96 overflow-hidden">
           <Image
             src={article?.coverImage.url}
+            width={article?.coverImage.width}
+            height={article?.coverImage.height}
             alt={article?.title}
-            layout="fill"
+            // layout="fill"
           />
         </section>
       ) : null}

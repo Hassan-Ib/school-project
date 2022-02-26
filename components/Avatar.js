@@ -1,15 +1,8 @@
 import React from "react";
 import { Link } from "./Link";
-import { BsFillPersonFill } from "react-icons/bs";
-import PropType from "prop-types";
 import { useSession } from "next-auth/react";
-const sizeToTailwind = {
-  sm: "xl",
-  md: "4xl",
-  lg: "5xl",
-};
 
-const Avatar = ({ size }) => {
+const Avatar = () => {
   const { data: session, status } = useSession();
   const isAuthenticated = status === "authenticated" ? true : false;
   if (isAuthenticated) {
@@ -27,7 +20,7 @@ const Avatar = ({ size }) => {
           {lastName}
         </div>
         <span className="text-xs">
-          welcome, <br /> {session?.user?.name}
+          welcome, <br /> {session?.user?.name.split(" ")[0]}
         </span>
       </Link>
     );
@@ -36,10 +29,4 @@ const Avatar = ({ size }) => {
   return null;
 };
 
-Avatar.defaultProps = {
-  size: "sm",
-};
-Avatar.PropType = {
-  size: PropType.oneOf(["sm", "md", "lg"]),
-};
 export default Avatar;

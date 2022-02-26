@@ -14,7 +14,7 @@ function NavLinkList() {
               {link.text}
             </NavLink>
             {path === link.href ? (
-              <span className="hidden cursor-default lg:block absolute w-[20px] h-[12px]  bg-white -bottom-7 left-1/2 right-1/2 -translate-x-1/2 " />
+              <span className="hidden cursor-default lg:block absolute border-l-[15px]  border-r-[15px] border-b-[15px] border-transparent border-b-white -bottom-7 left-1/2 right-1/2 -translate-x-1/2 " />
             ) : null}
           </li>
         );

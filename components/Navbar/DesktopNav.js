@@ -30,7 +30,7 @@ const DesktopNav = ({ showNav }) => {
       <NavLinkList />
       <div className="hidden lg:flex justify-self-end items-center gap-4">
         <SignButton />
-        <Avatar size="md" />
+        <Avatar />
         <CreateArticleButton className="btn btn-sm text-white border-white hover:bg-white hover:text-black tracking-wider ">
           create article
         </CreateArticleButton>

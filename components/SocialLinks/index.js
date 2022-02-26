@@ -8,6 +8,7 @@ const SocialLinks = ({ color, className, size }) => {
       {socialLink.map((link, index) => (
         <li
           key={index}
+          aria-label={link?.label ?? "social link"}
           className={`border border-${color} p-3 rounded-full cursor-pointer`}>
           <Link href={link.href} className={`text-${size}`}>
             {link.icon}

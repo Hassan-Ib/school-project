@@ -10,7 +10,8 @@ import { SignButton, CreateArticleButton } from "../Buttons";
 const MobileNav = ({ closeNav, isNavToggled }) => {
   return (
     <nav
-      className={`lg:hidden fixed z-50 w-full pb-6 top-0 left-0 bottom-0 overflow-hidden text-white transition duration-75 ease-out
+      aria-hidden={!isNavToggled ? true : false}
+      className={`lg:hidden fixed z-50 w-full top-0 left-0 bottom-0 overflow-hidden text-white transition duration-75 ease-out
        transform ${!isNavToggled ? "-translate-x-full" : ""}
         `}>
       {/* overlay  */}
@@ -24,6 +25,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
           {/* logo */}
           <Avatar size="lg" />
           <button
+            aria-label="close navigaition button"
             onClick={closeNav}
             className="flex border-2 border-twine-400 rounded-full p-1 ">
             <VscChromeClose className="text-2xl opacity-90" />
@@ -46,7 +48,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
           })}
         </ul>
 
-        <div className="flex-1 pt-12">
+        <div className="flex-1 pt-8">
           <div className="flex items-center gap-4 px-1">
             <SignButton />
             <CreateArticleButton className="text-white btn btn-sm hover:bg-white hover:text-black border-white tracking-wider ">

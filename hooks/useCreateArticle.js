@@ -28,7 +28,7 @@ export const useCreateArticle = () => {
       const blobUrl = reader.result;
       try {
         const { data } = await uploadImage(blobUrl);
-        console.log(data.imageData.url);
+        console.log(data.imageData.url, data.imageData);
         setArticle((prevState) => ({
           ...prevState,
           coverImage: data.imageData,

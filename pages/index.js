@@ -3,7 +3,7 @@ import DBConnect from "../utils/DBConnection";
 import { default as ArticlesModel } from "../models/ArticleModel";
 import {
   getLayoutWithNavAndFooter,
-  Articles,
+  ArticlesList,
   EventList,
   Card,
   LatestArticle,
@@ -39,7 +39,7 @@ const Homepage = function ({ articles, events }) {
               </span>
             </h3>
 
-            <Articles articles={articles} />
+            <ArticlesList articles={articles} />
           </section>
           <section
             aria-label="article section"

@@ -1,4 +1,4 @@
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef } from "react";
 import { ArticleEditor, Loader } from "../../components";
 import LocalStorage from "../../utils/localStorage";
 import dynamic from "next/dynamic";
@@ -7,7 +7,7 @@ import { useSession, signIn } from "next-auth/react";
 const DynamicPreviewArticle = dynamic(
   () => import("../../components/Article/PreviewArticle"),
   {
-    suspence: true,
+    loading: Loader,
   }
 );
 
@@ -87,9 +87,7 @@ const CreateArticle = () => {
         {!previewState ? (
           <ArticleEditor ref={formRef} />
         ) : (
-          <Suspense fallback={<Loader />}>
-            <DynamicPreviewArticle />
-          </Suspense>
+          <DynamicPreviewArticle />
         )}
 
         {/*--- foootet ---*/}
