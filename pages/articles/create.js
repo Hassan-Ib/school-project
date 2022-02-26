@@ -44,7 +44,7 @@ const CreateArticle = () => {
 
   if (status === "loading") {
     return (
-      <div className="flex w-full h-[100vh] items-center justify-center text-3xl capitalize font-bold">
+      <div className="flex w-full h-screen items-center justify-center text-3xl capitalize font-bold">
         {" "}
         loading...
       </div>
@@ -52,7 +52,7 @@ const CreateArticle = () => {
   }
   return (
     <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
-      <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">
+      <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col">
         {/*--- header ---*/}
         <section className="flex pt-4 pb-2 capitalize">
           <p className="flex-1 font-semibold">create article</p>
@@ -87,6 +87,7 @@ const CreateArticle = () => {
         {!previewState ? (
           <ArticleEditor ref={formRef} />
         ) : (
+          // <p className="flex-1">hello</p>
           <DynamicPreviewArticle />
         )}
 

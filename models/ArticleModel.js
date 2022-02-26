@@ -25,7 +25,11 @@ const ArticleSchema = new Schema({
     trim: true,
   },
   slug: { type: String, unique: true },
-  coverImage: String,
+  coverImage: {
+    url: String,
+    height: Number,
+    width: Number,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -37,7 +41,15 @@ ArticleSchema.pre("save", function (next) {
   this.slug = slugify(this.title, { trim: true, lower: true });
   next();
 });
-
+ArticleSchema.pre("save", function (next) {
+  try {
+    const sanitzedBody = sanitizeHtml(this.body);
+    this.body = sanitzedBody;
+  } catch (error) {
+    throw error;
+  }
+  next();
+});
 ArticleSchema.pre("save", function (next) {
   this.bodyChunk = this.body.slice(0, 200);
   next();

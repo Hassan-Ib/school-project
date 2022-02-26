@@ -148,7 +148,7 @@ const MenuBar = ({ editor }) => {
   }
 
   return (
-    <div className="editor-menu-container p-2 flex gap-1 flex-wrap border-b-2 border-black">
+    <div className="editor-menu-container p-2 flex gap-1 flex-wrap border-b border-black bg-white z-10 sticky top-0 ">
       {menuBarMarks.map((el, index) => (
         <button
           key={index}

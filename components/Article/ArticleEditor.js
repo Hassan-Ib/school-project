@@ -17,17 +17,17 @@ const EditArticleForm = forwardRef((_, ref) => {
   // console.log("article editor commit");
 
   return (
-    <section className="flex flex-1 overflow-hidden relative border border-blue-700">
+    <section className="flex-1 flex overflow-hidden border border-blue-700 ">
       <form
         ref={ref}
         id="createArticleFrom"
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="h-full shadow-inner bg-white px-2 pt-6 md:px-6 md:pt-8 pb-4 rounded w-full flex flex-col">
+        className="relative flex-1 overflow-auto shadow-inner bg-white px-2 pb-4 md:px-6  w-full flex flex-col">
         {/*--- cover image ---*/}
 
-        <div className="relative flex flex-col md:flex-row md:items-center gap-4 mb-4 ">
+        <div className="relative flex flex-col md:flex-row md:items-center gap-4 mb-4 mt-4">
           {article?.coverImage ? (
             <div className="relative w-60 h-32 inline-block overflow-hidden rounded-md">
               <Image
@@ -48,6 +48,9 @@ const EditArticleForm = forwardRef((_, ref) => {
               />
             </div>
           ) : null}
+          {/* <button className="" onClick={setCoverImage}>
+          {article.coverImage ? "Change" : "Add a cover image"}
+          </button> */}
           <label
             className="cursor-pointer border-2 border-gray-400 px-4 py-2 rounded-sm font-medium"
             htmlFor="cover-image-input">
@@ -64,27 +67,36 @@ const EditArticleForm = forwardRef((_, ref) => {
 
           <input
             onChange={setCoverImage}
-            name="cover-image-input"
+            name="cover image input"
             id="cover-image-input"
             type="file"
             accept="image/*"
             className="hidden"
+            aria-hidden="true"
             data-max-file-size-mb="25"
           />
         </div>
 
         {/*--- post title ---*/}
+        <div className="flex flex-col">
+          <textarea
+            autoFocus={true}
+            type="text"
+            onChange={setArticleTitle}
+            name="article title"
+            className="text-3xl h-fit md:text-4xl lg:text-4xl capitalize font-extrabold resize-none outline-none mb-4 border border-black"
+            placeholder="new post title here..."
+            value={article.title}
+          />
+          {/* description */}
 
-        <input
-          autoFocus={true}
-          type="text"
-          onChange={setArticleTitle}
-          name="article title"
-          className=" text-3xl md:text-4xl lg:text-4xl capitalize font-extrabold resize-none outline-none mb-4"
-          placeholder="new post title here..."
-          value={article.title}
-        />
-
+          <textarea
+            type="text"
+            name="article short description"
+            className=" text-xl md:text-2xl  font-bold resize-none outline-none mb-4"
+            placeholder="article short description..."
+          />
+        </div>
         {/* --- article body ---*/}
         <TipTapEditor
           articleBody={article.body}

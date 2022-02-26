@@ -29,12 +29,9 @@ const Tiptap = ({ articleBody, setArticleBody }) => {
   });
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden border-2 border-slate-600 ">
+    <div className="flex-1 border border-slate-600 ">
       <MenuBar editor={editor} />
-      <EditorContent
-        className="flex-1 overflow-hidden overflow-y-auto p-2"
-        editor={editor}
-      />
+      <EditorContent className="p-4 " editor={editor} />
     </div>
   );
 };

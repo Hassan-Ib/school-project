@@ -5,6 +5,7 @@ const globalErrorHandler = (err, res) => {
   console.log("node env", process.env.NODE_ENV);
   console.log("err name", err.name);
   console.log("status code", err.statusCode);
+  console.log(err);
 
   // for dev env
   if (process.env.NODE_ENV === "development") {

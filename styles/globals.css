@@ -64,5 +64,5 @@
   pointer-events: none;
 }
 .editor-menu-container button {
-  @apply xl:text-lg px-2 capitalize border-2 border-slate-700 rounded-md;
+  @apply xl:text-lg px-2 capitalize border border-slate-600 rounded-md;
 }

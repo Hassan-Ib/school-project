@@ -1,5 +1,6 @@
 import ArticlesModel from "../models/ArticleModel";
 import catchAsync from "../utils/catchAsync";
+import AppError from "../utils/appError";
 // import { protect } from "./authController";
 // import { getToken } from "next-auth/jwt";
 // import querystring from "querystring";
@@ -68,11 +69,12 @@ export const getAllArticles = catchAsync(async (req, res) => {
 });
 
 export const createArticle = catchAsync(async (req, res) => {
-  const { body } = req;
+  const { title, coverImage, body } = req.body;
 
-  if (!body?.articlesData?.markdown) throw new Error("Article is required");
+  // if (!body || !title) throw new AppError("article must ha", 400);
 
-  console.log(body);
+  console.log(coverImage);
+
   // const gitMarkedData = await fetch("https://api.github.com/markdown", {
   //   method: "POST",
   //   headers: {
@@ -82,9 +84,11 @@ export const createArticle = catchAsync(async (req, res) => {
   // });
   // console.log(gitMarked);
 
+  const data = await ArticlesModel.create(req.body);
+
   return res.status(201).json({
     success: true,
-    data: htmlText,
+    data,
   });
 });
 
