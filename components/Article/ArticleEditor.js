@@ -52,9 +52,18 @@ const EditArticleForm = forwardRef((_, ref) => {
           {article.coverImage ? "Change" : "Add a cover image"}
           </button> */}
           <label
-            className="cursor-pointer border-2 border-gray-400 px-4 py-2 rounded-sm font-medium"
+            className="relative  bg-white cursor-pointer border-2 border-gray-400 px-4 py-2 rounded-sm font-medium focus-within:border-2 focus-within:border-black"
             htmlFor="cover-image-input">
             {article.coverImage ? "Change" : "Add a cover image"}
+            <input
+              onChange={setCoverImage}
+              name="cover image input"
+              id="cover-image-input"
+              type="file"
+              accept="image/*"
+              className="absolute w-[1px] h-[1px] overflow-hidden p-0 whitespace-nowrap "
+              data-max-file-size-mb="25"
+            />
           </label>
 
           {article.coverImage && (
@@ -64,17 +73,6 @@ const EditArticleForm = forwardRef((_, ref) => {
               remove
             </button>
           )}
-
-          <input
-            onChange={setCoverImage}
-            name="cover image input"
-            id="cover-image-input"
-            type="file"
-            accept="image/*"
-            className="hidden"
-            aria-hidden="true"
-            data-max-file-size-mb="25"
-          />
         </div>
 
         {/*--- post title ---*/}
