@@ -1,0 +1,35 @@
+{
+  "name": "school-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tiptap/extension-image": "^2.0.0-beta.27",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.48",
+    "@tiptap/react": "^2.0.0-beta.108",
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.28.1",
+    "mongoose": "^6.0.7",
+    "next": "11.0.1",
+    "next-auth": "^4.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "sanitize-html": "^2.7.0",
+    "slugify": "^1.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
+    "autoprefixer": "^10.4.1",
+    "eslint": "7.31.0",
+    "eslint-config-next": "11.0.1",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.8"
+  }
+}
