@@ -8,9 +8,7 @@ import { SignButton, CreateArticleButton } from "../Buttons";
 
 const DesktopNav = ({ showNav }) => {
   return (
-    <nav
-      className="relative z-40 w-full h-20 left-0 flex items-center  p-4 gap-3 bg-birch-500 text-birch-50
-    ">
+    <nav className="relative z-40 w-full h-20 left-0 flex items-center  p-4 gap-3 bg-birch-500 text-birch-50">
       {/* logo */}
       <div className="flex items-center gap-2">
         <div className="relative w-16 h-full">

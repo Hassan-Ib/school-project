@@ -51,7 +51,7 @@ const CreateArticle = () => {
     );
   }
   return (
-    <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
+    <main className="absolute inset-0 overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
       <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col">
         {/*--- header ---*/}
         <section className="flex pt-4 pb-2 capitalize">

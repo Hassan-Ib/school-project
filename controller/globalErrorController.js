@@ -5,12 +5,13 @@ const globalErrorHandler = (err, res) => {
   console.log("node env", process.env.NODE_ENV);
   console.log("err name", err.name);
   console.log("status code", err.statusCode);
-  console.log(err);
+  console.log("raw error", err);
 
   // for dev env
   if (process.env.NODE_ENV === "development") {
     return res.status(err.statusCode).json({
       status: err.status,
+      name: err.name,
       message: err.message,
       error: err,
       stack: err.stack,

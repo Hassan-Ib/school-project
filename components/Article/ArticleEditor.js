@@ -12,9 +12,11 @@ const EditArticleForm = forwardRef((_, ref) => {
     setArticleTitle,
     setCoverImage,
     removeCoverImage,
+    // firstArticleBody,
   } = useCreateArticle();
 
   // console.log("article editor commit");
+  console.log("article Editor rerenders");
 
   return (
     <section className="flex-1 flex overflow-hidden border border-blue-700 ">
@@ -48,11 +50,8 @@ const EditArticleForm = forwardRef((_, ref) => {
               />
             </div>
           ) : null}
-          {/* <button className="" onClick={setCoverImage}>
-          {article.coverImage ? "Change" : "Add a cover image"}
-          </button> */}
           <label
-            className="relative bg-white cursor-pointer border-2 border-gray-400 px-4 py-2 rounded-sm font-medium focus-within:border-2 focus-within:border-black"
+            className="relative bg-white text-center cursor-pointer border-2 border-gray-400 px-4 py-2 rounded-sm font-medium focus-within:border-2 focus-within:border-black"
             htmlFor="cover-image-input">
             {article.coverImage ? "Change" : "Add a cover image"}
             <input
@@ -80,16 +79,18 @@ const EditArticleForm = forwardRef((_, ref) => {
           <input
             type="text"
             name="article short description"
-            className=" text-lg font-medium italic tracking-widest outline-none mb-4 bg-slate-100 p-2 shadow-inner"
+            className="font-medium italic tracking-wider outline-none mb-4 bg-slate-100 p-2 shadow-inner"
             placeholder="Add tags  . . ."
+            autoComplete="true"
           />
           <textarea
             // autoFocus={true}
             tabIndex="1"
             type="text"
             onChange={setArticleTitle}
+            // onBlur={setArticleTitle}
             name="article title"
-            className="text-3xl max-h-fit md:text-4xl lg:text-4xl capitalize font-extrabold resize-none outline-none mb-2"
+            className="text-3xl max-h-fit md:text-4xl  font-bold resize-none outline-none mb-2"
             placeholder="new post title here..."
             value={article.title}
           />
@@ -97,7 +98,7 @@ const EditArticleForm = forwardRef((_, ref) => {
         </div>
         {/* --- article body ---*/}
         <TipTapEditor
-          articleBody={article.body}
+          // articleBody={firstArticleBody.body}
           setArticleBody={setArticleBody}
         />
       </form>

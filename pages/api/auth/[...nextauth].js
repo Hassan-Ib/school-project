@@ -1,8 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 import DBConnect from "../../../utils/DBConnection";
-import UserModel from "../../../models/UserModel";
-import AppError from "../../../utils/appError";
 import { login } from "../../../controller/authController";
 
 const options = {
@@ -14,19 +12,10 @@ const options = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const { matricNo, password } = credentials;
-        console.log(matricNo, password);
-
         try {
           await DBConnect();
           const user = await login(credentials);
-          // const user = await UserModel.findOne({ matricNo });
-
-          return {
-            name: user.name,
-            email: user.matricNo,
-            matricNo: user.matricNo,
-          };
+          return user;
         } catch (error) {
           console.log(error);
         }
@@ -38,15 +27,21 @@ const options = {
     maxAge: 60 * 60,
   },
   secret: process.env.JWT_SECRET,
+
   callbacks: {
     async jwt({ token, user }) {
-      if (user && user?.matricNo) {
+      if (user?.matricNo) {
         token.matricNo = user.matricNo;
       }
+
       return token;
     },
+    async session({ session, token }) {
+      // session.image = "name/you";
+      session.user.matricNo = token.matricNo;
+      return session;
+    },
   },
-  // secret: "nextauthjssecretformyjsonwebtokenimplementation",
 };
 
 const auth = (req, res) => NextAuth(req, res, options);

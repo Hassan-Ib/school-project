@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Container({ children, className }) {
   return (
     <div className={className}>
-      <div className="lg:container relative m-auto sm:px-2 ">{children}</div>
+      <div className="xl:container relative m-auto ">{children}</div>
     </div>
   );
 }

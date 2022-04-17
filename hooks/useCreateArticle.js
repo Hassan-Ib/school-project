@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import LocalStorage from "../utils/localStorage";
 import { uploadImage } from "../utils/uploadImage";
 
@@ -65,5 +65,6 @@ export const useCreateArticle = () => {
     setCoverImage,
     setArticleBody,
     removeCoverImage,
+    // firstArticleBody,
   };
 };

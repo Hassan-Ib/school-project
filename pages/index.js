@@ -1,6 +1,7 @@
-import { articles } from "../utils/articleData";
 import DBConnect from "../utils/DBConnection";
 import { default as ArticlesModel } from "../models/ArticleModel";
+import { GrArticle } from "react-icons/gr";
+import { MdEventAvailable } from "react-icons/md";
 import {
   getLayoutWithNavAndFooter,
   ArticlesList,
@@ -13,6 +14,8 @@ import {
 } from "../components";
 
 const Homepage = function ({ articles, events }) {
+  articles = JSON.parse(articles);
+  console.log("rendering home page");
   return (
     <>
       <HeadMeta />
@@ -31,22 +34,22 @@ const Homepage = function ({ articles, events }) {
           </h2>
           <section
             aria-label="article section"
-            className="my-2 px-4 md:px-6 py-10  ">
+            className="my-2 px-4 md:px-6 py-10 ">
             <h3 className="text-xl font-semibold mb-6 ">
-              {" "}
+              <GrArticle />
               <span className="inline-block border-b-2 border-birch-500">
                 Articles
               </span>
             </h3>
 
-            <ArticlesList articles={articles} />
+            <ArticlesList articles={articles.slice(1)} />
           </section>
           <section
             aria-label="article section"
-            className="my-2 px-4 md:px-6 py-10 ">
+            className="my-2 px-4 md:px-6 py-10 relative">
             <h3 className="text-xl font-semibold mb-6">
               <span className="inline-block border-b-2 border-birch-500">
-                Events
+                <MdEventAvailable /> Events
               </span>
             </h3>
             <EventList events={events} />
@@ -71,19 +74,19 @@ Homepage.displayName = "Homepage";
 export default Homepage;
 
 export const getStaticProps = async () => {
-  const fieldQuery = "title description image slug";
+  const fieldQuery = "title coverImage slug createdAt";
   await DBConnect();
-  let query = ArticlesModel.find({}, { _id: 0 }).select(fieldQuery).limit(3);
+  let query = ArticlesModel.find({}, { _id: 0 })
+    .select(fieldQuery)
+    .sort("-createdAt")
+    .limit(4);
   query = await query.lean();
 
-  console.log("query", query);
-
-  const articleData = articles.slice(0, 3);
+  // console.log("db query ", query);
 
   return {
     props: {
-      realArticle: query,
-      articles: articleData,
+      articles: JSON.stringify(query),
       events: [],
     },
   };

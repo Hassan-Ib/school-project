@@ -50,5 +50,16 @@ const articles = [
     image: "jeswin-thomas.jpg",
   },
 ];
+articles.forEach((el, index) => {
+  delete el.likes;
+  delete el.comments;
+  delete el.Id;
+  el.coverImage = { url: el.image };
+  delete el.image;
+  el.createdAt.replace("/", "-");
+  el.authorId = index;
+  delete el.author;
+  el.title = el.title + index;
+});
 
 module.exports = { articles };

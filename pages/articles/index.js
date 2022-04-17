@@ -3,19 +3,31 @@ import { getLayoutWithNavAndFooter, ArticleCard } from "../../components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { articles as articleData } from "../../utils/articleData";
-const Articles = () => {
+import DBConnect from "../../utils/DBConnection";
+import { default as ArticlesModel } from "../../models/ArticleModel";
+
+const Articles = ({ articles }) => {
+  articles = JSON.parse(articles);
+
   return (
     <main className="md:grid md:grid-cols-3">
       {/* side bar */}
       {/* articles container */}
       <section className="flex flex-col gap-16 md:col-start-1 md:col-end-3 py-10 px-6 ">
-        {/* {articleData.map({ Id, image, title }, index)} */}
-        <ArticleCard {...articleData[0]} />
-        <ArticleCard {...articleData[0]} />
-        <ArticleCard {...articleData[0]} />
-        <ArticleCard {...articleData[0]} />
-        <ArticleCard {...articleData[0]} />
+        <ul className="flex flex-col gap-8">
+          {articles.map(({ slug, title, coverImage, createdAt }) => (
+            <li key={slug} className=" shadow-lg max-w-2xl m-auto">
+              <ArticleCard
+                // {...articles}
+                slug={slug}
+                coverImage={coverImage}
+                title={title}
+                createdAt={createdAt}
+              />
+            </li>
+          ))}
+        </ul>
+        {/* <ArticlesList articles={articles} /> */}
       </section>
 
       <section className="py-10 px-6 md:py-10 ">
@@ -73,3 +85,20 @@ const Articles = () => {
 Articles.getLayout = getLayoutWithNavAndFooter;
 
 export default Articles;
+
+export const getStaticProps = async () => {
+  const fieldQuery = "title coverImage slug createdAt";
+  await DBConnect();
+  let query = ArticlesModel.find({}, { _id: 0 })
+    .select(fieldQuery)
+    .sort("-createdAt")
+    .limit(5);
+  query = await query.lean();
+
+  return {
+    props: {
+      articles: JSON.stringify(query),
+      events: [],
+    },
+  };
+};

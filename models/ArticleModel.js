@@ -10,14 +10,10 @@ const ArticleSchema = new Schema({
     required: [true, "An article must have a title"],
     trim: true,
   },
-  bodyChunk: {
-    type: String,
-    // required: [true, "An Article must have body"],
-    trim: true,
-  },
   authorId: {
-    type: String,
-    required: true,
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: [true, "An article must have an author"],
   },
   body: {
     type: String,
@@ -33,7 +29,6 @@ const ArticleSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
-    // select: false,
   },
 });
 
@@ -43,6 +38,7 @@ ArticleSchema.pre("save", function (next) {
 });
 ArticleSchema.pre("save", function (next) {
   try {
+    console.log("sanitizing");
     const sanitzedBody = sanitizeHtml(this.body);
     this.body = sanitzedBody;
   } catch (error) {
@@ -50,12 +46,8 @@ ArticleSchema.pre("save", function (next) {
   }
   next();
 });
-ArticleSchema.pre("save", function (next) {
-  this.bodyChunk = this.body.slice(0, 200);
-  next();
-});
 
-// /**
+////**
 //  *
 //  * @param {string} id mongodb id
 //  * @param {object} ArticleData data from client side

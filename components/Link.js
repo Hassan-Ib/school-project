@@ -10,13 +10,8 @@ const NavLink = ({ href, handleNavToggle, className, children }) => {
       <NextLink href={href} passHref>
         <a
           onClick={handleNavToggle}
-          className={`navlink relative z-10 font-medium flex items-center capitalize tracking-widest opacity-100 ${className} group
-          ${
-            path === href
-              ? // ? "bg-twine-900 lg:bg-transparent lg:border-b-2 lg:border-twine-600 "
-                "bg-twine-900 lg:bg-transparent "
-              : ""
-          } `}>
+          className={`navlink relative z-10 text-sm font-medium flex items-center capitalize tracking-widest opacity-100 ${className} group
+          ${path === href ? "bg-twine-900 lg:bg-transparent " : ""} `}>
           {children}
         </a>
       </NextLink>

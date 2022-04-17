@@ -22,7 +22,7 @@ Loader.defaultProps = {
 };
 
 Loader.propTypes = {
-  size: PropTypes.oneOf(["sm", "mid", "lg"]),
+  size: PropTypes.oneOf(["sm", "md", "lg"]),
 };
 
 export default Loader;

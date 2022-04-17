@@ -3,10 +3,13 @@ import StarterKit from "@tiptap/starter-kit";
 import MenuBar from "./TipTapMenuBar";
 import Placeholder from "@tiptap/extension-placeholder";
 import Image from "@tiptap/extension-image";
+import { useCreateArticle } from "../../hooks/useCreateArticle";
 
-const Tiptap = ({ articleBody, setArticleBody }) => {
+const Tiptap = ({ setArticleBody }) => {
   console.log("TIPTAP RERENDERS");
-
+  const {
+    article: { body },
+  } = useCreateArticle();
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -15,11 +18,11 @@ const Tiptap = ({ articleBody, setArticleBody }) => {
       }),
       Image,
     ],
-    content: articleBody,
+    content: body,
     editorProps: {
       attributes: {
         class:
-          "prose prose-sm prose-slate sm:prose lg:prose-lg xl:prose-2xl focus:outline-none h-full min-w-full",
+          "prose-sm prose-slate sm:prose lg:prose-lg xl:prose-xl focus:outline-none  min-w-full ",
       },
     },
     onUpdate: ({ editor }) => {
@@ -31,7 +34,7 @@ const Tiptap = ({ articleBody, setArticleBody }) => {
   return (
     <div className="flex-1 border border-slate-600 ">
       <MenuBar editor={editor} />
-      <EditorContent className="p-4 " editor={editor} />
+      <EditorContent className="p-4 flex" editor={editor} />
     </div>
   );
 };

@@ -1,22 +1,37 @@
-exports.users = [
+const users = [
   {
     matricNo: 152385,
-    password: "awesome",
-    name: "Hassan Ibrahim",
+    password: "awesome1",
+    name: { first: "Hassan", last: "Ibrahim" },
+    role: "ADMIN",
   },
   {
     matricNo: 152000,
-    password: "awesome",
-    name: "kunle ayotomide",
+    password: "awesome1",
+    name: { first: "kunle", last: "ayotomide" },
   },
   {
     matricNo: 152001,
-    password: "awesome",
-    name: "oriyomide ayodele",
+    password: "awesome1",
+    name: { first: "oriyomide", last: "ayodele" },
   },
   {
     matricNo: 152002,
-    password: "awesome",
-    name: "definet justice",
+    password: "awesome1",
+    name: { first: "define", last: "justice" },
+  },
+  {
+    matricNo: 152003,
+    password: "awesome1",
+    name: { first: "lu", last: "zahou" },
   },
 ];
+
+users.forEach((el) => {
+  el["passwordConfirm"] = "awesome1";
+});
+// console.log(users);
+
+module.exports = {
+  users,
+};

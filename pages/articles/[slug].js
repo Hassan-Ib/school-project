@@ -1,52 +1,37 @@
 import { useRouter } from "next/router";
-// import DBConnect from "../../utils/DBConnection";
-import { articles } from "../../utils/articleData";
-import { FaLinkedinIn } from "react-icons/fa";
-import { AiOutlineTwitter, AiFillFacebook } from "react-icons/ai";
+import DBConnect from "../../utils/DBConnection";
+import { default as ArticlesModel } from "../../models/ArticleModel";
+
+// import { FaLinkedinIn } from "react-icons/fa";
+// import { AiOutlineTwitter, AiFillFacebook } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import Image from "next/image";
-import { getLayout } from "../../components";
+import { getLayout, getLayoutWithNavAndFooter } from "../../components";
 
 const Article = ({ article }) => {
+  article = JSON.parse(article);
+  const { authorId } = article;
+
   const router = useRouter();
-  const {
-    query: { slug },
-  } = router;
-  console.log(article);
+
   return (
-    <main className="px-3 pt-24 pb-10 grid text-blue-800">
-      <section className="text-center max-w-lg m-auto">
-        <h1 className="font-semibold text-4xl md:text-5xl pb-2">
-          {article.title}
-        </h1>
-        <p className="py-2">Read in 4 minutes</p>
-        <p className="py-3 ">{article.body}</p>
-        <div className="flex place-content-center gap-3 py-3">
-          <span className="rounded-full bg-blue-800 text-white p-3 text-lg flex justify-center items-center">
-            <FaLinkedinIn />
-          </span>
-          <span className="rounded-full bg-blue-800 text-white p-3 text-lg flex justify-center items-center">
-            <AiFillFacebook />
-          </span>{" "}
-          <span className="rounded-full bg-blue-800 text-white p-3 text-lg flex justify-center items-center">
-            <AiOutlineTwitter />
-          </span>
-        </div>
-      </section>
-      <section className="relative my-10 h-56 md:h-64 overflow-hidden rounded-md">
-        <Image
-          src={`/img/${article.image}`}
-          alt={article.title}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          // placeholder="blur"
-        />
-      </section>
-      <section className="max-w-2xl m-auto">
-        <div className="md:flex">
-          <p>{article.body}</p>
-        </div>
+    <main className="bg-white my-8 py-4 m-auto prose prose-slate lg:prose-xl pb-6">
+      {article.coverImage ? (
+        <section className="relative h-96 text-center overflow-hidden">
+          <Image
+            src={article?.coverImage.url}
+            width={article?.coverImage.width ?? 700}
+            height={article?.coverImage.height ?? 400}
+            alt={article?.title}
+          />
+        </section>
+      ) : null}
+      <section></section>
+      <section className=" overflow-auto my-20 ">
+        <h1>{article?.title}</h1>
+        <section>
+          <article dangerouslySetInnerHTML={{ __html: article?.body }} />
+        </section>
         <button
           onClick={() => router.back()}
           className="flex items-center border-b border-blue-800 gap-2 text-lg pt-12 py-1">
@@ -62,25 +47,33 @@ Article.getLayout = getLayout;
 
 export default Article;
 
-export const getStaticProps = (context) => {
-  const {
-    params: { slug },
-  } = context;
-  const article = articles.filter((article) => article.Id === Number(slug))[0];
-  return {
-    props: {
-      article,
-    },
-  };
-};
+export const getStaticPaths = async () => {
+  await DBConnect();
+  let articles = ArticlesModel.find();
+  articles = await articles.lean();
 
-export const getStaticPaths = () => {
   let paths = articles.map((article) => ({
-    params: { slug: article.Id.toString() },
+    params: { slug: article.slug },
   }));
-  console.log(paths);
+
   return {
     paths,
     fallback: false,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const { params } = context;
+  await DBConnect();
+  let query = ArticlesModel.findOne({ slug: params.slug })
+    .populate({ path: "authorId", select: "-_id" })
+    .sort("-createdAt")
+    .select("-_id");
+  query = await query.exec();
+  return {
+    props: {
+      article: JSON.stringify(query),
+      events: [],
+    },
   };
 };
