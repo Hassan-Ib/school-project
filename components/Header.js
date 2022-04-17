@@ -5,7 +5,7 @@ import HeroImage from "../public/hero-bg.jpg";
 
 const Header = () => {
   return (
-    <header className="relative mb-4 h-hero ">
+    <header className="relative mb-6 lg:mt-1 h-hero ">
       {/* <div className="absolute bg-blend-overlay h-8 w-full -top-3  z-10 bg-gradient-to-b from-birch-500 to-transparent"></div> */}
       {/* bg image */}
       <div className="absolute top-0 left-0 h-full w-full z-10 bg-birch-500 bg-opacity-80"></div>
@@ -28,9 +28,14 @@ const Header = () => {
           Lorem ipsum dolor sit amet consectetur, adipisicing elit.
         </p>
         <div className="text-lg md:text-xl font-medium ">
-          <Link
-            href="#"
+          {/* <Link
+            href="/about-us"
             className="px-6 py-2 border-2 border-twine-100  capitalize hover:bg-twine-100 hover:text-gray-800 flex hover:gap-1 items-end transition-all duration-300">
+            Descover more
+          </Link> */}
+          <Link
+            href="/about-us"
+            className="btn btn-md hover:bg-twine-100 hover:text-gray-800">
             Descover more
           </Link>
         </div>

@@ -1,14 +1,14 @@
 import React from "react";
-import { socialLink } from "../utils/links";
-import { Link } from "./Link";
+import { socialLink } from "./links";
+import { Link } from "../Link";
 import PropType from "prop-types";
 const SocialLinks = ({ color, className, size }) => {
   return (
-    <ul
-      className={` flex max-w-xs text-${color} mt-10 justify-evenly ${className}`}>
+    <ul className={`text-${color} flex gap-4 ${className}`}>
       {socialLink.map((link, index) => (
         <li
           key={index}
+          aria-label={link?.label ?? "social link"}
           className={`border border-${color} p-3 rounded-full cursor-pointer`}>
           <Link href={link.href} className={`text-${size}`}>
             {link.icon}

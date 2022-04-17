@@ -1,10 +1,9 @@
 // import catchAsync from "../../../utils/apiHandler";
-// const cloudinary = import("cloudinary").v2;
 import cloudinary from "cloudinary";
 
 export default async function handler(req, res) {
   const { method, body } = req;
-  console.log(method, body);
+  console.log("body", body.imageUrl ? true : false);
 
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -15,25 +14,44 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       try {
-        cloudinary.v2.uploader.upload(body);
-
+        if (!body || !body.imageUrl)
+          throw new Error("image must be provided for uploaded");
+        const response = await cloudinary.v2.uploader.upload(body.imageUrl, {
+          upload_preset: "articles_img",
+        });
+        console.log("server response", response);
+        const { public_id, width, height, format, bytes, url } = response;
+        const imageData = {
+          url,
+          public_id,
+          width,
+          height,
+          format,
+          bytes,
+        };
         res.status(201).json({
           success: true,
-          data: { url: "imageurl" },
+          data: { imageData },
         });
       } catch (error) {
-        console.log(error);
+        // console.log("server error", error);
+        res.status(400).json({
+          success: false,
+          data: null,
+          message: error.message,
+          error,
+        });
       }
       break;
     default:
-      res.status(400).json({
+      return res.status(403).json({
         success: false,
-        message: "bad request",
+        message: "POST request only",
       });
   }
 }
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// };

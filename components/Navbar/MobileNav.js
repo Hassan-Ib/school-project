@@ -1,72 +1,46 @@
 import React from "react";
-import { NavLink, Link } from "../Link";
-import { BsFillPersonFill } from "react-icons/bs";
+import { NavLink } from "../Link";
 import Avatar from "../Avatar";
 import { VscChromeClose } from "react-icons/vsc";
 import PropType from "prop-types";
-import { SubNavLinkList, SubNav } from "./NavComponents";
 import { links } from "./navData";
 import SocialLinks from "../SocialLinks";
-// mobile navigation
+import { SignButton, CreateArticleButton } from "../Buttons";
 
 const MobileNav = ({ closeNav, isNavToggled }) => {
   return (
     <nav
-      // ref={navSectionRef}
-      className={`
-      lg:hidden
-      fixed z-50
-      h-screen w-full
-      top-0 left-0
-       overflow-hidden
-       text-white
-       transition duration-75 ease-out
+      aria-hidden={!isNavToggled ? true : false}
+      className={`lg:hidden fixed z-50 w-full top-0 left-0 bottom-0 overflow-hidden text-white transition duration-75 ease-out
        transform ${!isNavToggled ? "-translate-x-full" : ""}
         `}>
       {/* overlay  */}
       <div
         onClick={closeNav}
         className=" cursor-pointer absolute top-0 left-0 h-screen w-full bg-birch-500 bg-opacity-70"></div>
-      <div className="overflow-auto max-w-xs h-full w-3/4 bg-birch-500 relative z-20 pb-8">
-        <section className="flex items-center justify-between p-10">
+      {/* overlay ends */}
+
+      <div className="overflow-auto flex flex-col max-w-xs h-full sm:w-3/4 bg-birch-500 relative z-20 px-6 pb-8">
+        <section className="flex items-center justify-between  pt-10  ">
           {/* logo */}
-
-          {/* <Image
-            src={logo}
-            alt="Faculty of computing and Informatics"
-            width={200}
-            height={200}
-          /> */}
-          <div className="flex items-center gap-4 ">
-            <Avatar size="lg" />
-            <button className="text-white font-medium border-white bg-twine-500 tracking-wider">
-              log in{" "}
-            </button>
-          </div>
-
-          {/* burger */}
-
-          <button onClick={closeNav} className="times">
+          <Avatar size="lg" />
+          <button
+            aria-label="close navigaition button"
+            onClick={closeNav}
+            className="flex border-2 border-twine-400 rounded-full p-1 ">
             <VscChromeClose className="text-2xl opacity-90" />
           </button>
         </section>
 
         {/* navigation links */}
 
-        <ul className="divide-y divide-white divide-opacity-50 text-white px-8 font-medium tracking-widest capitalize">
+        <ul className="text-white pt-12 tracking-widest capitalize">
           {links.map((link, key) => {
-            if (link.sub) {
-              return (
-                <li key={key}>
-                  <SubNav text={link.text} className="py-4">
-                    <SubNavLinkList links={link.sub} />
-                  </SubNav>
-                </li>
-              );
-            }
             return (
-              <li key={key}>
-                <NavLink href={link.href} className="py-4">
+              <li key={key} onClick={closeNav}>
+                <NavLink
+                  href={link.href}
+                  className="p-3 hover:bg-twine-900 hover:bg-opacity-70 mb-1">
                   {link.text}
                 </NavLink>
               </li>
@@ -74,8 +48,16 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
           })}
         </ul>
 
-        {/* social icons */}
+        <div className="flex-1 pt-8">
+          <div className="flex items-center gap-4 px-1">
+            <SignButton />
+            <CreateArticleButton className="text-white btn btn-sm hover:bg-white hover:text-black border-white tracking-wider ">
+              create article
+            </CreateArticleButton>
+          </div>
+        </div>
 
+        {/* social icons */}
         <SocialLinks />
       </div>
     </nav>

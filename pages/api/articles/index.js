@@ -8,10 +8,10 @@ export default withDBConnection(async function handler(req, res) {
   const { method } = req;
   switch (method) {
     case "GET":
-      return getAllArticles(req, res);
+      await getAllArticles(req, res);
       break;
     case "POST":
-      return createArticle(req, res);
+      await createArticle(req, res);
       break;
     default:
       res.status(405).end(`Method ${method} Not Allowed`);

@@ -7,9 +7,9 @@ import PropType from "prop-types";
 const Article = ({ Id, title, body, image }) => {
   // console.log(props);
   return (
-    <Link href={"/articles/" + Id} className=" shadow">
-      <article className="border-2 md:flex lg:block border-black rounded-lg overflow-hidden ">
-        <div className="relative block h-60 md:h-52 md:w-1/2 lg:w-auto">
+    <Link href={"/articles/" + Id} className=" shadow-lg mx-auto">
+      <article className=" rounded-lg overflow-hidden">
+        <div className="relative block h-72 w-full ">
           <Image
             src={`/img/${image}`}
             layout="fill"
@@ -19,7 +19,7 @@ const Article = ({ Id, title, body, image }) => {
             className="hover:transform hover:scale-110 transition-all duration-300"
           />
         </div>
-        <div className=" p-4 md:w-1/2 lg:w-auto">
+        <div className=" p-4  ">
           <div className="flex items-center gap-2 mb-2">
             <div className="relative rounded-full w-8 h-8 border border-black overflow-hidden">
               <Image
@@ -40,9 +40,12 @@ const Article = ({ Id, title, body, image }) => {
               </p>
             </div>
           </div>
-          <h2 className="text-2xl ml-10 font-bold hover:text-blue-800 transition-all duration-150">
-            No way {title}
-          </h2>
+          <div className="ml-10">
+            <h2 className="text-xl sm:text-2xl font-bold hover:text-blue-800 transition-all duration-150">
+              No way {title}
+            </h2>
+            <p className="mt-2 text-sm md:text-base opacity-80">{body} ...</p>
+          </div>
         </div>
       </article>
     </Link>

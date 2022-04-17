@@ -4,7 +4,7 @@ import {
 } from "../../../controller/ArticleController";
 import withDBConnection from "../../../middleware/database";
 
-export default withDBConnection(async (req, res) => {
+export default withDBConnection((req, res) => {
   const { method } = req;
   switch (method) {
     case "GET":

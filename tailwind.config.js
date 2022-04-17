@@ -1,16 +1,11 @@
-const colors = require("tailwindcss/colors");
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  // darkMode: false, // or 'media' or 'class'
   plugins: [require("@tailwindcss/typography")],
   theme: {
     extend: {
-      cursor: {
-        crosshair: "crosshair",
-      },
       height: {
         xl: "450px",
         xxl: "600px",
@@ -18,13 +13,6 @@ module.exports = {
         hero: "80vh",
         nav: "10vh",
       },
-      weight: {
-        screenhalf: "5vw",
-      },
-      backgroundImage: (theme) => ({
-        "hero-banner": "url('/img/hero-bg.jpg')",
-        // "./public/img/icons8-team-FcLyt7lW5wg-unsplash-removebg-preview.png"
-      }),
       colors: {
         twine: {
           50: "#FCFAF7",
@@ -64,16 +52,12 @@ module.exports = {
           900: "#12100C",
         },
       },
-      transitionProperty: {
-        maxHeight: "max-height",
+      weight: {
+        screenhalf: "5vw",
+      },
+      backgroundImage: {
+        "hero-banner": "url('/img/hero-bg.jpg')",
       },
     },
   },
-  // variants: {
-  //   extend: {
-  //     transitionProperty: ["hover", "focus"],
-  //     gap: ["hover"],
-  //     padding: ["hover"],
-  //   },
-  // },
 };

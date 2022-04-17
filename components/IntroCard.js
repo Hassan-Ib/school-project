@@ -17,8 +17,8 @@ const Card = () => {
           Amazing students, making work here more satisfying.
         </Paragraph>
         <LinkButton
-          href="/articles"
-          className="bg-black text-white hover:bg-birch-500  ">
+          href="/about"
+          className="btn btn-sm border-twine-900  text-black hover:text-white hover:bg-twine-900  ">
           read about us
         </LinkButton>
         {/* <div className="absolute right-0  w-6  bg-twine-500 h-full"></div> */}
@@ -30,6 +30,7 @@ const Card = () => {
           layout="fill"
           objectFit="cover"
           objectPosition="bottom"
+          placeholder="blur"
         />
       </div>
     </section>

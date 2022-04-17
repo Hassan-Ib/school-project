@@ -1,12 +1,25 @@
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const LinkButton = ({ children, className, href }) => {
   const router = useRouter();
   return (
-    <button
-      onClick={() => router.push(href)}
-      className={`capitalize px-4 py-1 font-medium border-2  transition-all duration-300 ${className} `}>
+    <button onClick={() => router.push(href)} className={className}>
+      {children}
+    </button>
+  );
+};
+
+const CreateArticleButton = ({ className, children }) => {
+  const router = useRouter();
+
+  const clickHandler = () => {
+    router.push("/articles/create");
+  };
+
+  return (
+    <button onClick={clickHandler} className={className}>
       {children}
     </button>
   );
@@ -22,4 +35,23 @@ LinkButton.propTypes = {
   className: PropTypes.string,
 };
 
-export { LinkButton };
+const SignButton = () => {
+  const { status } = useSession();
+
+  const signHandler = () => {
+    if (status !== "authenticated") {
+      return signIn();
+    }
+    return signOut();
+  };
+
+  return (
+    <button
+      onClick={signHandler}
+      className="btn-sm  rounded-sm hover:underline bg-twine-700 tracking-wider">
+      {status === "authenticated" ? "Log out" : "Log in"}
+    </button>
+  );
+};
+
+export { LinkButton, SignButton, CreateArticleButton };

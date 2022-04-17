@@ -1,39 +1,67 @@
-import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { EditArticleForm, PreviewArticle } from "../../components";
+import { useState, useRef } from "react";
+import { ArticleEditor, Loader } from "../../components";
 import LocalStorage from "../../utils/localStorage";
+import dynamic from "next/dynamic";
+import { useSession, signIn } from "next-auth/react";
+
+const DynamicPreviewArticle = dynamic(
+  () => import("../../components/Article/PreviewArticle"),
+  {
+    loading: Loader,
+  }
+);
 
 const CreateArticle = () => {
-  const [previewState, setPreview] = useState(false);
-  const [article, setArticle] = useState({
-    coverImage: "",
-    title: "",
-    markdown: "",
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated: () => {
+      signIn();
+    },
   });
+
+  const [previewState, setPreview] = useState(false);
 
   const formRef = useRef(null);
 
-  const publishArticle = (e) => {
-    // const formData = new FormData(formRef.current);
-    // console.log("formData", formData);
-    // const formValues = Object.fromEntries(formData.entries());
-    // console.log(formValues);
+  const publishArticle = async (e) => {
+    const articleData = LocalStorage.getLocalData(
+      LocalStorage.articleLocalStorageKey
+    );
+    console.log("local data ", articleData);
+    try {
+      const res = await fetch("/api/articles", {
+        headers: {
+          "Content-type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(articleData),
+      });
+      console.log(res);
+    } catch (error) {
+      console.log("articleFetchError", error);
+    }
   };
 
-  const uploadImage = () => {};
-
+  if (status === "loading") {
+    return (
+      <div className="flex w-full h-screen items-center justify-center text-3xl capitalize font-bold">
+        {" "}
+        loading...
+      </div>
+    );
+  }
   return (
     <main className="h-screen overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
-      <div className="capitalize px-1 w-full lg:w-3/4  lg:px-12 flex flex-col flex-1">
+      <div className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col">
         {/*--- header ---*/}
-        <section className="flex pt-4 pb-2">
+        <section className="flex pt-4 pb-2 capitalize">
           <p className="flex-1 font-semibold">create article</p>
           <div className="flex gap-4 capitalize">
             <button
               className={`relative z-10 border-b-2 border-blue-800 border-opacity-0 capitalize py-1 transition-all duration-300 hover:before:absolute hover:before:-z-10 hover:before:bg-blue-300 hover:before:bg-opacity-30 hover:before:w-full hover:before:h-[95%] hover:before:transform hover:before:scale-x-150
                     ${
                       !previewState &&
-                      "font-semibold border-opacity-100 hover:before:border-b-2 hover:before:border-blue-800 "
+                      "font-semibold border-opacity-100 hover:before:border-b-2 hover:before:border-blue-800"
                     }`}
               onClick={() => {
                 setPreview(false);
@@ -48,21 +76,21 @@ const CreateArticle = () => {
                   }`}
               onClick={() => {
                 setPreview(true);
-                const article = LocalStorage.getLocalData("articleData");
-                setArticle(article);
               }}>
-              {" "}
               preview
             </button>
           </div>
         </section>
 
         {/*--- form ---*/}
+
         {!previewState ? (
-          <EditArticleForm ref={formRef} />
+          <ArticleEditor ref={formRef} />
         ) : (
-          <PreviewArticle article={article} />
+          // <p className="flex-1">hello</p>
+          <DynamicPreviewArticle />
         )}
+
         {/*--- foootet ---*/}
         <footer className=" flex flex-wrap gap-3 md:gap-4 py-2 md:py-8 text-sm md:text-base md:tracking-wide">
           <button

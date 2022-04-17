@@ -2,7 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .padding-xs {
+    @apply py-1 px-2;
+  }
+  .padding-sm {
+    @apply px-4 py-1;
+  }
+  .padding-md {
+    @apply px-6 py-2;
+  }
+  .is-active {
+    @apply bg-slate-800 text-white;
+  }
+}
+
 @layer components {
+  .btn {
+    @apply capitalize font-medium border-2 rounded-sm tracking-wider transition-all duration-500;
+  }
+  .btn-sm {
+    @apply px-3 md:px-4 py-1;
+  }
+  .btn-md {
+    @apply px-6 py-2;
+  }
+
   .hover--btn {
     position: relative;
   }
@@ -29,4 +54,15 @@
   .navlink {
     -webkit-transform-style: preserve-3d;
   }
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.editor-menu-container button {
+  @apply xl:text-lg px-2 capitalize border border-slate-600 rounded-md;
 }

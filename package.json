@@ -9,14 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/extension-image": "^2.0.0-beta.27",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.48",
+    "@tiptap/react": "^2.0.0-beta.108",
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "bcryptjs": "^2.4.3",
     "cloudinary": "^1.28.1",
     "mongoose": "^6.0.7",
     "next": "11.0.1",
+    "next-auth": "^4.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
-    "react-quill": "^2.0.0-beta.4",
     "safe-marked": "^7.0.0",
+    "sanitize-html": "^2.7.0",
     "slugify": "^1.6.0"
   },
   "devDependencies": {
