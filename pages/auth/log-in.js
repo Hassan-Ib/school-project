@@ -1,43 +1,78 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-const LogIn = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = function (data) {
-    console.log(data);
-  };
+import { ImQuotesLeft } from "react-icons/im";
+import { signIn } from "next-auth/react";
+import PasswordInput from "../../components/Inputs/PasswordInput";
+import MatricNoInput from "../../components/Inputs/MatricInput";
 
+const LogIn = () => {
   return (
     <>
-      <form action="" onSubmit={handleSubmit(onSubmit)} className="form">
-        <label htmlFor="matricNo">matric No</label>
-        <input
-          {...register("matricNo", {
-            type: Number,
-            minLength: 6,
-            maxLength: 6,
-            min: 150000,
-            max: 169000,
-            name: "matric number",
-          })}
-          id="matricNo"
-          placeholder={150000}
-        />
-        <label htmlFor="password">password</label>
-        <input
-          type="password"
-          id="password"
-          name="matricNo"
-          placeholder="************"
-        />
-      </form>
-
-      {/* sign up */}
+      <main className="h-screen flex place-content-center place-items-center">
+        <div className="flex shadow-xl w-fit sm:w-full max-w-2xl justify-center rounded-md overflow-hidden">
+          <Banner />
+          <Form />
+        </div>
+      </main>
     </>
   );
 };
 
 export default LogIn;
+
+const SubmitButton = () => {
+  return (
+    <input
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit"
+      value="Get started"
+    />
+  );
+};
+
+const FormHeader = () => {
+  return (
+    <article className="">
+      <h1 className=" text-2xl font-bold">Welcome to FCI</h1>
+
+      <p className="text-xs opacity-60">
+        please provide your matric number and password to continue
+      </p>
+    </article>
+  );
+};
+
+const Banner = () => {
+  return (
+    <article className=" hidden bg-blue-500 sm:block flex-1 text-white px-16 py-10 ">
+      <div className="bg-white p-2 max-w-max rounded-full mb-3 ">
+        <ImQuotesLeft className="text-blue-500" />
+      </div>
+      <h1 className="text-4xl capitalize max-w-[8rem] ">Make a dream.</h1>
+    </article>
+  );
+};
+
+const Form = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async function (data) {
+    const res = await signIn("credentials", { ...data, redirect: false });
+    console.log(res);
+  };
+  console.log(errors);
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="bg-white  rounded px-8 pt-6 pb-8 max-w-xs form flex flex-col gap-6">
+      <FormHeader />
+      <MatricNoInput register={register} errors={errors} />
+      <PasswordInput register={register} errors={errors} />
+      <SubmitButton />
+    </form>
+  );
+};

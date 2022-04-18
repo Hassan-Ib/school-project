@@ -42,6 +42,10 @@ const options = {
       return session;
     },
   },
+  pages: {
+    signin: "/auth/log-in",
+    error: "auth/log-in",
+  },
 };
 
 const auth = (req, res) => NextAuth(req, res, options);
