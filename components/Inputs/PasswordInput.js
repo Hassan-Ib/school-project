@@ -42,12 +42,13 @@ const PasswordInput = ({ register, errors }) => {
           placeholder="Awesomeness"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-        <div
+        <button
+          type="button"
           onClick={showPassword}
           aria-hidden="true"
           className="text-xl opacity-70 cursor-pointer">
           {isVisible ? <FiEye /> : <FiEyeOff />}
-        </div>
+        </button>
       </div>
 
       {errors.password?.message ? (
