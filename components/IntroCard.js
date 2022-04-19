@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Paragraph from "./Typograhpy/Paragraph";
 import H2 from "./Typograhpy/H2";
-import { LinkButton } from "./Buttons";
+import LinkButton from "./Buttons/Link";
 import cardImage2 from "../public/img/leon-wu-LLfRMRT-9AY-unsplash.jpg";
 
 const Card = () => {

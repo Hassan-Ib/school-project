@@ -2,25 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 function Container({ children, className }) {
   return (
-    <div className={className}>
-      <div className="xl:container relative m-auto ">{children}</div>
+    <div className="xl:container relative m-auto ">
+      <section className={className}>{children}</section>
     </div>
   );
 }
-export const Section = ({ className, children }) => {
-  return (
-    <section className={className + " " + "px-6 mb-20"}>{children}</section>
-  );
-};
-Section.defaultProps = {
-  className: "",
-};
+
+// export const Section = ({ className, children }) => {
+//   return (
+//     <section className={className + " " + "px-6 mb-20"}>{children}</section>
+//   );
+// };
+// Section.defaultProps = {
+//   className: "",
+// };
+
 Container.defaultProps = {
   className: "",
 };
 
 Container.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
 

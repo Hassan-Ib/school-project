@@ -15,7 +15,7 @@ const MatricNoInput = ({ register, errors }) => {
           required: "matric enter your matric no",
           defaultValue: "",
         })}
-        // name="matricNo"
+        name="matricNo"
         type="text"
         id="matricNo"
         placeholder={150000}

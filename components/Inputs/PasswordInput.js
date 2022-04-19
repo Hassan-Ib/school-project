@@ -2,8 +2,16 @@ import { useRef, useState } from "react";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 
 const PasswordInput = ({ register, errors }) => {
-  const passwordRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const passwordRef = useRef(null);
+  const { ref, ...rest } = register("password", {
+    required: "please input your password",
+    minLength: {
+      value: 8,
+      message: "password must be at least 8 characters long",
+    },
+    defaultValue: "",
+  });
   const showPassword = () => {
     let input = passwordRef.current;
     if (input?.type === "password") {
@@ -23,18 +31,14 @@ const PasswordInput = ({ register, errors }) => {
       </label>
       <div className="flex items-center w-full gap-2">
         <input
-          {...register("password", {
-            required: "please input your password",
-            minLength: {
-              value: 8,
-              message: "password must be at least 8 characters long",
-            },
-            defaultValue: "",
-          })}
-          //   ref={passwordRef}
+          {...rest}
+          ref={(e) => {
+            ref(e);
+            passwordRef.current = e;
+          }}
           type="password"
           id="password"
-          defaultValue={""}
+          name="password"
           placeholder="Awesomeness"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />

@@ -1,4 +1,4 @@
-export { default as Container, Section } from "./Container";
+export { default as Container } from "./Container";
 export { default as Navbar } from "./Navbar";
 export { default as LatestArticle } from "./LatestArticle";
 export {
@@ -13,7 +13,7 @@ export { default as Footer } from "./Footer";
 export { Link, NavLink } from "./Link";
 export { default as HeadMeta } from "./Meta";
 export { default as Header } from "./Header";
-export { LinkButton } from "./Buttons";
+export { default as LinkButton } from "./Buttons/Link";
 export { getLayoutWithNavAndFooter, getLayout } from "./Layout";
 export { EventList } from "./EventComponent";
 export { default as Loader } from "./Loader";

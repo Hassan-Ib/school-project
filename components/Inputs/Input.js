@@ -8,7 +8,6 @@ const Input = ({ register, registerOption, name, inputOption, errors }) => {
       </label>
       <input
         {...register("password", registerOption)}
-        ref={passwordRef}
         type={name}
         id={name}
         name={name}

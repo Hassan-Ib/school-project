@@ -2,15 +2,20 @@ import { links } from "./navData";
 import { NavLink } from "../Link";
 import { useRouter } from "next/router";
 
-function NavLinkList() {
+function NavLinkList({ closeNav = () => {} }) {
   const { asPath: path } = useRouter();
 
   return (
-    <ul className=" hidden lg:flex items-center text-white gap-4 ">
+    <ul className="text-white pt-12 tracking-widest capitalize lg:pt-0 lg:flex lg:items-center lg:text-white lg:gap-4 ">
       {links.map((link, key) => {
         return (
-          <li key={key} className="relative group hover:bg-birch-700 py-1 px-2">
-            <NavLink className=" " href={link.href}>
+          <li
+            key={key}
+            onClick={() => {
+              closeNav();
+            }}
+            className="relative group hover:bg-twine-700 hover:bg-opacity-70 ">
+            <NavLink className="p-3 mb-1 lg:py-1 lg:px-2" href={link.href}>
               {link.text}
             </NavLink>
             {path === link.href ? (

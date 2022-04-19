@@ -2,7 +2,9 @@ import { useState, useRef } from "react";
 import { ArticleEditor, Loader } from "../../components";
 import LocalStorage from "../../utils/localStorage";
 import dynamic from "next/dynamic";
-import { useSession, signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+// import router from "next/router";
+import { useRouter } from "next/router";
 
 const DynamicPreviewArticle = dynamic(
   () => import("../../components/Article/PreviewArticle"),
@@ -12,10 +14,12 @@ const DynamicPreviewArticle = dynamic(
 );
 
 const CreateArticle = () => {
+  const router = useRouter();
+
   const { status } = useSession({
     required: true,
     onUnauthenticated: () => {
-      signIn();
+      router.replace("/auth/log-in");
     },
   });
 

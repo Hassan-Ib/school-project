@@ -4,7 +4,8 @@ import { ImQuotesLeft } from "react-icons/im";
 import { signIn } from "next-auth/react";
 import PasswordInput from "../../components/Inputs/PasswordInput";
 import MatricNoInput from "../../components/Inputs/MatricInput";
-
+import router from "next/router";
+import { useRouter } from "next/router";
 const LogIn = () => {
   return (
     <>
@@ -19,6 +20,40 @@ const LogIn = () => {
 };
 
 export default LogIn;
+
+const Form = () => {
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      matricNo: "",
+      password: "",
+    },
+  });
+  const onSubmit = async function (data) {
+    const res = await signIn("credentials", { ...data, redirect: false });
+    if (res.ok || res.status === 200) {
+      router.back();
+      console.log(window.history);
+    }
+    console.log(res);
+  };
+  console.log(errors);
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="bg-white  rounded px-8 pt-6 pb-8 max-w-xs form flex flex-col gap-6">
+      <FormHeader />
+      <MatricNoInput register={register} errors={errors} />
+      <PasswordInput register={register} errors={errors} />
+      <SubmitButton />
+    </form>
+  );
+};
 
 const SubmitButton = () => {
   return (
@@ -50,29 +85,5 @@ const Banner = () => {
       </div>
       <h1 className="text-4xl capitalize max-w-[8rem] ">Make a dream.</h1>
     </article>
-  );
-};
-
-const Form = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = async function (data) {
-    const res = await signIn("credentials", { ...data, redirect: false });
-    console.log(res);
-  };
-  console.log(errors);
-
-  return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="bg-white  rounded px-8 pt-6 pb-8 max-w-xs form flex flex-col gap-6">
-      <FormHeader />
-      <MatricNoInput register={register} errors={errors} />
-      <PasswordInput register={register} errors={errors} />
-      <SubmitButton />
-    </form>
   );
 };
