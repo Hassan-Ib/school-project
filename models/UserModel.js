@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
   matricNo: {
     type: Number,
-    // min :[15000, ""]
     require: [true, "A user must have a matric number"],
     unique: true,
     validate: {

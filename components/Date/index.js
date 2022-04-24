@@ -20,9 +20,10 @@ const DateDisplay = ({ date }) => {
   // [ ] date note working as it should.
   const createdAt = new Date(date);
   const year = createdAt.getFullYear().toString().slice(2);
-  const day = createdAt.getDay() - 1;
+  const day = createdAt.getDate();
   const month = createdAt.getUTCMonth();
   // console.log("current mili sec", Date.now() - createdAt);
+  console.log(day, month);
 
   const hoursAgo = Math.floor(
     (Date.now() - createdAt.getTime()) / (1000 * 60 * 60)
@@ -32,7 +33,6 @@ const DateDisplay = ({ date }) => {
   const yearsAgo = Math.floor(monthsAgo / 12); // yearsAgo > 12
 
   let since = `${hoursAgo} hours ago`;
-  console.log("hoursDay", hoursAgo, daysAgo);
   // check for days
   if (daysAgo) {
     since = `${daysAgo} days ago`;

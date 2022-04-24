@@ -30,9 +30,8 @@ const usePublishArticle = () => {
       LocalStorage.setLocalData(LocalStorage.articleLocalStorageKey, null);
       router.push("/profile");
     } catch (error) {
-      // setError(error);
-      alert(error.split(":")[2]);
       setIsLoading(false);
+      alert(error.split(":")[2]);
     }
   };
 

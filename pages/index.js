@@ -23,7 +23,7 @@ const Homepage = function ({ articles, events }) {
       <main>
         <section aria-label="introduction cards" className="py-10 ">
           <Card />
-          <LatestArticle {...articles[0]} />
+          {/* <LatestArticle {...articles[0]} /> */}
         </section>
 
         <section aria-label="latest from the faculty">

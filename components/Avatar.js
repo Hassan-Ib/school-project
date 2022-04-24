@@ -15,7 +15,7 @@ const Avatar = () => {
   const { first: firstName, last: lastName } = name;
 
   return (
-    <Link href="/dashboard" className="flex items-center justify-center gap-2">
+    <Link href="/profile" className="flex items-center justify-center gap-2">
       <div className="relative rounded-full bg-twine-500 w-10 h-10 font-bold">
         <Image
           src={"/person-user.png"}
