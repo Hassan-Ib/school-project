@@ -1,6 +1,9 @@
 import { BiLoaderAlt } from "react-icons/bi";
 
-const SubmitButton = ({ loading }) => {
+const SubmitButton = ({ loading, text, error = false, onClick = () => {} }) => {
+  if (error) {
+    <button className=""> error </button>;
+  }
   return (
     <button
       className={`bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded  focus:shadow-outline 
@@ -8,6 +11,7 @@ const SubmitButton = ({ loading }) => {
            loading ? "bg-opacity-70 hover:bg-opacity-70 hover:bg-blue-500" : " "
          }`}
       type="submit"
+      onClick={onClick}
       disabled={loading}>
       {loading ? (
         <>
@@ -15,7 +19,7 @@ const SubmitButton = ({ loading }) => {
           Processing...
         </>
       ) : (
-        "Get started"
+        text
       )}
     </button>
   );

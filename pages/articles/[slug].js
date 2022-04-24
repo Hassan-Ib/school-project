@@ -15,7 +15,7 @@ const Article = ({ article }) => {
   const router = useRouter();
 
   return (
-    <main className="bg-white my-8 py-4 m-auto prose prose-slate lg:prose-xl pb-6">
+    <main className="bg-white my-8 py-4 m-auto prose prose-slate lg:prose-xl p-6">
       {article.coverImage ? (
         <section className="relative h-96 text-center overflow-hidden">
           <Image

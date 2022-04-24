@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
-import TipTapEditor from "./TipTapEditor";
+import TipTapEditor from "./Tiptap/TipTapEditor";
 import { useCreateArticle } from "../../hooks/useCreateArticle";
 import spinner from "../../public/svg/spinner.gif";
-
+import Loader from "../Loader";
 const EditArticleForm = forwardRef((_, ref) => {
   const {
     article,
@@ -20,12 +20,9 @@ const EditArticleForm = forwardRef((_, ref) => {
 
   return (
     <section className="flex-1 flex overflow-hidden border border-blue-700 ">
-      <form
+      <div
         ref={ref}
         id="createArticleFrom"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
         className="relative flex-1 overflow-auto shadow-inner bg-white px-2 pb-4 md:px-6  w-full flex flex-col">
         {/*--- cover image ---*/}
 
@@ -42,12 +39,13 @@ const EditArticleForm = forwardRef((_, ref) => {
           ) : null}
           {coverImageLoading ? (
             <div>
-              <Image
+              {/* <Image
                 src={spinner}
                 height="50px"
                 width="50px"
                 alt="image loading spinner"
-              />
+              /> */}
+              <Loader />
             </div>
           ) : null}
           <label
@@ -93,6 +91,7 @@ const EditArticleForm = forwardRef((_, ref) => {
             className="text-3xl max-h-fit md:text-4xl  font-bold resize-none outline-none mb-2"
             placeholder="new post title here..."
             value={article.title}
+            required={true}
           />
           {/* description */}
         </div>
@@ -101,7 +100,7 @@ const EditArticleForm = forwardRef((_, ref) => {
           // articleBody={firstArticleBody.body}
           setArticleBody={setArticleBody}
         />
-      </form>
+      </div>
     </section>
   );
 });

@@ -27,14 +27,12 @@ const LogIn = () => {
       setLoading(true);
       const res = await signIn("credentials", { ...data, redirect: false });
       if (res.ok || res.status === 200) {
-        setLoading(false);
         router.back();
         return;
       }
       if (!res.ok || res.error) {
         throw res.error;
       }
-      console.log(res);
     } catch (error) {
       // console.log(error);
       setLoading(false);
@@ -44,17 +42,6 @@ const LogIn = () => {
       });
     }
   };
-  // useEffect(() => {
-  //   let timeOut;
-  //   if (error) {
-  //     timeOut = setTimeout(() => {
-  //       setError(null);
-  //     }, 10000);
-  //   }
-  //   return () => {
-  //     clearTimeout(timeOut);
-  //   };
-  // }, [error]);
 
   return (
     <>
@@ -77,7 +64,7 @@ const LogIn = () => {
             </article>
             <MatricNoInput register={register} errors={errors} />
             <PasswordInput register={register} errors={errors} />
-            <SubmitButton loading={loading} />
+            <SubmitButton loading={loading} text="Get started" />
           </form>
         </div>
       </main>

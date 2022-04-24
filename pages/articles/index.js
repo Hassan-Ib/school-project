@@ -1,5 +1,9 @@
 import React from "react";
-import { getLayoutWithNavAndFooter, ArticleCard } from "../../components";
+import {
+  getLayoutWithNavAndFooter,
+  ArticleCard,
+  ArticlesList,
+} from "../../components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -14,20 +18,7 @@ const Articles = ({ articles }) => {
       {/* side bar */}
       {/* articles container */}
       <section className="flex flex-col gap-16 md:col-start-1 md:col-end-3 py-10 px-6 ">
-        <ul className="flex flex-col gap-8">
-          {articles.map(({ slug, title, coverImage, createdAt }) => (
-            <li key={slug} className=" shadow-lg max-w-2xl m-auto">
-              <ArticleCard
-                // {...articles}
-                slug={slug}
-                coverImage={coverImage}
-                title={title}
-                createdAt={createdAt}
-              />
-            </li>
-          ))}
-        </ul>
-        {/* <ArticlesList articles={articles} /> */}
+        <ArticlesList articles={articles} mode="list" />
       </section>
 
       <section className="py-10 px-6 md:py-10 ">

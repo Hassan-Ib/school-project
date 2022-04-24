@@ -7,7 +7,7 @@ const LatestArticle = ({ title, body, coverImage, slug }) => {
       className={
         coverImage?.url
           ? "md:grid md:grid-cols-2 w-11/12 mx-auto"
-          : "mx-auto my-12 border-8 border-red-700 max-w-2xl"
+          : "mx-auto my-12  max-w-2xl"
       }>
       {coverImage?.url ? (
         <div className=" h-80 md:h-full relative">

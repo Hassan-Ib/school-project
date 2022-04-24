@@ -1,24 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 const DateDisplay = ({ date }) => {
+  // BUG
+  // [ ] date note working as it should.
   const createdAt = new Date(date);
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
   const year = createdAt.getFullYear().toString().slice(2);
   const day = createdAt.getDay() - 1;
   const month = createdAt.getUTCMonth();
+  // console.log("current mili sec", Date.now() - createdAt);
 
   const hoursAgo = Math.floor(
     (Date.now() - createdAt.getTime()) / (1000 * 60 * 60)
@@ -28,21 +32,20 @@ const DateDisplay = ({ date }) => {
   const yearsAgo = Math.floor(monthsAgo / 12); // yearsAgo > 12
 
   let since = `${hoursAgo} hours ago`;
-  //   console.log(" since : ", since);
+  console.log("hoursDay", hoursAgo, daysAgo);
   // check for days
   if (daysAgo) {
-    // days > 0
     since = `${daysAgo} days ago`;
   }
   //check for
   if (monthsAgo) {
-    // monthsAgo > 0
-    since = `${monthsAgo} days ago`;
+    since = `${monthsAgo} ${monthsAgo < 2 ? "month" : "months"} ago`;
   }
   if (yearsAgo) {
     // yearsAgo > 0
-    since = `${yearsAgo} days ago`;
+    since = `${yearsAgo} ${monthsAgo < 2 ? "year" : "years"}  ago`;
   }
+  // console.log("since", since);
 
   return (
     <time className="opacity-80 hover:opacity-100 transition-all duration-150">

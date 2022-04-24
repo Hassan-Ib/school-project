@@ -5,12 +5,12 @@ import Image from "next/image";
 const Avatar = () => {
   const { data: session, status } = useSession();
   const isAuthenticated = status === "authenticated" ? true : false;
-  console.log("session : ", session);
+  // console.log("session : ", session);
 
   if (!isAuthenticated) return null;
 
   let { name, matricNo, image } = session?.user;
-  console.log(image, matricNo);
+  // console.log(image, matricNo);
 
   const { first: firstName, last: lastName } = name;
 

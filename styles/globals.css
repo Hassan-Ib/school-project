@@ -19,7 +19,7 @@
     @apply px-6 py-2;
   }
   .is-active {
-    @apply bg-slate-800 text-white;
+    @apply !bg-blue-600 !text-white;
   }
 }
 
@@ -65,15 +65,14 @@
   .nav__overlay {
     @apply cursor-pointer absolute top-0 left-0 h-screen w-full bg-birch-500 bg-opacity-70;
   }
-}
-
-.ProseMirror p.is-editor-empty:first-child::before {
-  color: #adb5bd;
-  content: attr(data-placeholder);
-  float: left;
-  height: 0;
-  pointer-events: none;
-}
-.editor-menu-container button {
-  @apply xl:text-lg px-2 capitalize border border-slate-600 rounded-md;
+  .ProseMirror p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+  .editor-menu-container button {
+    @apply xl:text-lg px-2 capitalize border border-slate-600 rounded-md;
+  }
 }

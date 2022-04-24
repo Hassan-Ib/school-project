@@ -18,7 +18,7 @@ export default class LocalStorage {
    */
   static setLocalData = (dataName, data) => {
     try {
-      if (!dataName || !data)
+      if (!dataName)
         throw new Error("local data must have name attribute and actual data");
       window.localStorage.setItem(dataName, JSON.stringify(data));
     } catch (error) {

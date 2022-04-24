@@ -1,50 +1,51 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import LocalStorage from "../utils/localStorage";
-import { uploadImage } from "../utils/uploadImage";
+import { uploadImg } from "../utils/uploadImage";
 
-const intialData = { title: "", coverImage: null, body: "hello hassan" };
+const intialData = { title: "", coverImage: null, body: "" };
 
 export const useCreateArticle = () => {
   const [article, setArticle] = useState(
+    // lazy load article from localStorage
     () => LocalStorage.getLocalData("articleData") ?? intialData
   );
+
   const [coverImageLoading, setCoverImageLoading] = useState(false);
 
   const [error, setError] = useState(null);
 
+  // update article title
   const setArticleTitle = (e) => {
     setArticle((prevState) => ({ ...prevState, title: e.target.value }));
   };
 
+  // update article body
   const setArticleBody = (editorState) => {
     setArticle((prevState) => ({ ...prevState, body: editorState }));
   };
 
+  // update article cover image
   const setCoverImage = (e) => {
     setCoverImageLoading(true);
-    const { files } = e.target;
-    const reader = new FileReader();
-    reader.addEventListener("load", async () => {
-      const blobUrl = reader.result;
-      try {
-        const { data } = await uploadImage(blobUrl);
-        console.log(data.imageData.url, data.imageData);
+    const file = e.target;
+    uploadImg(file, {
+      onSuccess: (imageData) => {
         setArticle((prevState) => ({
           ...prevState,
-          coverImage: data.imageData,
+          coverImage: imageData,
         }));
         setCoverImageLoading(false);
-      } catch (error) {
-        console.log(error.message);
+      },
+      onError: (error) => {
         setError(error.message);
-        setArticle((prevState) => ({ ...prevState, coverImage: false }));
+        setArticle((prevState) => ({ ...prevState, coverImage: null }));
         setCoverImageLoading(false);
-      }
+        alert(error.message);
+      },
     });
-    reader.readAsDataURL(files[0]);
   };
 
-  // remove cover image handler
+  // remove cover image
   const removeCoverImage = (e) => {
     e.target.value = null;
     setArticle((prevState) => {
@@ -52,10 +53,12 @@ export const useCreateArticle = () => {
     });
   };
 
+  // update article in local storage
   useEffect(() => {
     LocalStorage.setLocalData("articleData", article);
   }, [article]);
 
+  // returned values
   return {
     error,
     setError,
@@ -65,6 +68,5 @@ export const useCreateArticle = () => {
     setCoverImage,
     setArticleBody,
     removeCoverImage,
-    // firstArticleBody,
   };
 };

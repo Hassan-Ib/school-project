@@ -5,10 +5,17 @@ const globalErrorHandler = (err, res) => {
   console.log("node env", process.env.NODE_ENV);
   console.log("err name", err.name);
   console.log("status code", err.statusCode);
-  console.log("raw error", err);
+  // console.log("raw error", err);
 
   // for dev env
   if (process.env.NODE_ENV === "development") {
+    console.log(process.env.NODE_ENV);
+    if (err.name === "CastError") {
+      err.statusCode = 400;
+    }
+    if (err.name === "ValidationError") {
+      err.statusCode = 400;
+    }
     return res.status(err.statusCode).json({
       status: err.status,
       name: err.name,
@@ -19,11 +26,7 @@ const globalErrorHandler = (err, res) => {
   }
 
   // more refined error messages for prod env
-  if (err.name === "CastError") {
-    return res.status(400).json({
-      message: err.message,
-    });
-  }
+
   throw err;
 };
 

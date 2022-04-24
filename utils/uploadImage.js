@@ -16,30 +16,22 @@ export const uploadImage = async (imageUrl) => {
   }
 };
 
-export const uploadImg = async function (callback) {
-  let selectedImageFile = file.files ? file.files[0] : null;
+export const uploadImg = async (file, { onSuccess, onError }) => {
+  console.log(file);
+  let selectedImageFile = file && file?.files ? file.files[0] : null;
   if (!selectedImageFile) return null;
   const fileReader = new FileReader();
   fileReader.addEventListener("load", async () => {
     const blobUrl = fileReader.result;
     try {
       const res = await uploadImage(blobUrl);
-      console.log(res);
-
-      callback(res);
+      if (res.ok) {
+        onSuccess(res.data.imageData);
+      }
+      throw res;
     } catch (error) {
-      console.log(error.message);
-      alert(error.message);
+      onError(error);
     }
   });
   fileReader.readAsDataURL(selectedImageFile);
 };
-//  const {
-//    data: {
-//      imageData: { url },
-//    },
-//  } = res;
-//  if (url) {
-//    console.log("url", url);
-//    editor.chain().focus().setImage({ src: url }).run();
-//  }

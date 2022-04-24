@@ -28,35 +28,37 @@ const Footer = () => {
   ];
   return (
     <footer className="overflow-hidden bg-birch-500 text-white py-10 lg:px-28">
-      <Container className="border-black border-opacity-20 md:py-8 md:flex md:justify-evenly items-center">
-        <div className="mb-6">
-          <Image
-            alt="school logo"
-            src={FooterLogo}
-            width={200}
-            height={200}
-            className="mb-6"
-          />
-        </div>
-        <section>
-          <h4 className="font-semibold mb-6 md:text-lg">Quick Links</h4>
-          <ul className=" text-sm  opacity-80 capitalize tracking-wider">
-            {QuickLinks.map((link, key) => (
-              <li key={key} className="mb-3">
-                <Link href={link.href}>{link.text}</Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section className="">
-          <h4 className=" font-semibold mb-6 md:text-lg">Social medias</h4>
+      <Container>
+        <div className="border-black border-opacity-20 md:py-8 md:flex md:justify-evenly items-center">
+          <div className="mb-6">
+            <Image
+              alt="school logo"
+              src={FooterLogo}
+              width={200}
+              height={200}
+              className="mb-6"
+            />
+          </div>
+          <section>
+            <h4 className="font-semibold mb-6 md:text-lg">Quick Links</h4>
+            <ul className=" text-sm  opacity-80 capitalize tracking-wider">
+              {QuickLinks.map((link, key) => (
+                <li key={key} className="mb-3">
+                  <Link href={link.href}>{link.text}</Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className="">
+            <h4 className=" font-semibold mb-6 md:text-lg">Social medias</h4>
 
-          <SocialLinks
-            color="twine-500"
-            size="xl"
-            className="border-black gap-2"
-          />
-        </section>
+            <SocialLinks
+              color="twine-500"
+              size="xl"
+              className="border-black gap-2"
+            />
+          </section>
+        </div>
       </Container>
       <section className="opacity-70 text-xs mt-10  px-4 pb-4 sm:text-center tracking-wider ">
         <p>Privacy and Policy,</p>
