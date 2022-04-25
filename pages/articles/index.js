@@ -3,6 +3,7 @@ import {
   getLayoutWithNavAndFooter,
   ArticleCard,
   ArticlesList,
+  Link,
 } from "../../components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
@@ -14,10 +15,10 @@ const Articles = ({ articles }) => {
   articles = JSON.parse(articles);
 
   return (
-    <main className="md:grid md:grid-cols-3">
+    <main className="md:grid md:grid-cols-3 h-[950px]">
       {/* side bar */}
       {/* articles container */}
-      <section className="flex flex-col gap-16 md:col-start-1 md:col-end-3 py-10 px-6 ">
+      <section className="flex flex-col gap-16 md:col-start-1 md:col-end-3 py-10 px-6 overflow-auto h-full">
         <ArticlesList articles={articles} mode="list" />
       </section>
 
@@ -38,18 +39,14 @@ const Articles = ({ articles }) => {
         {/* recent post */}
         <section className=" text-twine-700 font-medium">
           <h1 className=" my-10 text-2xl font-semibold">Recent posts</h1>
-          <p className="opacity-80 my-6">
-            Meet Hassan Ibrahim the awesome frontend developer that made this
-            happen
-          </p>
-          <p className="opacity-80 my-6">
-            Meet Hassan Ibrahim the awesome frontend developer that made this
-            happen
-          </p>{" "}
-          <p className="opacity-80 my-6">
-            Meet Hassan Ibrahim the awesome frontend developer that made this
-            happen
-          </p>
+          {articles.map((article) => (
+            <Link
+              href={`/articles/${article.slug}`}
+              key={article.slug}
+              className="block opacity-80 my-4">
+              {article.title}
+            </Link>
+          ))}
         </section>
         {/* recent Events */}
         <section className=" text-twine-700 font-medium">
