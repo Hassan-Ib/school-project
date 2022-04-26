@@ -25,7 +25,7 @@ const MobileNav = ({ closeNav, isNavToggled }) => {
 
           {/* overlay ends */}
           <div className="overflow-auto flex flex-col max-w-xs h-full sm:w-3/4 bg-birch-500 relative z-20 px-6 pb-8">
-            <section className="flex items-center justify-between  pt-10  ">
+            <section className="flex items-center justify-between  py-12  ">
               {/* logo */}
               <Avatar size="lg" />
               <MenuToggleClose closeNav={closeNav} />

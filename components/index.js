@@ -1,6 +1,5 @@
 export { default as Container } from "./Container";
 export { default as Navbar } from "./Navbar";
-export { default as LatestArticle } from "./LatestArticle";
 export {
   ArticlesList,
   ArticleEditor,
@@ -10,7 +9,7 @@ export {
 } from "./Article";
 export { default as Card } from "./IntroCard";
 export { default as Footer } from "./Footer";
-export { Link, NavLink } from "./Link";
+export { Link } from "./Link";
 export { default as HeadMeta } from "./Meta";
 export { default as Header } from "./Header";
 export { default as LinkButton } from "./Buttons/Link";

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-
+import FlowButton from "./FlowButton";
 const CreateArticleButton = ({ text = "create article" }) => {
   const { status } = useSession();
   const router = useRouter();
@@ -14,9 +14,12 @@ const CreateArticleButton = ({ text = "create article" }) => {
   };
 
   return (
-    <button onClick={clickHandler} className="btn btn-sm btn-white">
-      {text}
-    </button>
+    <FlowButton
+      onClick={clickHandler}
+      className="btn btn-sm btn-bg-flow"
+      text={text}
+      flowDirection="flow-b"
+    />
   );
 };
 

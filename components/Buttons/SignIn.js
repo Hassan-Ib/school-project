@@ -1,6 +1,6 @@
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
-
+import FlowButton from "./FlowButton";
 const SignButton = () => {
   const { status } = useSession();
   const router = useRouter();
@@ -12,11 +12,11 @@ const SignButton = () => {
   };
 
   return (
-    <button
+    <FlowButton
       onClick={signHandler}
-      className="btn-sm  rounded-sm hover:underline bg-twine-700 tracking-wider">
-      {status === "authenticated" ? "Log out" : "Log in"}
-    </button>
+      className="btn btn-sm border-0  hover:underline underline-offset-2"
+      text={status === "authenticated" ? "Log out" : "Log in"}
+    />
   );
 };
 

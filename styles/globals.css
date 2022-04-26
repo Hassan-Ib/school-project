@@ -25,7 +25,7 @@
 
 @layer components {
   .btn {
-    @apply capitalize font-medium border-2 rounded-sm tracking-wider transition-all duration-500;
+    @apply capitalize font-medium border-2 rounded tracking-wider transition-all duration-500;
   }
   .btn-sm {
     @apply px-3 md:px-4 py-1;
@@ -35,6 +35,42 @@
   }
   .btn-white {
     @apply text-white border-white hover:bg-white hover:text-black;
+  }
+  .btn-bg-flow {
+    @apply relative border-birch-500 overflow-hidden;
+  }
+  .btn-bg-flow .text {
+    @apply relative z-20  transition-all duration-300;
+  }
+  .btn-bg-flow:hover .text {
+    @apply text-white;
+  }
+  .btn-bg-flow .flow {
+    @apply absolute w-full h-full bg-birch-700 transition-all duration-300;
+  }
+  .btn-bg-flow .flow-b {
+    @apply top-[90%] left-0;
+  }
+  .btn-bg-flow:hover .flow-b {
+    @apply top-0;
+  }
+  .btn-bg-flow .flow-l {
+    @apply top-0 -left-[95%];
+  }
+  .btn-bg-flow:hover .flow-l {
+    @apply left-0;
+  }
+  .btn-bg-flow .flow-r {
+    @apply top-0 left-[95%];
+  }
+  .btn-bg-flow:hover .flow-r {
+    @apply left-0;
+  }
+  .btn-bg-flow .flow-t {
+    @apply -top-[90%] left-0;
+  }
+  .btn-bg-flow:hover .flow-t {
+    @apply top-0;
   }
   .hover--btn {
     position: relative;

@@ -16,7 +16,7 @@ const Avatar = () => {
 
   return (
     <Link href="/profile" className="flex items-center justify-center gap-2">
-      <div className="relative rounded-full bg-twine-500 w-10 h-10 font-bold">
+      <div className="relative rounded-full  w-8 h-8 font-bold">
         <Image
           src={"/person-user.png"}
           alt={`${firstName} ${lastName} image`}
@@ -25,8 +25,6 @@ const Avatar = () => {
       </div>
       <span className="text-xs capitalize">
         hi, {firstName}
-        <br />
-        {lastName}
         <br />
         welcome back
       </span>

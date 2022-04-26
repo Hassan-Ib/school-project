@@ -59,11 +59,9 @@ const About = () => {
           <h1 className="text-3xl md:text-4xl font-medium max-w-xl mb-10">
             Cooperation unifies the best teammates & create miracles.
           </h1>
-          <button className="relative capitalize font-semibold tracking-wider border-2 border-twine-700 px-4 py-2 overflow-hidden group">
-            <span className="relative z-20 group-hover:text-white transition-color duration-300">
-              meet out staffs
-            </span>
-            <span className="absolute w-full h-full top-[90%] left-0 bg-twine-700 group-hover:top-0 transition-all duration-300"></span>
+          <button className="btn btn-sm btn-bg-flow">
+            <span className="text">meet out staffs</span>
+            <span className="flow-t"></span>
           </button>
         </div>
         <div className="flex overflow-x-scroll mx-auto md:w-[70%] lg:w-[60%] snap-x snap-proximity gap-4 my-20">

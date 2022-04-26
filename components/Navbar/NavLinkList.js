@@ -1,12 +1,12 @@
 import { links } from "./navData";
-import { NavLink } from "../Link";
+import NavLink from "./NavLink";
 import { useRouter } from "next/router";
 
 function NavLinkList({ closeNav = () => {} }) {
   const { asPath: path } = useRouter();
 
   return (
-    <ul className="text-white pt-12 tracking-widest capitalize lg:pt-0 lg:flex lg:items-center lg:text-white lg:gap-4 ">
+    <ul className="text-white tracking-widest capitalize lg:flex lg:items-center lg:text-black lg:gap-4 ">
       {links.map((link, key) => {
         return (
           <li
@@ -19,7 +19,7 @@ function NavLinkList({ closeNav = () => {} }) {
               {link.text}
             </NavLink>
             {path === link.href ? (
-              <span className="hidden cursor-default lg:block absolute border-l-[15px]  border-r-[15px] border-b-[15px] border-transparent border-b-white -bottom-7 left-1/2 right-1/2 -translate-x-1/2 " />
+              <span className="hidden cursor-default lg:block absolute border-l-[15px]  border-r-[15px] border-b-[15px] border-transparent border-b-birch-500 -bottom-6 left-1/2 right-1/2 -translate-x-1/2 " />
             ) : null}
           </li>
         );

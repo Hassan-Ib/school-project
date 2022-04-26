@@ -7,7 +7,6 @@ import {
   ArticlesList,
   EventList,
   Card,
-  LatestArticle,
   LinkButton,
   Header,
   HeadMeta,
@@ -21,12 +20,12 @@ const Homepage = function ({ articles, events }) {
       <HeadMeta />
       <Header />
       <main>
-        <section aria-label="introduction cards" className="py-10 ">
+        <section aria-label="introduction cards" className="pt-32">
           <Card />
           {/* <LatestArticle {...articles[0]} /> */}
         </section>
 
-        <section aria-label="latest from the faculty">
+        <section aria-label="latest from the faculty" className="pt-32">
           <h2 className="text-2xl text-center font-semibold py-10 ">
             <span className="inline-block border-b-4 border-birch-600 pb-2">
               Latest From the Faculty
@@ -34,7 +33,7 @@ const Homepage = function ({ articles, events }) {
           </h2>
           <section
             aria-label="article section"
-            className="my-2 px-4 md:px-6 py-10 ">
+            className="my-2 px-4 md:px-6 pb-32 ">
             <h3 className="text-xl font-semibold mb-6 ">
               <GrArticle />
               <span className="inline-block border-b-2 border-birch-500">
@@ -46,13 +45,15 @@ const Homepage = function ({ articles, events }) {
           </section>
           <section
             aria-label="article section"
-            className="my-2 px-4 md:px-6 py-10 relative">
+            className="my-2 px-4 md:px-6 py-10 relative ">
             <h3 className="text-xl font-semibold mb-6">
               <span className="inline-block border-b-2 border-birch-500">
                 <MdEventAvailable /> Events
               </span>
             </h3>
-            <EventList events={events} />
+            <div className="mx-auto max-w-xl">
+              <EventList events={events} />
+            </div>
           </section>
           <div className="flex justify-end mt-8 py-10">
             <LinkButton
