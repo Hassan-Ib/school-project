@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Author = ({ authorAvatar, authorName = "annabella", createdAt }) => {
   return (
-    <div className="flex items-center gap-2 mb-2">
+    <div className="flex items-center gap-2 my-3">
       {/* FIXME  
             [ ] swap article image with authors image
       */}
@@ -20,7 +20,7 @@ const Author = ({ authorAvatar, authorName = "annabella", createdAt }) => {
         </div>
       ) : null}
 
-      <div className="text-sm">
+      <div className="">
         <p className="font-medium opacity-80 hover:opacity-100 transition-all duration-150">
           {authorName}
         </p>

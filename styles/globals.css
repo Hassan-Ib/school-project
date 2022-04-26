@@ -27,6 +27,9 @@
   .btn {
     @apply capitalize font-medium border-2 rounded tracking-wider transition-all duration-500;
   }
+  .btn-xs {
+    @apply px-2 py-1 border text-sm;
+  }
   .btn-sm {
     @apply px-3 md:px-4 py-1;
   }
@@ -46,7 +49,7 @@
     @apply text-white;
   }
   .btn-bg-flow .flow {
-    @apply absolute w-full h-full bg-birch-700 transition-all duration-300;
+    @apply absolute w-full h-full bg-birch-500 transition-all duration-300;
   }
   .btn-bg-flow .flow-b {
     @apply top-[90%] left-0;
@@ -55,13 +58,13 @@
     @apply top-0;
   }
   .btn-bg-flow .flow-l {
-    @apply top-0 -left-[95%];
+    @apply top-0 -left-[97%];
   }
   .btn-bg-flow:hover .flow-l {
     @apply left-0;
   }
   .btn-bg-flow .flow-r {
-    @apply top-0 left-[95%];
+    @apply top-0 left-[97%];
   }
   .btn-bg-flow:hover .flow-r {
     @apply left-0;

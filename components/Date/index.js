@@ -1,25 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
+  "January",
+  "Feburary",
+  "March",
+  "April",
   "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  "June",
+  "July",
+  "August",
+  "September",
+  "Octomber",
+  "November",
+  "December",
 ];
 
 const DateDisplay = ({ date }) => {
   // BUG
   // [ ] date note working as it should.
   const createdAt = new Date(date);
-  const year = createdAt.getFullYear().toString().slice(2);
+  const year = createdAt.getFullYear().toString();
   const day = createdAt.getDate();
   const month = createdAt.getUTCMonth();
   // console.log("current mili sec", Date.now() - createdAt);
@@ -49,7 +49,7 @@ const DateDisplay = ({ date }) => {
 
   return (
     <time className="opacity-80 hover:opacity-100 transition-all duration-150">
-      {months[month]} {day} &apos;{year} ({since})
+      {months[month + 5]} {day} {year}, {since}
     </time>
   );
 };

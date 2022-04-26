@@ -20,33 +20,35 @@ const Homepage = function ({ articles, events }) {
       <HeadMeta />
       <Header />
       <main>
-        <section aria-label="introduction cards" className="pt-32">
+        <section aria-label="introduction cards" className="py-32">
           <Card />
-          {/* <LatestArticle {...articles[0]} /> */}
         </section>
 
-        <section aria-label="latest from the faculty" className="pt-32">
-          <h2 className="text-2xl text-center font-semibold py-10 ">
+        <section aria-label="latest from the faculty" className="py-16">
+          <h2 className="text-2xl text-center font-semibold py-6 ">
             <span className="inline-block border-b-4 border-birch-600 pb-2">
               Latest From the Faculty
             </span>
           </h2>
-          <section
-            aria-label="article section"
-            className="my-2 px-4 md:px-6 pb-32 ">
-            <h3 className="text-xl font-semibold mb-6 ">
+          <section aria-label="article section" className="px-4 md:px-6 ">
+            <h3 className="text-xl font-semibold py-24">
               <GrArticle />
               <span className="inline-block border-b-2 border-birch-500">
                 Articles
               </span>
             </h3>
 
-            <ArticlesList articles={articles.slice(1)} />
+            <ArticlesList articles={articles.slice(0, 3)} />
           </section>
-          <section
-            aria-label="article section"
-            className="my-2 px-4 md:px-6 py-10 relative ">
-            <h3 className="text-xl font-semibold mb-6">
+          <div className="flex justify-end py-24">
+            <LinkButton
+              href="/articles"
+              className="btn btn-sm border-birch-500  text-black hover:text-white hover:bg-birch-500">
+              view faculty&apos;s latests
+            </LinkButton>
+          </div>
+          <section aria-label="article section" className="px-4 md:px-6 ">
+            <h3 className="text-xl font-semibold py-24">
               <span className="inline-block border-b-2 border-birch-500">
                 <MdEventAvailable /> Events
               </span>
@@ -55,13 +57,6 @@ const Homepage = function ({ articles, events }) {
               <EventList events={events} />
             </div>
           </section>
-          <div className="flex justify-end mt-8 py-10">
-            <LinkButton
-              href="/articles"
-              className="btn btn-sm border-birch-500  text-black hover:text-white hover:bg-birch-500">
-              view faculty&apos;s latests
-            </LinkButton>
-          </div>
         </section>
       </main>
     </>

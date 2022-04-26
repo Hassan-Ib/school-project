@@ -4,14 +4,25 @@ import ArticleCover from "./ArticleCover";
 import Author from "./Author";
 import PropTypes from "prop-types";
 import ArticleTitle from "./ArticleTitle";
+import FlowButton from "../../Buttons/FlowButton";
+import { BsArrowUpRight } from "react-icons/bs";
+
 const Article = ({ slug, title, coverImage, createdAt }) => {
   return (
     <Link href={"/articles/" + slug} className="mx-auto">
-      <article className=" rounded-lg overflow-hidden bg-white max-w-lg ">
+      <article className=" rounded-lg overflow-hidden bg-white max-w-lg p-4 border border-birch-500">
         <ArticleCover coverImage={coverImage} />
         <div className=" p-4  ">
-          <Author authorAvatar={coverImage} createdAt={createdAt} />
           <ArticleTitle title={title} />
+          <Author authorAvatar={coverImage} createdAt={createdAt} />
+          <FlowButton
+            className="btn btn-xs btn-bg-flow mt-4"
+            text={
+              <>
+                read more <BsArrowUpRight />
+              </>
+            }
+            flowDirection="flow-r"></FlowButton>
         </div>
       </article>
     </Link>
