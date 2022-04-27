@@ -16,7 +16,7 @@ const CreateArticleButton = ({ text = "create article" }) => {
   return (
     <FlowButton
       onClick={clickHandler}
-      className="btn btn-sm btn-bg-flow"
+      className="btn btn-sm  lg:btn-bg-flow"
       text={text}
       flowDirection="flow-b"
     />

@@ -15,24 +15,22 @@ const Articles = ({ articles }) => {
   articles = JSON.parse(articles);
 
   return (
-    <main className="md:grid md:grid-cols-3 h-[950px]">
+    <main className="md:grid md:grid-cols-3 md:h-[950px]">
       {/* side bar */}
       {/* articles container */}
-      <section className="flex flex-col gap-16 md:col-start-1 md:col-end-3 py-10 px-6 overflow-auto h-full">
+      <section className="flex flex-col gap-16 md:col-start-1 md:col-end-3 py-10 px-6 overflow-auto md:h-full">
         <ArticlesList articles={articles} mode="list" />
       </section>
 
       <section className="py-10 px-6 md:py-10 ">
         {/* search input */}
-        <section
-          tabIndex={0}
-          className="relative items-center shadow-sm text-birch-800 bg-twine-100 rounded-md overflow-hidden">
+        <section className="relative items-center shadow-inner text-birch-800 bg-white rounded-md overflow-hidden max-w-md">
           <input
             type="text"
             placeholder="Enter search keyword..."
-            className="p-4 pr-12 inline-block w-full bg-inherit outline-twine-500 outline-offset-5 group border rounded-md"
+            className="p-4 pr-12 inline-block w-full bg-inherit focus:outline-1 outline-twine-500 outline-offset-5 group border rounded-md"
           />
-          <button className="absolute z-10 right-0 h-full px-2 hover:bg-twine-500 hover:text-white transition-all duration-300">
+          <button className="absolute z-10 right-0 h-full px-2 bg-birch-500 text-white transition-all duration-300">
             <AiOutlineSearch className="text-2xl font-bold" />
           </button>
         </section>
@@ -43,7 +41,7 @@ const Articles = ({ articles }) => {
             <Link
               href={`/articles/${article.slug}`}
               key={article.slug}
-              className="block opacity-80 my-4">
+              className="block text-sm opacity-90 my-4">
               {article.title}
             </Link>
           ))}
@@ -51,7 +49,7 @@ const Articles = ({ articles }) => {
         {/* recent Events */}
         <section className=" text-twine-700 font-medium">
           <h1 className=" my-10 text-2xl font-semibold">Recent Events</h1>
-          <div className="opacity-80 my-6 flex flex-col gap-2">
+          <div className="opacity-90 my-6 flex flex-col gap-2 text-sm">
             <p>
               Artificial intelligence and the its shortcomming, why it wont
               totally replace human in the work industry nad why it will

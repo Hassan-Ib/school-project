@@ -5,13 +5,13 @@ import HeroImage from "../public/hero-bg.jpg";
 
 const Header = () => {
   return (
-    <header className="relative h-hero ">
+    <header className="relative h-hero px-4">
       <div className="flex h-full pt-10 justify-evenly items-center">
         <section className=" text-black max-w-xl ">
-          <h1 className="text-4xl font-bold md:text-4xl lg:text-5xl mb-2 md:mb-6">
+          <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-2 md:mb-6">
             Faculty of Computing and Infomatics
           </h1>
-          <p className=" text-lg md:text-2xl mb-14">
+          <p className=" text-base md:text-2xl mb-14">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           </p>
           <div className="text-lg md:text-xl font-medium  ">

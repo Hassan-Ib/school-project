@@ -43,10 +43,10 @@
     @apply relative border-birch-500 overflow-hidden;
   }
   .btn-bg-flow .text {
-    @apply relative z-20  transition-all duration-300;
+    @apply relative z-20 transition-all duration-300;
   }
   .btn-bg-flow:hover .text {
-    @apply text-white;
+    @apply text-white delay-75;
   }
   .btn-bg-flow .flow {
     @apply absolute w-full h-full bg-birch-500 transition-all duration-300;

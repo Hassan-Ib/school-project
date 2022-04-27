@@ -1,6 +1,6 @@
 import React from "react";
 import NavLinkList from "./NavLinkList";
-import { MenuToggle } from "../Buttons/MenuToggle";
+import { MenuToggle } from "./NavToggle";
 import Avatar from "../Avatar";
 import SignButton from "../Buttons/SignIn";
 import CreateArticleButton from "../Buttons/CreateArticle";
@@ -13,7 +13,7 @@ const DesktopNav = ({ showNav }) => {
   return (
     <nav>
       <Container>
-        <div className="relative z-40 w-full h-20 left-0 flex items-center  p-4  gap-3 border-b-4 border-birch-500">
+        <div className="relative z-40 w-full h-20 left-0 flex items-center  p-4 gap-3 lg:border-b-2 border-birch-500">
           {/* logo */}
           <div className=" flex-1 lg:flex-none ">
             <Logo />

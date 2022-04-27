@@ -7,7 +7,7 @@ import CreateArticleButton from "../Buttons/CreateArticle";
 import Container from "../Container";
 import { useMediaQuery } from "react-responsive";
 import NavLinkList from "./NavLinkList";
-import { MenuToggleClose } from "../Buttons/MenuToggle";
+import { MenuToggleClose } from "./NavToggle";
 
 const MobileNav = ({ closeNav, isNavToggled }) => {
   const isDesktop = useMediaQuery({ query: "(min-width : 1024px)" });

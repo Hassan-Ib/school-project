@@ -52,11 +52,7 @@ const Footer = () => {
           <section className="">
             <h4 className=" font-semibold mb-6 md:text-lg">Social medias</h4>
 
-            <SocialLinks
-              color="twine-500"
-              size="xl"
-              className="border-black gap-2"
-            />
+            <SocialLinks color="text-white" size="xl" className=" gap-3 " />
           </section>
         </div>
       </Container>

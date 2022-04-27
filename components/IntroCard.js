@@ -8,7 +8,9 @@ import cardImage2 from "../public/img/leon-wu-LLfRMRT-9AY-unsplash.jpg";
 const Card = () => {
   return (
     <section
-      className={"m-auto md:grid md:grid-cols-2 my-12 w-10/12  shadow-xl"}>
+      className={
+        "m-auto md:grid md:grid-cols-2 my-12 w-10/12  shadow-xl bg-white"
+      }>
       <article className="py-8 md:py-14 items-start justify-center px-8">
         <H2 className="">Education and Responsibility</H2>
         <Paragraph>
@@ -18,7 +20,7 @@ const Card = () => {
         </Paragraph>
         <LinkButton
           href="/about"
-          className="btn btn-sm border-twine-900  text-black hover:text-white hover:bg-twine-900  ">
+          className="btn btn-sm border-birch-500  text-black hover:text-white hover:bg-birch-500  ">
           read about us
         </LinkButton>
         {/* <div className="absolute right-0  w-6  bg-twine-500 h-full"></div> */}

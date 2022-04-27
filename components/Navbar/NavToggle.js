@@ -1,15 +1,20 @@
 import { RiMenuFoldLine } from "react-icons/ri";
 import { VscChromeClose } from "react-icons/vsc";
-
+import FlowButton from "../Buttons/FlowButton";
 const MenuToggle = ({ showNav }) => {
   return (
-    <button
-      className="btn btn-sm btn-white flex gap-2 lg:hidden justify-self-end"
+    <FlowButton
+      className="btn btn-sm btn-bg-flow lg:hidden justify-self-end"
       onClick={() => {
         showNav(true);
-      }}>
-      <span>menu</span> <RiMenuFoldLine className="text-2xl" />
-    </button>
+      }}
+      flowDirection={"flow-l"}
+      text={
+        <>
+          <span>menu</span> <RiMenuFoldLine className="text-2xl" />
+        </>
+      }
+    />
   );
 };
 
