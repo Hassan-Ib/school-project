@@ -24,7 +24,7 @@ const DesktopNav = ({ showNav }) => {
               <div className="hidden flex-1 lg:flex justify-center">
                 <NavLinkList />
               </div>
-              <div className="hidden lg:flex first-letter: justify-self-end items-center gap-4">
+              <div className="hidden lg:flex first-letter: justify-self-end items-center gap-2">
                 <Avatar />
                 <SignButton />
                 <CreateArticleButton />

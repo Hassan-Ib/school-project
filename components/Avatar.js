@@ -30,7 +30,7 @@ const Avatar = () => {
         {lastName}
       </div>
       <span className="text-xs capitalize">
-        hi, {firstName}
+        hi, {first}
         <br />
         welcome back
       </span>
