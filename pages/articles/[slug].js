@@ -1,19 +1,17 @@
 import { useRouter } from "next/router";
-import DBConnect from "../../utils/DBConnection";
-import { default as ArticlesModel } from "../../models/ArticleModel";
-
-// import { FaLinkedinIn } from "react-icons/fa";
-// import { AiOutlineTwitter, AiFillFacebook } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import Image from "next/image";
-import { getLayout, getLayoutWithNavAndFooter } from "../../components";
 import DateDisplay from "../../components/Date";
+import DBConnect from "../../utils/DBConnection";
+import ArticlesModel from "../../models/ArticleModel";
 
-const Article = ({ article }) => {
+const Article = ({
+  article,
+  // author
+}) => {
   article = JSON.parse(article);
-  const { authorId } = article;
-  console.log(authorId);
-
+  const { authorId: author } = article;
+  // author = JSON.parse(author);
   const router = useRouter();
 
   return (
@@ -42,7 +40,7 @@ const Article = ({ article }) => {
           <section className="text-base leading-normal">
             <p className="font-bold capitalize leading-none">
               {" "}
-              authored by : {authorId.name.first} {authorId.name.last}
+              authored by : {author.name.first} {author.name.last}
             </p>
             <p className="leading-none">
               created at : {<DateDisplay date={article.createdAt} />}
@@ -62,6 +60,7 @@ const Article = ({ article }) => {
 export default Article;
 
 export const getStaticPaths = async () => {
+  console.log("build path");
   await DBConnect();
   let articles = ArticlesModel.find();
   articles = await articles.lean();
@@ -69,7 +68,7 @@ export const getStaticPaths = async () => {
   let paths = articles.map((article) => ({
     params: { slug: article.slug },
   }));
-
+  console.log("build path ends");
   return {
     paths,
     fallback: false,
@@ -78,15 +77,21 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { params } = context;
+  console.log(params);
   await DBConnect();
-  let query = ArticlesModel.findOne({ slug: params.slug })
-    .populate({ path: "authorId", select: "-_id" })
-    .select("-_id");
-  query = await query.exec();
+  let article = ArticlesModel.findOne(
+    { slug: params.slug },
+    { _id: 0, __v: 0 }
+  ).populate({ path: "authorId", select: "-_id -__v", model: "User" });
+  article = await article.exec();
+
   return {
     props: {
-      article: JSON.stringify(query),
+      article: JSON.stringify(article),
+      // author: JSON.stringify(author),
       events: [],
     },
+    // fallback: false,
+    revalidate: 10,
   };
 };

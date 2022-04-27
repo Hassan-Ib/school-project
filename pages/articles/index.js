@@ -86,5 +86,6 @@ export const getStaticProps = async () => {
       articles: JSON.stringify(query),
       events: [],
     },
+    revalidate: 10,
   };
 };

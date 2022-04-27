@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
-import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 import PasswordInput from "../../components/Inputs/PasswordInput";
 import MatricNoInput from "../../components/Inputs/MatricInput";
-import { useRouter } from "next/router";
 import SubmitButton from "../../components/Buttons/SubmitButton";
 import Banner from "../../components/Banner";
 

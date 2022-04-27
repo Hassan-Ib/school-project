@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 const sanitizeHtml = require("sanitize-html");
-
+const UserModel = require("./UserModel.js");
 const { Schema } = mongoose;
 
 const ArticleSchema = new Schema({
@@ -12,7 +12,7 @@ const ArticleSchema = new Schema({
   },
   authorId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: UserModel,
     required: [true, "An article must have an author"],
   },
   body: {
@@ -75,7 +75,7 @@ ArticleSchema.pre("save", function (next) {
 //   console.log("some weird shit going on here for methods");
 // };
 
-const Articles =
-  mongoose.models.Article || mongoose.model("Article", ArticleSchema);
+const ArticlesModel =
+  mongoose.models?.Article ?? mongoose.model("Article", ArticleSchema);
 
-module.exports = Articles;
+module.exports = ArticlesModel;

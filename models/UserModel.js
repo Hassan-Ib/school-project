@@ -97,6 +97,5 @@ UserSchema.methods.checkPasswordChangedAfterTokenSign = function (JWTIssuedAt) {
   return timeOfMod > JWTIssuedAt;
 };
 
-const UserModel = mongoose.models.User || mongoose.model("User", UserSchema);
-
+const UserModel = mongoose.models?.User || mongoose.model("User", UserSchema);
 module.exports = UserModel;
