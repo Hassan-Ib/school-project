@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="relative h-hero px-4">
       <div className="flex h-full pt-10 justify-evenly items-center">
-        <section className=" text-black max-w-xl ">
+        <section className="text-center md:text-left text-black max-w-xl ">
           <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-2 md:mb-6">
             Faculty of Computing and Infomatics
           </h1>

@@ -52,9 +52,6 @@ module.exports = {
           900: "#12100C",
         },
       },
-      weight: {
-        screenhalf: "5vw",
-      },
       backgroundImage: {
         "hero-banner": "url('/img/hero-bg.jpg')",
       },

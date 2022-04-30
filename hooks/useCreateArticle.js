@@ -9,7 +9,7 @@ export const useCreateArticle = () => {
     // lazy load article from localStorage
     () => LocalStorage.getLocalData("articleData") ?? intialData
   );
-
+    
   const [coverImageLoading, setCoverImageLoading] = useState(false);
 
   const [error, setError] = useState(null);

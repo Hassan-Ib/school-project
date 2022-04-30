@@ -5,10 +5,7 @@ import DateDisplay from "../../components/Date";
 import DBConnect from "../../utils/DBConnection";
 import ArticlesModel from "../../models/ArticleModel";
 
-const Article = ({
-  article,
-  // author
-}) => {
+function Article({ article }) {
   article = JSON.parse(article);
   const { authorId: author } = article;
   // author = JSON.parse(author);
@@ -31,8 +28,7 @@ const Article = ({
               src={article?.coverImage.url}
               width={article?.coverImage.width ?? 700}
               height={article?.coverImage.height ?? 400}
-              alt={article?.title}
-            />
+              alt={article?.title} />
           </section>
         ) : null}
         <section className=" overflow-auto ">
@@ -40,10 +36,10 @@ const Article = ({
           <section className="text-base leading-normal">
             <p className="font-bold capitalize leading-none">
               {" "}
-              authored by : {author.name.first} {author.name.last}
+              authored by: {author.name.first} {author.name.last}
             </p>
             <p className="leading-none">
-              created at : {<DateDisplay date={article.createdAt} />}
+              created at: {<DateDisplay date={article.createdAt} />}
             </p>
           </section>
           <section>
@@ -53,7 +49,7 @@ const Article = ({
       </section>
     </main>
   );
-};
+}
 
 // Article.getLayout = getLayout;
 
@@ -88,7 +84,6 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       article: JSON.stringify(article),
-      // author: JSON.stringify(author),
       events: [],
     },
     // fallback: false,

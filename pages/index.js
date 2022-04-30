@@ -25,7 +25,7 @@ const Homepage = function ({ articles, events }) {
         </section>
 
         <section aria-label="latest from the faculty" className="py-16">
-          <h2 className="text-2xl text-center font-semibold py-6 ">
+          <h2 className="text-2xl text-center font-semibold py-6">
             <span className="inline-block border-b-4 border-birch-600 pb-2">
               Latest From the Faculty
             </span>
@@ -43,7 +43,7 @@ const Homepage = function ({ articles, events }) {
           <div className="flex justify-end py-24">
             <LinkButton
               href="/articles"
-              className="btn btn-sm border-birch-500  text-black hover:text-white hover:bg-birch-500">
+              className="btn btn-sm btn-outline">
               view faculty&apos;s latests
             </LinkButton>
           </div>

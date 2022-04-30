@@ -27,7 +27,7 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="overflow-hidden bg-birch-500 text-white py-10 lg:px-28">
+    <footer className="overflow-hidden bg-birch-500 text-white px-4 py-10 lg:px-28">
       <Container>
         <div className="border-black border-opacity-20 md:py-8 md:flex md:justify-evenly items-center">
           <div className="mb-6">
