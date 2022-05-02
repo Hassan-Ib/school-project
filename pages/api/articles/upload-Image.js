@@ -34,7 +34,7 @@ export default async function handler(req, res) {
           data: { imageData },
         });
       } catch (error) {
-        // console.log("server error", error);
+        console.log("server error", error);
         res.status(400).json({
           success: false,
           data: null,
