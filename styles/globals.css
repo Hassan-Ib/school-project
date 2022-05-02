@@ -3,15 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-
   body {
     @apply bg-slate-100;
   }
-
 }
 
 @layer utilities {
-
   .padding-xs {
     @apply py-1 px-2;
   }
@@ -27,18 +24,16 @@
   .is-active {
     @apply !bg-blue-600 !text-white;
   }
-
 }
 
 @layer components {
-
-  figure h3{
+  figure h3 {
     display: inline-block;
     box-decoration-break: slice;
   }
 
   .btn {
-    @apply capitalize font-medium border-2 rounded-md tracking-wider transition-all duration-500;
+    @apply capitalize font-medium  border-2 rounded-md tracking-wider transition-all duration-500;
   }
 
   .btn-xs {
@@ -50,26 +45,26 @@
   }
 
   .btn-md {
-    @apply px-6 py-2 md:text-lg;
+    @apply px-6 py-2 md:text-lg md:font-medium;
   }
 
   .btn-white {
     @apply text-white border-white hover:bg-black hover:text-white;
   }
 
-  .btn-outline{
+  .btn-outline {
     @apply border-birch-500 text-black hover:text-white hover:bg-birch-500;
   }
 
-  .btn-outline-black{
+  .btn-outline-black {
     @apply border-black text-black hover:text-white hover:bg-black/80 hover:border-black/80;
   }
 
-  .btn-block{
+  .btn-block {
     @apply bg-birch-500/90 border-birch-500 hover:bg-birch-500 text-white;
   }
 
-  .btn-block-black{
+  .btn-block-black {
     @apply bg-black/90 border-black text-white hover:bg-black;
   }
 
@@ -168,5 +163,4 @@
   .editor-menu-container button {
     @apply xl:text-lg px-2 capitalize border border-slate-600 rounded-md;
   }
-
 }

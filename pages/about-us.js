@@ -39,8 +39,8 @@ const About = () => {
   return (
     <main className="">
       <section className="flex flex-col lg:flex-row lg:h-[80vh] gap-14 place-items-center px-6 pt-16 pb-10 mb-20">
-        <div className="flex flex-col gap-10 items-center justify-center md:items-start max-w-2xl ">
-          <h2 className="text-4xl sm:text-5xl sm:leading-[1.2] text-center lg:text-left font-bold">
+        <div className="flex flex-col gap-10 items-center justify-center md:items-start max-w-xl ">
+          <h2 className="text-4xl sm:text-5xl leading[1.1] sm:leading-[1.2] text-center lg:text-left font-bold">
             Complete your dream in{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
               computing
@@ -63,7 +63,8 @@ const About = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start text-center gap-4 self-stretch">
             <button className="btn btn-md btn-block flex justify-center gap-3 items-center">
-              <AiOutlineDownload className="text-xl" /> Download our guide
+              <AiOutlineDownload className="hidden sm:block text-xl" /> Download
+              our guide
             </button>
             <Link href="/contacts" className="btn btn-md btn-outline-black">
               {" "}

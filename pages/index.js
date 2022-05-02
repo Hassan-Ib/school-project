@@ -24,39 +24,26 @@ const Homepage = function ({ articles, events }) {
           <Card />
         </section>
 
-        <section aria-label="latest from the faculty" className="py-16">
-          <h2 className="text-2xl text-center font-semibold py-6">
-            <span className="inline-block border-b-4 border-birch-600 pb-2">
+        <section aria-label="latest from the faculty" className="py-16  ">
+          <h2 className="relative text-2xl text-center font-semibold py-6 mb-32">
+            <span className="relative">
               Latest From the Faculty
+              <span className="absolute -bottom-3 bg-gradient-to-br from-pink-400 to-red-600 w-[30%] h-1 left-0"></span>
             </span>
           </h2>
-          <section aria-label="article section" className="px-4 md:px-6 ">
-            <h3 className="text-xl font-semibold py-24">
-              <GrArticle />
-              <span className="inline-block border-b-2 border-birch-500">
-                Articles
-              </span>
-            </h3>
-
+          <section aria-label="article section" className="px-4 md:px-6 mb-32">
             <ArticlesList articles={articles.slice(0, 3)} />
           </section>
-          <div className="flex justify-end py-24">
-            <LinkButton
-              href="/articles"
-              className="btn btn-sm btn-outline">
-              view faculty&apos;s latests
-            </LinkButton>
-          </div>
-          <section aria-label="article section" className="px-4 md:px-6 ">
-            <h3 className="text-xl font-semibold py-24">
-              <span className="inline-block border-b-2 border-birch-500">
-                <MdEventAvailable /> Events
-              </span>
-            </h3>
+          <section aria-label="event section" className="px-4 md:px-6 ">
             <div className="mx-auto max-w-xl">
               <EventList events={events} />
             </div>
           </section>
+          <div className="flex justify-end py-24">
+            <LinkButton href="/articles" className="btn btn-sm btn-outline">
+              view faculty&apos;s latests
+            </LinkButton>
+          </div>
         </section>
       </main>
     </>

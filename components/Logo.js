@@ -1,9 +1,10 @@
 import Image from "next/image";
 import logo from "../public/img/LAUTECH-Logo.png";
+import { Link } from "./Link";
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-2">
+    <Link className="flex items-center gap-2" href="/">
       <div className="relative w-16 h-full">
         <Image
           src={logo}
@@ -15,7 +16,7 @@ const Logo = () => {
         />
       </div>
       <span className="text-xl font-semibold tracking-widest">FCI</span>
-    </div>
+    </Link>
   );
 };
 
