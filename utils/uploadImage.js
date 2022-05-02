@@ -8,7 +8,7 @@ export const uploadImage = async (imageUrl) => {
       body: JSON.stringify({ imageUrl }),
     });
     const data = await response.json();
-    // console.log("data", data);
+    console.log("data", data);
     if (!data.success) throw new Error("image upload error ");
     return data;
   } catch (error) {
