@@ -2,6 +2,7 @@ import ArticleCard from "./ArticleCard";
 import PropTypes from "prop-types";
 
 const ArticlesList = ({ articles, mode = "grid" }) => {
+  console.log(articles.map((article) => article.coverImage));
   return (
     <section className="my-6">
       <ul
@@ -9,7 +10,8 @@ const ArticlesList = ({ articles, mode = "grid" }) => {
           mode === "grid"
             ? "grid lg:grid-cols-3 gap-10 lg:gap-4"
             : "flex flex-col gap-8"
-        } `}>
+        } `}
+      >
         {articles.map((article) => (
           <li key={article.slug} className=" shadow-lg max-w-2xl m-auto">
             <ArticleCard {...article} />

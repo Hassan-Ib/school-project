@@ -25,6 +25,7 @@ const ArticleSchema = new Schema({
     url: String,
     height: Number,
     width: Number,
+    public_id: String,
   },
   createdAt: {
     type: Date,

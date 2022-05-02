@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   console.log(
     process.env.CLOUDINARY_API_KEY,
     process.env.CLOUDINARY_API_SECRET,
-    process.env.CLOUDINARY_NAME
+    process.env.CLOUDINARY_CLOUD_NAME
   );
 
   cloudinary.config({
