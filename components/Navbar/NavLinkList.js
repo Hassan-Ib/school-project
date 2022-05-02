@@ -14,7 +14,8 @@ function NavLinkList({ closeNav = () => {} }) {
             onClick={() => {
               closeNav();
             }}
-            className="relative group hover:bg-twine-700 hover:bg-opacity-70 ">
+            className="relative rounded transition-all duration-300 group hover:bg-twine-700 hover:bg-opacity-70 lg:hover:hover:bg-twine-300"
+          >
             <NavLink className="p-3 mb-1 lg:py-1 lg:px-2" href={link.href}>
               {link.text}
             </NavLink>
