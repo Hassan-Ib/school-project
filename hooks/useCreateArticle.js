@@ -9,7 +9,7 @@ export const useCreateArticle = () => {
     // lazy load article from localStorage
     () => LocalStorage.getLocalData("articleData") ?? intialData
   );
-    
+
   const [coverImageLoading, setCoverImageLoading] = useState(false);
 
   const [error, setError] = useState(null);
@@ -30,6 +30,7 @@ export const useCreateArticle = () => {
     const file = e.target;
     uploadImg(file, {
       onSuccess: (imageData) => {
+        console.log("imageData from create article", imageData);
         setArticle((prevState) => ({
           ...prevState,
           coverImage: imageData,
@@ -37,6 +38,7 @@ export const useCreateArticle = () => {
         setCoverImageLoading(false);
       },
       onError: (error) => {
+        console.log("error from onError", error);
         setError(error.message);
         setArticle((prevState) => ({ ...prevState, coverImage: null }));
         setCoverImageLoading(false);

@@ -8,7 +8,7 @@ export const uploadImage = async (imageUrl) => {
       body: JSON.stringify({ imageUrl }),
     });
     const data = await response.json();
-    console.log("data", data);
+    // console.log("data", data);
     if (!data.success) throw new Error("image upload error ");
     return data;
   } catch (error) {
@@ -19,16 +19,22 @@ export const uploadImage = async (imageUrl) => {
 export const uploadImg = async (file, { onSuccess, onError }) => {
   console.log(file);
   let selectedImageFile = file && file?.files ? file.files[0] : null;
-  if (!selectedImageFile) return null;
+  if (!selectedImageFile) {
+    const error = new Error("file not selected");
+    onError(error);
+    return;
+  }
   const fileReader = new FileReader();
   fileReader.addEventListener("load", async () => {
-    const blobUrl = fileReader.result;
     try {
+      const blobUrl = fileReader.result;
       const res = await uploadImage(blobUrl);
-      if (res.ok) {
-        onSuccess(res.data.imageData);
+      console.log(res.success);
+      if (!res.success) {
+        throw res;
       }
-      throw res;
+      onSuccess(res.data.imageData);
+      return;
     } catch (error) {
       onError(error);
     }

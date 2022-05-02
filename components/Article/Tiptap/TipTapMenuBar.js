@@ -109,8 +109,7 @@ const menuBarNode = [
         uploadImg(file, {
           onSuccess: (imageData) => {
             if (imageData.url) {
-              console.log("url", url);
-              editor.chain().focus().setImage({ src: url }).run();
+              editor.chain().focus().setImage({ src: imageData.url }).run();
             }
           },
           onError: (error) => {
@@ -160,7 +159,8 @@ const MenuBar = ({ editor }) => {
           aria-label={el.name}
           key={index}
           onClick={el.onClick(editor)}
-          className={el.class ? el.class(editor) : "bg-inherit"}>
+          className={el.class ? el.class(editor) : "bg-inherit"}
+        >
           {el.icon}
         </button>
       ))}
@@ -171,7 +171,8 @@ const MenuBar = ({ editor }) => {
           aria-label={el.name}
           key={index}
           onClick={el.onClick(editor)}
-          className={el.class ? el.class(editor) : "bg-inherit"}>
+          className={el.class ? el.class(editor) : "bg-inherit"}
+        >
           {el.icon}
         </button>
       ))}
@@ -181,7 +182,8 @@ const MenuBar = ({ editor }) => {
           aria-label={el.name}
           key={index}
           onClick={el.onClick(editor)}
-          className={el.class ? el.class(editor) : "bg-inherit"}>
+          className={el.class ? el.class(editor) : "bg-inherit"}
+        >
           {el.icon}
         </button>
       ))}
