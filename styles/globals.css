@@ -3,94 +3,128 @@
 @tailwind utilities;
 
 @layer base {
+
   body {
     @apply bg-slate-100;
   }
+
 }
 
 @layer utilities {
+
   .padding-xs {
     @apply py-1 px-2;
   }
+
   .padding-sm {
     @apply px-4 py-1;
   }
+
   .padding-md {
     @apply px-6 py-2;
   }
+
   .is-active {
     @apply !bg-blue-600 !text-white;
   }
+
 }
 
 @layer components {
-  
-  .btn {
-    @apply capitalize  font-medium border-2 rounded-md tracking-wider transition-all duration-500;
+
+  figure h3{
+    display: inline-block;
+    box-decoration-break: slice;
   }
+
+  .btn {
+    @apply capitalize font-medium border-2 rounded-md tracking-wider transition-all duration-500;
+  }
+
   .btn-xs {
     @apply px-2 py-1 border text-sm;
   }
+
   .btn-sm {
-    @apply px-3 md:px-4 py-1 ;
+    @apply px-3 md:px-4 py-1;
   }
+
   .btn-md {
     @apply px-6 py-2 md:text-lg;
   }
+
   .btn-white {
     @apply text-white border-white hover:bg-black hover:text-white;
   }
+
   .btn-outline{
     @apply border-birch-500 text-black hover:text-white hover:bg-birch-500;
   }
+
   .btn-outline-black{
-    @apply border-black text-black hover:text-white hover:bg-black;
+    @apply border-black text-black hover:text-white hover:bg-black/80 hover:border-black/80;
   }
+
   .btn-block{
     @apply bg-birch-500/90 border-birch-500 hover:bg-birch-500 text-white;
   }
+
   .btn-block-black{
     @apply bg-black/90 border-black text-white hover:bg-black;
   }
+
   .btn-bg-flow {
     @apply relative border-birch-500 overflow-hidden;
   }
+
   .btn-bg-flow .text {
     @apply relative z-20 transition-all duration-300;
   }
+
   .btn-bg-flow:hover .text {
     @apply text-white delay-75;
   }
+
   .btn-bg-flow .flow {
     @apply absolute w-full h-full bg-birch-500 transition-all duration-300;
   }
+
   .btn-bg-flow .flow-b {
     @apply top-[90%] left-0;
   }
+
   .btn-bg-flow:hover .flow-b {
     @apply top-0;
   }
+
   .btn-bg-flow .flow-l {
     @apply top-0 -left-[97%];
   }
+
   .btn-bg-flow:hover .flow-l {
     @apply left-0;
   }
+
   .btn-bg-flow .flow-r {
     @apply top-0 left-[97%];
   }
+
   .btn-bg-flow:hover .flow-r {
     @apply left-0;
   }
+
   .btn-bg-flow .flow-t {
     @apply -top-[90%] left-0;
   }
+
   .btn-bg-flow:hover .flow-t {
     @apply top-0;
   }
+
   .hover--btn {
     position: relative;
   }
+
   .hover--btn::before {
     content: " ";
     position: absolute;
@@ -98,25 +132,31 @@
     width: 100%;
     height: 100%;
   }
+
   .hover--btn:hover::before {
     transform: scale(1.2);
   }
+
   .article-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     place-items: center;
   }
+
   textarea {
     resize: none;
     outline: none;
   }
+
   .navlink {
     -webkit-transform-style: preserve-3d;
   }
+
   .nav__overlay {
     @apply cursor-pointer absolute top-0 left-0 h-screen w-full bg-birch-500 bg-opacity-70;
   }
+
   .ProseMirror p.is-editor-empty:first-child::before {
     color: #adb5bd;
     content: attr(data-placeholder);
@@ -124,7 +164,9 @@
     height: 0;
     pointer-events: none;
   }
+
   .editor-menu-container button {
     @apply xl:text-lg px-2 capitalize border border-slate-600 rounded-md;
   }
+
 }

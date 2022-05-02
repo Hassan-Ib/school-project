@@ -6,8 +6,8 @@ import {AiOutlineDownload} from "react-icons/ai"
 
 const ImportantFigure = ({ title, name }) => {
   return (
-    <article className="relative w-[80%] flex flex-col gap-4 max-w-2xl rounded-md bg-white shadow-md p-4 ">
-      <figure className="relative block group overflow-hidden rounded">
+    <article className="relative w-[80%] flex flex-col gap-4 max-w-sm md:max-w-2xl md:flex-row rounded-md bg-white shadow-md p-4">
+      <figure className="relative md:w-[60%] block group overflow-hidden rounded">
         <Image
           className="group-hover:transform group-hover:scale-110 transition-transform duration-300"
           src={"/img/leon-wu-LLfRMRT-9AY-unsplash.jpg"}
@@ -16,7 +16,7 @@ const ImportantFigure = ({ title, name }) => {
           height="400"
         />
         <figcaption className="absolute bottom-4 left-0 ">
-          <h3 className="text-xl font-medium leading-10 bg-gradient-to-r from-birch-500 via-birch-500 to-twine-300 max-w-min text-white border-2 border-transparent">      
+          <h3 className="text-xl font-medium text-white bg-gradient-to-r from-birch-500 via-birch-500 to-twine-300 max-w-min">      
             Ibrahim
             Hassanayomide
           </h3>
@@ -32,26 +32,26 @@ const ImportantFigure = ({ title, name }) => {
 const About = () => {
   return (
     <main className="">
-      <section className="flex flex-col md:flex-row gap-14 place-items-center px-4 pb-10 mb-20">
-        <div  className="flex flex-col gap-10 items-center md:items-start sm:max-w-md">
-          <h2 className="text-3xl md:text-4xl text-center md:text-left  font-bold ">
+      <section className="flex flex-col lg:flex-row gap-14 place-items-center px-6 py-10 pb-10 mb-20">
+        <div  className="flex flex-col gap-10 items-center justify-center md:items-start max-w-2xl ">
+          <h2 className="text-4xl text-center lg:text-left font-bold">
             Complete your dream in computing, security and prgramming.
           </h2>
-          <p className="text-base font-medium leading-5 md:leading-6 opacity-80 ">
+          <p className="leading-5 md:leading-6 opacity-80 text-center lg:text-left">
             Learn any programing language, and build your own future,
             you can learn from us onsite or online with us.
             we are open to application anytime, and if you want a project done we have certified, capable student to get it done, click on contact below
           </p>
-          <div className="flex flex-col sm:flex-row items-center gap-2">
+          <div className="flex flex-col text-center gap-4 self-stretch border-2 border-red-500">
 
-          <button className="btn btn-md btn-block flex gap-3 items-center">
-            <AiOutlineDownload className="text-xl"/> Download our guide 
+            <button className="btn btn-md btn-block flex justify-center gap-3 items-center">
+              <AiOutlineDownload className="text-xl"/> Download our guide 
             </button>
-              <Link href="/contacts" className="btn btn-md btn-outline-black" > Contact us </Link>
+            <Link href="/contacts" className="btn btn-md btn-outline-black" > Contact us </Link>
           </div>
         </div>
-        <div className="block ">
-          <Image src={Svg} alt="student sitting for exam svg" />
+        <div className="flex items-center">
+          <Image src={Svg}  alt="student sitting for exam svg" />
         </div>
       </section>
       <section className="md:px-10 py-10 my-20 ">
