@@ -20,7 +20,7 @@ function ImportantFigure(props) {
             src={`/about/${props.url}`}
           />
         </div>
-        <figcaption className="absolute bg-black/40 text-white md:text-black z-10 bottom-0 left-0 md:static px-2 py-6">
+        <figcaption className="absolute bg-black/40 md:bg-inherit text-white md:text-black z-10 bottom-0 left-0 md:static px-2 py-6">
           <h3 className="mb-2 font-medium text-birch/90 max-w-min uppercase tracking-widest">
             Dr. Ibrahim Hassanayomide
           </h3>
@@ -41,7 +41,19 @@ const About = () => {
       <section className="flex flex-col lg:flex-row lg:h-[80vh] gap-14 place-items-center px-6 pt-16 pb-10 mb-20">
         <div className="flex flex-col gap-10 items-center justify-center md:items-start max-w-2xl ">
           <h2 className="text-4xl sm:text-5xl sm:leading-[1.2] text-center lg:text-left font-bold">
-            Complete your dream in computing, security and prgramming.
+            Complete your dream in{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+              computing
+            </span>
+            ,{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+              security
+            </span>{" "}
+            and{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+              prgramming
+            </span>
+            .
           </h2>
           <p className=" leading-5 md:leading-6 opacity-80 text-center lg:text-left">
             Learn any programing language, and build your own future, you can
@@ -88,7 +100,7 @@ const About = () => {
           />
         </div>
       </section>
-      <section className="md:px-10 my-10">
+      <section className=" px-4 md:px-10 my-10">
         <div>
           <h1 className="text-3xl md:text-4xl font-medium max-w-xl mb-10">
             Cooperation unifies the best teammates & create miracles.
