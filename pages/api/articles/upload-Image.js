@@ -4,6 +4,11 @@ import cloudinary from "cloudinary";
 export default async function handler(req, res) {
   const { method, body } = req;
   console.log("body", body.imageUrl ? true : false);
+  console.log(
+    process.env.CLOUDINARY_API_KEY,
+    process.env.CLOUDINARY_API_SECRET,
+    process.env.CLOUDINARY_NAME
+  );
 
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
