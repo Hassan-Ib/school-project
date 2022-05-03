@@ -7,8 +7,8 @@ const Header = () => {
   return (
     <header className="relative lg:h-hero px-4">
       <div className="flex flex-col gap-10 lg:flex-row h-full pt-10 justify-evenly items-center">
-        <section className="text-center lg:text-left text-black  max-w-md">
-          <h1 className="font-bold text-4xl leading[1.1]  lg:text-6xl lg:leading-[1.2] mb-2 md:mb-6 ">
+        <section className="text-center lg:text-left text-black  max-w-md md:max-w-lg">
+          <h1 className="font-bold text-4xl  leading[1.1] md:text-5xl md:leading-[1.2]  lg:text-6xl lg:leading-[1.2] mb-2 md:mb-6 ">
             Faculty of{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
               Computing
