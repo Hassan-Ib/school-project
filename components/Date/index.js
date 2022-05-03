@@ -49,7 +49,7 @@ const DateDisplay = ({ date }) => {
 
   return (
     <time className="opacity-80 hover:opacity-100 transition-all duration-150">
-      {months[month + 5]} {day} {year}, {since}
+      {months[month]} {day} {year}, {since}
     </time>
   );
 };
