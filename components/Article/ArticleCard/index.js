@@ -9,8 +9,8 @@ import { BsArrowUpRight } from "react-icons/bs";
 
 const Article = ({ slug, title, coverImage, createdAt }) => {
   return (
-    <Link href={"/articles/" + slug} className="mx-auto">
-      <article className=" rounded-lg overflow-hidden bg-white max-w-lg p-4 border border-birch-500">
+    <Link href={"/articles/" + slug} className="mx-auto max-w-md">
+      <article className=" rounded-lg overflow-hidden bg-white max-w-md p-4 border border-birch-500">
         <ArticleCover coverImage={coverImage} />
         <div className=" p-4  ">
           <ArticleTitle title={title} />
@@ -22,7 +22,8 @@ const Article = ({ slug, title, coverImage, createdAt }) => {
                 read more <BsArrowUpRight />
               </>
             }
-            flowDirection="flow-r"></FlowButton>
+            flowDirection="flow-r"
+          ></FlowButton>
         </div>
       </article>
     </Link>
