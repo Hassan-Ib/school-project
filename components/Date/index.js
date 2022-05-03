@@ -23,7 +23,6 @@ const DateDisplay = ({ date }) => {
   const day = createdAt.getDate();
   const month = createdAt.getUTCMonth();
   // console.log("current mili sec", Date.now() - createdAt);
-  console.log(day, month);
 
   const hoursAgo = Math.floor(
     (Date.now() - createdAt.getTime()) / (1000 * 60 * 60)
@@ -32,12 +31,16 @@ const DateDisplay = ({ date }) => {
   const monthsAgo = Math.floor(daysAgo / 30); // days > 30
   const yearsAgo = Math.floor(monthsAgo / 12); // yearsAgo > 12
 
-  let since = `${hoursAgo} hours ago`;
-  // check for days
+  let since = `less than an hour ago`;
+  //check for hours
+  if (hoursAgo > 0) {
+    since = `${hoursAgo} hours ago`;
+  }
+  // check for day
   if (daysAgo) {
     since = `${daysAgo} days ago`;
   }
-  //check for
+  //check for month
   if (monthsAgo) {
     since = `${monthsAgo} ${monthsAgo < 2 ? "month" : "months"} ago`;
   }
@@ -45,11 +48,10 @@ const DateDisplay = ({ date }) => {
     // yearsAgo > 0
     since = `${yearsAgo} ${monthsAgo < 2 ? "year" : "years"}  ago`;
   }
-  // console.log("since", since);
 
   return (
     <time className="opacity-80 hover:opacity-100 transition-all duration-150">
-      {months[month]} {day} {year}, {since}
+      Published, {months[month]} {day} {year}, {since}
     </time>
   );
 };
