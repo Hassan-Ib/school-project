@@ -37,10 +37,11 @@ const CreateArticle = () => {
   }
 
   return (
-    <main className="absolute inset-0 overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
+    <main className="absolute px-4 inset-0 overflow-hidden bg-gray-200 flex place-content-center  lg:place-content-center">
       <form
         onSubmit={publishArticle}
-        className="px-1 w-full lg:w-3/4  lg:px-12 flex flex-col">
+        className="px-1 w-full max-w-[1200px] lg:w-[85%]  lg:px-12 flex flex-col"
+      >
         {/*--- header ---*/}
         <ArticleEditorHeader
           setPreview={setPreview}
@@ -60,7 +61,8 @@ const CreateArticle = () => {
           <SubmitButton text="Publish" loading={isLoading} />
           <button
             type="button"
-            className="bg-gray-300 tracking-wide font-semibold capitalize px-4 py-2 rounded">
+            className="bg-gray-300 tracking-wide font-semibold capitalize px-4 py-2 rounded"
+          >
             save draft
           </button>
         </footer>

@@ -22,7 +22,7 @@ const Tiptap = ({ setArticleBody }) => {
     editorProps: {
       attributes: {
         class:
-          "prose-sm prose-slate sm:prose lg:prose-lg xl:prose-xl focus:outline-none  min-w-full ",
+          "prose-slate prose lg:prose-lg xl:prose-xl focus:outline-none  min-w-full ",
       },
     },
     onUpdate: ({ editor }) => {
