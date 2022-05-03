@@ -20,7 +20,7 @@ const Homepage = function ({ articles, events }) {
       <HeadMeta />
       <Header />
       <main>
-        <section aria-label="introduction cards" className="py-32">
+        <section aria-label="introduction cards" className="pt-20">
           <Card />
         </section>
 
